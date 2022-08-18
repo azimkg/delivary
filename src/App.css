@@ -9,3 +9,22 @@
   max-width: 90%;
   margin: 0 auto;
 }
+.breadcrumps__block {
+  display: flex;
+  margin-top: 32px;
+  margin-bottom: 40px;
+}
+.breadcrumps {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: #7b7b7b;
+}
+.breadcrumps__slash {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  margin-left: 6px;
+  margin-right: 6px;
+  color: #7b7b7b;
+}

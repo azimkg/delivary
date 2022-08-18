@@ -8,6 +8,7 @@ import unionmobile from "../../assets/unionmobile.png";
 import close from "../../assets/close.svg";
 import union from "../../assets/Union.png";
 import trash from "../../assets/trash.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [all, setAll] = useState(false);
@@ -38,11 +39,13 @@ const Navbar = () => {
         </div>
         <div className="navbar__right-mobile">
           <div className="navbar__bottom-user-mobile">
-            <img
-              src={unionmobile}
-              alt=""
-              className="navbar__bottom-user-link"
-            />
+            <Link to="/enter">
+              <img
+                src={unionmobile}
+                alt=""
+                className="navbar__bottom-user-link"
+              />
+            </Link>
           </div>
           <div className="navbar__bottom-trash-mobile">
             <img src={trash} alt="" className="navbar__bottom-trash-link" />
@@ -77,7 +80,9 @@ const Navbar = () => {
         />
         <div className="navbar__bottom-right">
           <div className="navbar__bottom-user">
-            <img src={union} alt="" className="navbar__bottom-user-link" />
+            <Link to="/enter">
+              <img src={union} alt="" className="navbar__bottom-user-link" />
+            </Link>
           </div>
           <div className="navbar__bottom-trash">
             <img src={trash} alt="" className="navbar__bottom-trash-link" />
@@ -94,9 +99,24 @@ const Navbar = () => {
             setBurger(false);
           }}
         >
-          <p>Акции</p>
-          <p>аьлдв</p>
-          <p>лдват</p>
+          <div className="burger__block-content">
+            <div className="burger__block">
+              <p className="burger__block-link">Акции</p>
+            </div>
+            <div className="burger__block">
+              <p className="burger__block-link">График доставки</p>
+            </div>
+            <div className="burger__block">
+              <p className="burger__block-link">О компании</p>
+            </div>
+            <div className="burger__number-block">
+              <p className="burger__number">+996778825885</p>
+              <p className="burger__number">+996778825885</p>
+            </div>
+            <div className="burger__number-button">
+              <button>Войти в личный кабинет</button>
+            </div>
+          </div>
         </div>
       ) : null}
       {all ? (
