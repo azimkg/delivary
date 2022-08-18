@@ -18,11 +18,11 @@ const Navbar = () => {
     <div className="container">
       <div className="navbar__top">
         <div className="navbar__top-logo">
-          <img src={logo} alt="" />
+          <img src={logo} alt="image" />
         </div>
         <div className="navbar__mobile">
           <div className="navbar__top-logo-mobile">
-            <img src={logo} alt="" />
+            <img src={logo} alt="image" />
           </div>
           <div
             onClick={() => {
@@ -31,9 +31,9 @@ const Navbar = () => {
             className="navbar__mobile-burger"
           >
             {all ? (
-              <img className="navbar__burger" src={closemobile} alt="" />
+              <img className="navbar__burger" src={closemobile} alt="image" />
             ) : (
-              <img src={burgermobile} alt="" />
+              <img src={burgermobile} alt="image" />
             )}
           </div>
         </div>
@@ -42,13 +42,17 @@ const Navbar = () => {
             <Link to="/enter">
               <img
                 src={unionmobile}
-                alt=""
+                alt="image"
                 className="navbar__bottom-user-link"
               />
             </Link>
           </div>
           <div className="navbar__bottom-trash-mobile">
-            <img src={trash} alt="" className="navbar__bottom-trash-link" />
+            <img
+              src={trash}
+              alt="image"
+              className="navbar__bottom-trash-link"
+            />
           </div>
           <div className="navbar__bottom-price-mobile">
             <span className="navbar__bottom-priceOfTrash">2800Сом</span>
@@ -67,25 +71,33 @@ const Navbar = () => {
           className="navbar__bottom-burger"
         >
           {all ? (
-            <img className="navbar__burger" src={close} alt="" />
+            <img className="navbar__burger" src={close} alt="image" />
           ) : (
-            <img src={burgerb} alt="" />
+            <img src={burgerb} alt="image" />
           )}
           <p className="navbar__bottom-catalog">Каталог продуктов</p>
         </div>
         <input
-          type="text"
+          type="search"
           className="navbar__bottom-search"
           placeholder="Поиск"
         />
         <div className="navbar__bottom-right">
           <div className="navbar__bottom-user">
             <Link to="/enter">
-              <img src={union} alt="" className="navbar__bottom-user-link" />
+              <img
+                src={union}
+                alt="image"
+                className="navbar__bottom-user-link"
+              />
             </Link>
           </div>
           <div className="navbar__bottom-trash">
-            <img src={trash} alt="" className="navbar__bottom-trash-link" />
+            <img
+              src={trash}
+              alt="image"
+              className="navbar__bottom-trash-link"
+            />
           </div>
           <div className="navbar__bottom-price">
             <span className="navbar__bottom-priceOfTrash">2800Сом</span>

@@ -1,15 +1,17 @@
 import React from "react";
 import "./Details.css";
 import vector from "../../assets/Vector.png";
+import Breadcrumps from "../Breadcrumps/Breadcrumps";
 
 const Details = () => {
   return (
     <div className="container">
+      <Breadcrumps />
       <div className="details">
         <div className="details__block">
           <img
             src="https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-            alt=""
+            alt="image"
             className="details__photos"
           />
         </div>
@@ -28,7 +30,7 @@ const Details = () => {
               <span className="details__right-weight">/ кг</span>
             </div>
             <div className="details__cart-block">
-              <img src={vector} alt="" />
+              <img src={vector} alt="image" />
               <button className="details__cart">В корзину</button>
             </div>
           </div>

@@ -11,7 +11,7 @@ const Autorization = () => {
           <div className="autorization__input">
             <h2 className="autorization__text">Номер телефона</h2>
             <input
-              type="text"
+              type="number"
               className="autorization__inp"
               placeholder="Введите номер телефона"
             />
@@ -19,7 +19,7 @@ const Autorization = () => {
           <div className="autorization__input">
             <h2 className="autorization__text">Почта</h2>
             <input
-              type="text"
+              type="email"
               className="autorization__inp"
               placeholder="Введите вашу почту"
             />
