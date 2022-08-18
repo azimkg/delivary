@@ -1,7 +1,11 @@
 import React from "react";
+import Footer from "../../components/Footer/Footer";
+
 
 const Homepage = () => {
-  return <div>dsdfsf</div>;
+  return <div>
+    <Footer/>
+  </div>;
 };
 
 export default Homepage;
