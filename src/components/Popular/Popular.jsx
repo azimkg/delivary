@@ -18,9 +18,7 @@ const Popular = () => {
           <img src={eda} alt="card image" className="image_cards" />
           <div className="popular_bottom-text">
             <h2 className="cards_title-name">Яйца куриные</h2>
-            <h3 className="cards_title-desc">
-              Пи́цца — традиционное итальянское ...
-            </h3>
+            <h3 className="cards_title-desc">Описание товара ... </h3>
             <span className="card_price-span">95 cом</span>
             <div className="card_position-card">
               <img src={card} alt="card" />
@@ -31,9 +29,7 @@ const Popular = () => {
           <img src={eda} alt="card image" className="image_cards" />
           <div className="popular_bottom-text">
             <h2 className="cards_title-name">Яйца куриные</h2>
-            <h3 className="cards_title-desc">
-              Пи́цца — традиционное итальянское ...
-            </h3>
+            <h3 className="cards_title-desc">Описание товара ... </h3>
             <span className="card_price-span">95 cом</span>
             <div className="card_position-card">
               <img src={card} alt="card" />
@@ -44,9 +40,7 @@ const Popular = () => {
           <img src={eda} alt="card image" className="image_cards" />
           <div className="popular_bottom-text">
             <h2 className="cards_title-name">Яйца куриные</h2>
-            <h3 className="cards_title-desc">
-              Пи́цца — традиционное итальянское ...
-            </h3>
+            <h3 className="cards_title-desc">Описание товара ... </h3>
             <span className="card_price-span">95 cом</span>
             <div className="card_position-card">
               <img src={card} alt="card" />
@@ -57,9 +51,7 @@ const Popular = () => {
           <img src={eda} alt="card image" className="image_cards" />
           <div className="popular_bottom-text">
             <h2 className="cards_title-name">Яйца куриные</h2>
-            <h3 className="cards_title-desc">
-              Пи́цца — традиционное итальянское ...
-            </h3>
+            <h3 className="cards_title-desc">Описание товара ... </h3>
             <span className="card_price-span">95 cом</span>
             <div className="card_position-card">
               <img src={card} alt="card" />

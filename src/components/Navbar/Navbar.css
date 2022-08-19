@@ -210,6 +210,7 @@
     background: white;
     height: 100%;
     overflow: hidden;
+    z-index: 100;
   }
   .burger__block {
     margin-bottom: 44px;
