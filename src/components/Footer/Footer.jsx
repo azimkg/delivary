@@ -9,7 +9,8 @@ import icon3 from "../Footer/footer-icons/Vector.png"
 import icon4 from "../Footer/footer-icons/VK_white.png"
 const Footer = () => {
     return (
-        <div className='footer container' >
+        <div className='footer ' >
+            <div className="container">
             {/* component1 */}
             
             <div className='footer-component1'>
@@ -48,7 +49,7 @@ const Footer = () => {
                     <img src={googlepay} alt="" />
                     <img src={applepay} alt="" />
                 </div>
-                <div className='footer_icons' >
+                <div id='footer_icons' >
                     <div>
                     <img src={combo} alt="" />
                     <img src={icon2} alt="" />
@@ -59,6 +60,7 @@ const Footer = () => {
 <p>Политика конфиденциальности</p>
                 </div>
             </div>
+        </div>
         </div>
     );
 }

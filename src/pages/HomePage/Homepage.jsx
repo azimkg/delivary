@@ -1,11 +1,14 @@
 import React from "react";
 import Footer from "../../components/Footer/Footer";
+import Popular from "../../components/Popular/Popular";
 
 
 const Homepage = () => {
-  return <div>
+  return <>
+        {/* <Popular /> */}
     <Footer/>
-  </div>;
-};
+  </>;
+
+}
 
 export default Homepage;
