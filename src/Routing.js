@@ -9,7 +9,7 @@ import Homepage from "./pages/HomePage/Homepage";
 const Routing = () => {
   return (
     <BrowserRouter>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/enter" element={<Enter />} />
