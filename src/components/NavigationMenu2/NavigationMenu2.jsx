@@ -6,6 +6,7 @@ import {
   BsClockFill,
   BsGearFill,
 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import "./NavigationMenu2.css";
 
 function NavigationMenu2() {
@@ -19,6 +20,7 @@ function NavigationMenu2() {
     {
       icon: <BsFillBagCheckFill size={25} />,
       name: "Orders",
+      path: "/cart",
     },
     {
       icon: <BsFillChatSquareFill size={25} />,
@@ -44,8 +46,10 @@ function NavigationMenu2() {
               key={index}
               className={index === selected ? "active" : ""}
             >
+              {/* <Link to={val.path}> */}
               <div className="icon">{val.icon}</div>
               <div className="name">{val.name}</div>
+              {/* </Link> */}
             </li>
           );
         })}

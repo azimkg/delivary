@@ -20,3 +20,6 @@
 .adminPage {
   display: flex;
 }
+.adminPage-2 {
+  width: 80vw;
+}
