@@ -1,8 +1,10 @@
 import React from "react";
-import Categories from "../../components/Categories/Categories";
+import UsersList from "../../components/UsersList/UsersList";
 
 const Homepage = () => {
-  return<div>dsdfsf<Categories /></div>;
+  return<div>
+    <UsersList/>
+    </div>;
 };
 
 export default Homepage;
