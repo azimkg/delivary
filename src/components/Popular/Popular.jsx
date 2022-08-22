@@ -7,9 +7,9 @@ import "./Popular.css";
 const Popular = () => {
   return (
     <div className="container">
-      <div className="popular_block-top">
+      {/* <div className="popular_block-top">
         <img src={block} alt="public-block" className="video-container" />
-      </div>
+      </div> */}
       <div>
         <h2 className="popular_food-text">Популярные товары</h2>
       </div>

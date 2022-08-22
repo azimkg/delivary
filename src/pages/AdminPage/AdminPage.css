@@ -1,0 +1,22 @@
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+.adminPage-logo {
+  display: flex;
+  align-items: center;
+}
+
+.adminPage-orders {
+  display: flex;
+  align-items: center;
+}
+
+.adminPage-1 {
+  border: 1px solid grey;
+  width: 20vw;
+  height: 100vh;
+}
+.adminPage {
+  display: flex;
+}

@@ -48,11 +48,13 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="navbar__bottom-trash-mobile">
-            <img
-              src={trash}
-              alt="image"
-              className="navbar__bottom-trash-link"
-            />
+            <Link to="/cart">
+              <img
+                src={trash}
+                alt="image"
+                className="navbar__bottom-trash-link"
+              />
+            </Link>
           </div>
           <div className="navbar__bottom-price-mobile">
             <span className="navbar__bottom-priceOfTrash">2800Сом</span>
@@ -93,11 +95,13 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="navbar__bottom-trash">
-            <img
-              src={trash}
-              alt="image"
-              className="navbar__bottom-trash-link"
-            />
+            <Link to="/cart">
+              <img
+                src={trash}
+                alt="image"
+                className="navbar__bottom-trash-link"
+              />
+            </Link>
           </div>
           <div className="navbar__bottom-price">
             <span className="navbar__bottom-priceOfTrash">2800Сом</span>
