@@ -35,6 +35,7 @@
   height: 264px;
   border-radius: 5px 5px 0 0;
   cursor: pointer;
+  object-fit: cover;
 }
 
 .popular_bottom-text {
@@ -294,5 +295,116 @@
   }
   .popular_card {
     margin-bottom: 15px;
+  }
+  .popular_food-text {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #1b1b1b;
+    mix-blend-mode: normal;
+  }
+}
+
+@media (max-width: 380px) {
+  .popular_card {
+    width: 150px;
+    height: 300px;
+  }
+  .image_cards {
+    width: 150px;
+  }
+  .cards_title-name {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    color: #1b1b1b;
+    mix-blend-mode: normal;
+  }
+  .cards_title-desc {
+  }
+  .popular_bottom-text {
+    padding: 0 8px 0 8px;
+  }
+  .card_price-span {
+    margin-top: 24px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .cards_title-name {
+    margin-top: 28px;
+  }
+  .popular_card {
+    margin-bottom: 15px;
+  }
+  .popular_food-text {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #1b1b1b;
+    mix-blend-mode: normal;
+  }
+}
+
+@media (max-width: 345px) {
+  .popular_card {
+    width: 138px;
+    height: 300px;
+  }
+  .image_cards {
+    width: 138px;
+  }
+  .cards_title-name {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    color: #1b1b1b;
+    mix-blend-mode: normal;
+  }
+  .cards_title-desc {
+  }
+  .popular_bottom-text {
+    padding: 0 1px 0 4px;
+  }
+  .card_price-span {
+    margin-top: 24px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .cards_title-name {
+    margin-top: 20px;
+  }
+  .popular_card {
+    margin-bottom: 15px;
+  }
+  .popular_food-text {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #1b1b1b;
+    mix-blend-mode: normal;
   }
 }
