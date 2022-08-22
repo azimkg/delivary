@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Autorization from "./components/Autorization/Autorization";
 import Details from "./components/Details/Details";
+import Carousel from "./components/Carousel/Carousel";
 import Enter from "./components/Enter/Enter";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
@@ -11,6 +12,7 @@ const Routing = () => {
   return (
     <BrowserRouter>
       <Navbar />
+      <Carousel />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/enter" element={<Enter />} />
