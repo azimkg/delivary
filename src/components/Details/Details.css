@@ -1,0 +1,116 @@
+.details {
+  display: flex;
+}
+.details__block {
+  margin-right: 50px;
+  margin-left: 50px;
+}
+.details__photos {
+  max-width: 680px;
+  max-height: 402px;
+}
+.details__block-right {
+  max-width: 450px;
+}
+.details__right-title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 132%;
+  text-align: center;
+  color: #043e44;
+}
+.details__right-description {
+  margin-top: 18px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 147%;
+  color: #7b7b7b;
+  margin-bottom: 44px;
+}
+.details__right-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.details__right-cost {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 146%;
+  color: #1b1b1b;
+  margin-right: 4px;
+}
+.details__right-weight {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: #b1b1b1;
+}
+.details__cart {
+  cursor: pointer;
+  background: #209041;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #ffffff;
+  padding: 15px 17px 15px 45px;
+  border: none;
+  outline: none;
+}
+.details__cart-block {
+  position: relative;
+}
+.details__cart-block img {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+@media (max-width: 1020px) {
+  .details {
+    flex-direction: column;
+    align-items: center;
+  }
+  .details__block {
+  }
+  .details__block-right {
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 780px) {
+  .details {
+    flex-direction: column;
+    align-items: center;
+  }
+  .details__photos {
+    max-width: 480px;
+    max-height: 302px;
+  }
+}
+@media (max-width: 480px) {
+  .details {
+    flex-direction: column;
+    align-items: center;
+  }
+  .details__photos {
+    max-width: 480px;
+    max-height: 202px;
+  }
+  .details__right-title {
+    text-align: left;
+  }
+  .details__right-footer {
+    margin-bottom: 50px;
+  }
+  .details__right-description {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .details__right-cost {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 146%;
+  }
+}

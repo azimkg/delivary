@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import {
-  BsFillBagCheckFill,
-  BsFillHouseFill,
-  BsFillChatSquareFill,
-  BsClockFill,
-  BsGearFill,
-} from "react-icons/bs";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./NavigationMenu2.css";
 
 function NavigationMenu2() {
-  const [selected, setSelected] = useState(0);
+  const location = useLocation();
 
   const menus = [
     {
-      icon: <BsFillHouseFill size={25} />,
-      name: "Home",
+      icon: <i className="bx bx-home-alt-2"></i>,
+      name: "Домой",
+      path: "/",
     },
     {
-      icon: <BsFillBagCheckFill size={25} />,
-      name: "Orders",
+      icon: <i class="bx bx-purchase-tag-alt"></i>,
+      name: "Акции",
+      path: "/sales",
+    },
+
+    {
+      icon: <i className="bx bx-shopping-bag"></i>,
+      name: "Заказы",
+      path: "/cart",
     },
     {
-      icon: <BsFillChatSquareFill size={25} />,
-      name: "Chat",
+      icon: <i class="bx bx-group"></i>,
+      name: "О нас",
+      path: "/about",
     },
     {
-      icon: <BsClockFill size={25} />,
-      name: "History",
-    },
-    {
-      icon: <BsGearFill size={25} />,
-      name: "Settings",
+      icon: <i className="bx bx-user"></i>,
+      name: " Кабинет",
+      path: "/enter",
     },
   ];
 
@@ -40,12 +40,13 @@ function NavigationMenu2() {
         {menus.map((val, index) => {
           return (
             <li
-              onClick={() => setSelected(index)}
               key={index}
-              className={index === selected ? "active" : ""}
+              className={location.pathname === val.path ? "active" : ""}
             >
-              <div className="icon">{val.icon}</div>
-              <div className="name">{val.name}</div>
+              <Link to={val.path}>
+                <div className="icon">{val.icon}</div>
+                <div className="name">{val.name}</div>
+              </Link>
             </li>
           );
         })}

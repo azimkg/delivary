@@ -1,6 +1,6 @@
 import React from "react";
-import "./Cart.css";
 import "boxicons";
+import "./Cart.css";
 
 const Cart = () => {
   return (
@@ -151,7 +151,7 @@ const Cart = () => {
         </div>
       </div>
       <div className="cart-details">
-        <div>
+        <div className="cart-detailss">
           <h2>Оформление заказа</h2>
         </div>
         <div className="cart-details-border">
