@@ -1,0 +1,30 @@
+.container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.customers_list{
+    border: 1px solid grey;
+    height: 100%;
+}
+
+.customers_info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.customers_line{
+    border: .5px solid grey;
+}
+
+.customers_photo{
+    width: 60px;
+    border-radius: 50%;
+}
+
+.customers_all_info{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}

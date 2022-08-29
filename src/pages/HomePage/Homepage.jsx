@@ -1,10 +1,10 @@
 import React from "react";
-import Breadcrumps from "../../components/Breadcrumps/Breadcrumps";
-import Details from "../../components/Details/Details";
-import Navbar from "../../components/Navbar/Navbar";
-
+import NavigationMenu from "../../components/NavigationMenu/NavigationMenu";
 const Homepage = () => {
-  return <div></div>;
+  return (
+    <div>
+    </div>
+  );
 };
 
 export default Homepage;
