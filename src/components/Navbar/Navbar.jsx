@@ -61,7 +61,9 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar__top-stock">
-          <p className="navbar__top-stock-link">Акции</p>
+          <Link to="/nav">
+            <p className="navbar__top-stock-link">Акции</p>
+          </Link>
         </div>
       </div>
       <div className="navbar__bottom">
