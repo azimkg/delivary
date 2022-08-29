@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import logo from "../../assets/carrot.svg";
+import logo from "../../assets/logo.svg";
 import burgerb from "../../assets/burger.svg";
 import burgermobile from "../../assets/burger-mobile.svg";
 import closemobile from "../../assets/closemobile.svg";
@@ -18,11 +18,11 @@ const Navbar = () => {
     <div className="container">
       <div className="navbar__top">
         <div className="navbar__top-logo">
-          <img src={logo} alt="image" />
+          <img src={logo} width="120" alt="image" />
         </div>
         <div className="navbar__mobile">
           <div className="navbar__top-logo-mobile">
-            <img src={logo} alt="image" />
+            <img src={logo} width="120" alt="image" />
           </div>
           <div
             onClick={() => {

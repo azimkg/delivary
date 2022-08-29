@@ -23,6 +23,7 @@
 } */
 
 .navigation {
+  max-width: 100%;
   width: 425px;
   height: 70px;
   background: #fff;
@@ -61,7 +62,7 @@
 }
 
 .navigation ul li.active .icon {
-  transform: translateY(-38px);
+  transform: translateY(-40px);
   color: rgb(64, 14, 202);
 }
 
@@ -77,6 +78,12 @@
   transform: translateY(30px);
   opacity: 1;
   color: var(--clrAct);
+  color: black !important;
+  position: absolute;
+  bottom: 45px;
+  left: 10px;
+  font-size: 16px;
+  /* text-align: center; */
 }
 
 .menu-bg {
@@ -133,4 +140,9 @@
 
 .navigation ul li:nth-child(5).active ~ .menu-bg {
   transform: translateX(calc(70px * 4));
+}
+.bx {
+  font-size: 26px;
+  /* margin-bottom: 0; */
+  /* padding-bottom: 0; */
 }

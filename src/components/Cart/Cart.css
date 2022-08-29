@@ -10,6 +10,17 @@
   width: 50%;
 }
 
+@media (max-width: 426px) {
+  .cart {
+    flex-wrap: wrap;
+  }
+  .cart-cart {
+    width: 100%;
+  }
+  .cart-details {
+    width: 100%;
+  }
+}
 .container {
   width: 90%;
   margin: 0 auto;

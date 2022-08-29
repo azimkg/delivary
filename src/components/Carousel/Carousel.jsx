@@ -14,7 +14,7 @@ import { Pagination, Navigation } from "swiper";
 
 export default function Carousel() {
   return (
-    <div className="container">
+    <div className="container" style={{ marginTop: "20px" }}>
       <Swiper
         slidesPerView={10}
         spaceBetween={30}
