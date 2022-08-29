@@ -32,7 +32,7 @@ const Cart = () => {
               <div className="cart-product-card-titles">
                 <div className="nameAndPrice">
                   <p className="cart-product-card-title-name">
-                    Гамбургер с говядиной
+                    Гамбургер с говядиной.
                   </p>
                   <p>135 сом</p>
                 </div>

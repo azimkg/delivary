@@ -1,9 +1,9 @@
 import React from "react";
-import UsersList from "../../components/UsersList/UsersList";
+import Cart from "../../components/Cart/Cart";
 
 const Homepage = () => {
   return<div>
-    <UsersList/>
+    <Cart/>
     </div>;
 };
 
