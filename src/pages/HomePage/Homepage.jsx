@@ -6,9 +6,9 @@ import Popular from "../../components/Popular/Popular";
 
 const Homepage = () => {
   return <>
-        {/* <Popular /> */}
-    {/* <Footer/> */}
-    <OrdersList/>
+        <Popular />
+    <Footer/>
+    {/* <OrdersList/> */}
   </>;
 
 }

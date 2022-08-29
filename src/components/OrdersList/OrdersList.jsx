@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../OrdersList/OrdersList.css"
 import foodorder from '../OrdersList/foodorder.jpg'
 import pizzaimg from "../OrdersList/pizzaimg.jpeg"
 
 const OrdersList = () => {
+
+const [state,setState] = useState(false)
+const toggle=()=>{
+setState(!state)
+}
+
+
     return (
         <div className='order-container' >
             <div className='container' >
@@ -14,7 +21,11 @@ const OrdersList = () => {
 <p>sjkebf</p>
 <p>kajsdf</p>
 <p>sadbf</p>
-<button>skhdbjf</button>
+<button onClick={toggle}>
+
+{state ? <div style={{background:'green'}} >active</div> : <div style={{background:'salmon'}} >complete</div>}
+
+</button>
 <p>sjdbf</p>
 <p>jsdf</p>
     </div>
@@ -23,13 +34,22 @@ const OrdersList = () => {
 <p>sjkebf</p>
 <p>kajsdf</p>
 <p>sadbf</p>
-<button>skhdbjf</button>
+<button >active</button>
 <p>sjdbf</p>
 <p>jsdf</p>
     </div>
 </div>
 
+
+
+
+
+
+
             </div>
+            <div>
+      
+    </div>
         </div>
     );
 }
