@@ -64,6 +64,9 @@ const Navbar = () => {
           <Link to="/nav">
             <p className="navbar__top-stock-link">Акции</p>
           </Link>
+          <Link to="/about">
+            <p className="navbar__top-stock-link">О нас</p>
+          </Link>
         </div>
       </div>
       <div className="navbar__bottom">
