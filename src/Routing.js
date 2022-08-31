@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AboutUs from "./components/AboutUs/AboutUs";
 import Autorization from "./components/Autorization/Autorization";
 import Details from "./components/Details/Details";
 import Carousel from "./components/Carousel/Carousel";
@@ -10,6 +11,7 @@ import AdminPage from "./pages/AdminPage/AdminPage";
 import Homepage from "./pages/HomePage/Homepage";
 import Cart from "./components/Cart/Cart";
 import NavigationMenu2 from "./components/NavigationMenu2/NavigationMenu2";
+import MyRoom from "./components/MyRoom/MyRoom";
 
 const Routing = () => {
   return (
@@ -19,6 +21,7 @@ const Routing = () => {
       <div className="navigation_menu">
         <NavigationMenu2 />
       </div>
+      <Carousel />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/enter" element={<Enter />} />
@@ -27,6 +30,8 @@ const Routing = () => {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/privateRoute" element={<AdminPage />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/my" element={<MyRoom/>} />
       </Routes>
 
       <Footer />
