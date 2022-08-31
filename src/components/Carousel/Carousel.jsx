@@ -16,43 +16,14 @@ export default function Carousel() {
   return (
     <div className="container" style={{ marginTop: "20px" }}>
       <Swiper
-        slidesPerView={10}
+        slidesPerView={8}
         spaceBetween={30}
-        // slidesPerGroup={10}
+        slidesPerGroup={8}
         loop={true}
         loopFillGroupWithBlank={true}
         navigation={true}
         modules={[Pagination, Navigation]}
         className="mySwiper"
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 1,
-          },
-          // when window width is >= 640px
-          374: {
-            slidesPerView: 2,
-            spaceBetween: 2,
-          },
-          480: {
-            slidesPerView: 3,
-            spaceBetween: 2,
-          },
-          // when window width is >= 640px
-          640: {
-            slidesPerView: 4,
-            spaceBetween: 15,
-          },
-          // when window width is >= 768px
-          768: {
-            slidesPerView: 5,
-            spaceBetween: 30,
-          },
-          1024: {
-            slidesPerView: 10,
-            spaceBetween: 30,
-          },
-        }}
       >
         <SwiperSlide className="swipe">Молоко</SwiperSlide>
         <SwiperSlide className="swipe">Хлеб</SwiperSlide>

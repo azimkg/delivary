@@ -1,6 +1,5 @@
 import React from "react";
-
-import Carousel from "../../components/Carousel/Carousel";
+import CartFoods from "../../components/CartFoods/CartFoods";
 import Categories from "../../components/Categories/Categories";
 import Popular from "../../components/Popular/Popular";
 import "./HomePage.css";
@@ -8,7 +7,9 @@ import "./HomePage.css";
 const Homepage = () => {
   return (
     <>
-      <Categories />
+      <div className="homepage container">
+        <Categories />
+      </div>
       <Popular />
     </>
   );

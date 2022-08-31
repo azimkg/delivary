@@ -1,4 +1,13 @@
+.product_main-list {
+  display: flex;
+  column-gap: 50px;
+}
 .product_list-main {
   display: flex;
   column-gap: 30px;
+  width: 70%;
+  flex-wrap: wrap;
+}
+.product_list-cart {
+  width: 30%;
 }
