@@ -13,15 +13,6 @@
   --clrAct: #311b92;
 }
 
-/* body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  border: 1px solid black;
-  background: var(--clrbg);
-} */
-
 .navigation {
   max-width: 100%;
   width: 425px;
@@ -31,7 +22,6 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px 10px 0 0;
-  /* border: 1px solid black; */
   box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.75);
 }
 

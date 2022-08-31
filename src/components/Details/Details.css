@@ -1,13 +1,15 @@
 .details {
   display: flex;
+  padding-bottom: 50px;
 }
 .details__block {
   margin-right: 50px;
   margin-left: 50px;
 }
 .details__photos {
-  max-width: 680px;
-  max-height: 402px;
+  object-fit: contain;
+  width: 680px;
+  height: 402px;
 }
 .details__block-right {
   max-width: 450px;

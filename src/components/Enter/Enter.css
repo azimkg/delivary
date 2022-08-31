@@ -49,6 +49,7 @@
   margin-top: 40px;
   border: 1px solid #209041;
   border-radius: 5px;
+  cursor: pointer;
 }
 .autorization__link {
   font-weight: 400;

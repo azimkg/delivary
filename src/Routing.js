@@ -11,6 +11,7 @@ import AdminPage from "./pages/AdminPage/AdminPage";
 import Homepage from "./pages/HomePage/Homepage";
 import Cart from "./components/Cart/Cart";
 import NavigationMenu2 from "./components/NavigationMenu2/NavigationMenu2";
+import ProductList from "./components/ProductsList/ProductList";
 
 const Routing = () => {
   return (
@@ -20,7 +21,7 @@ const Routing = () => {
       <div className="navigation_menu">
         <NavigationMenu2 />
       </div>
-      <Carousel />
+
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/enter" element={<Enter />} />
@@ -30,6 +31,7 @@ const Routing = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/privateRoute" element={<AdminPage />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/product" element={<ProductList />} />
       </Routes>
 
       <Footer />

@@ -8,7 +8,6 @@ import "./HomePage.css";
 const Homepage = () => {
   return (
     <>
-      {/* <Carousel /> */}
       <Categories />
       <Popular />
     </>
