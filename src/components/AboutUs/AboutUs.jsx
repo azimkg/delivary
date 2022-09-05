@@ -16,7 +16,7 @@ const AboutUs = () => {
       <div className="about__main container">
         <div className="about__main-check">
           <div
-            className={isActive ? "about__main-choice" : "active"}
+            className={isActive ? "about__main-choice" : "actives"}
             onClick={() => {
               setFirst(!first);
               setSecond(false);
@@ -29,7 +29,7 @@ const AboutUs = () => {
             <p className="about__main-title ">О компании</p>
           </div>
           <div
-            className={isActive2 ? "active" : "about__main-choice"}
+            className={isActive2 ? "actives" : "about__main-choice"}
             onClick={() => {
               setSecond(!second);
               setFirst(false);
@@ -42,7 +42,7 @@ const AboutUs = () => {
             <p className="about__main-title">Миссия и ценности</p>
           </div>
           <div
-            className={isActive3 ? "active" : "about__main-choice"}
+            className={isActive3 ? "actives" : "about__main-choice"}
             onClick={() => {
               setThird(!third);
               setFirst(false);

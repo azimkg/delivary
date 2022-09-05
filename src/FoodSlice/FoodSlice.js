@@ -10,7 +10,7 @@ const initialState = {
 export const getAllFoods = createAsyncThunk(
   "foods/getAllFoods",
   async (_, { rejectWithValue, dispatch }) => {
-    let res = await axios.get(`${API}/products/`);
+    let res = await axios.get(`${API}/products/` + window.location.search);
     dispatch(getPosts(res.data));
   }
 );
@@ -30,12 +30,6 @@ export const foodSlice = createSlice({
     },
     editPosts: (state, action) => {
       state.edit = action.payload;
-
-      // {
-      //   title: action.payload.title,
-      //   image: action.payload.image,
-      //   id: action.payload.id,
-      // };
     },
   },
 });

@@ -8,17 +8,43 @@ import unionmobile from "../../assets/unionmobile.png";
 import close from "../../assets/close.svg";
 import union from "../../assets/Union.png";
 import trash from "../../assets/trash.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { cartContext } from "../../context/cartContext";
+import { useSelector, useDispatch } from "react-redux";
+import { editPosts, getAllFoods } from "../../FoodSlice/FoodSlice";
+import card from "../../assets/card.svg";
 
 const Navbar = () => {
   const [all, setAll] = useState(false);
   const [burger, setBurger] = useState(false);
   const [features, setFeatures] = useState(false);
+  const [search, setSearch] = useState(false);
   const { cart, getCart } = useContext(cartContext);
+  const foods = useSelector((state) => state.food.foods);
+  const dispatch = useDispatch();
+  const { addProductToCart, checkItemInCart } = useContext(cartContext);
+  const [checkItem, setCheckItem] = useState(checkItemInCart(foods.id));
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchValue, setSearchValue] = useState(
+    searchParams.get("search") ? searchParams.get("search") : ""
+  );
+
   useEffect(() => {
     getCart();
+    dispatch(getAllFoods());
   }, []);
+
+  useEffect(() => {
+    setSearchParams({
+      product_name: searchValue,
+    });
+  }, [searchValue]);
+
+  useEffect(() => {
+    dispatch(getAllFoods());
+  }, [searchParams]);
+
   return (
     <div className="container">
       <div className="navbar__top">
@@ -95,6 +121,9 @@ const Navbar = () => {
           type="search"
           className="navbar__bottom-search"
           placeholder="Поиск"
+          onClick={() => setSearch(true)}
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
         />
         <div className="navbar__bottom-right">
           <div className="navbar__bottom-user">
@@ -122,6 +151,48 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      {search ? (
+        <div className="search_modal-window  ">
+          <div className="search_modal-close container">
+            <h2 className=" result_not-find ">Результаты поиска</h2>
+            <i onClick={() => setSearch(false)} className="bx bx-x close_x"></i>
+          </div>
+
+          <div className="search_modal-product container">
+            {foods.map((item) => (
+              <div key={item.id} className="popular_card">
+                <img
+                  src={item.cover_pic}
+                  alt="card image"
+                  className="image_cards"
+                  onClick={() => {
+                    dispatch(editPosts(item));
+                    navigate(`/details/${item.id}`);
+                  }}
+                />
+                <div className="popular_bottom-text">
+                  <h2 className="cards_title-name">{item.product_name}</h2>
+                  <div className="card_blocked">
+                    <span className="cards_title-desc">
+                      {item.description.split(" ").slice(0, 3).join(" ")}...
+                    </span>
+                  </div>
+                  <span className="card_price-span">{item.price}сом</span>
+                  <div
+                    className="card_position-card"
+                    onClick={() => {
+                      addProductToCart(item);
+                      setCheckItem(checkItemInCart(item.id));
+                    }}
+                  >
+                    <img src={card} alt="card" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
       {burger ? (
         <div
           className="all__burger"

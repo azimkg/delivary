@@ -32,22 +32,24 @@ const AuthContextProvider = ({ children }) => {
   async function signIn(username, password, navigate) {
     console.log(username, password);
     let formData = new FormData();
-    formData.append("username", username);
+    formData.append("email", username);
     formData.append("password", password);
     try {
-      let { data } = await axios.post(`${API}/auth/login/`, formData, {
+      let res = await axios.post(`${API}/auth/login/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-          // "Content-type": "application/json",
+          "Content-type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
       });
       navigate("/");
-      console.log(data);
-      localStorage.setItem("token", JSON.stringify(data));
-      localStorage.setItem("username", username);
+      console.log(res);
+      localStorage.setItem("token", JSON.stringify(res.data));
+      localStorage.setItem("email", username);
       setUser(username);
     } catch (e) {
-      setError("Error!");
+      setError(e);
+      console.log(error);
     }
   }
 
