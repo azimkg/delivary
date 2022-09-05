@@ -7,38 +7,49 @@ const AboutUs = () => {
   const [first, setFirst] = useState(true);
   const [second, setSecond] = useState(false);
   const [third, setThird] = useState(false);
-
+  const [isActive, setActive] = useState(false);
+  const [isActive2, setActive2] = useState(false);
+  const [isActive3, setActive3] = useState(false);
   return (
     <div>
       <Breadcrumps />
       <div className="about__main container">
         <div className="about__main-check">
           <div
-            className="about__main-choice"
+            className={isActive ? "about__main-choice" : "active"}
             onClick={() => {
               setFirst(!first);
               setSecond(false);
               setThird(false);
+              setActive(!isActive);
+              setActive2(isActive2);
+              setActive3(!isActive3);
             }}
           >
-            <p className="about__main-title">О компании</p>
+            <p className="about__main-title ">О компании</p>
           </div>
           <div
-            className="about__main-choice"
+            className={isActive2 ? "active" : "about__main-choice"}
             onClick={() => {
               setSecond(!second);
               setFirst(false);
               setThird(false);
+              setActive2(!isActive2);
+              setActive(!isActive);
+              setActive3(isActive3);
             }}
           >
             <p className="about__main-title">Миссия и ценности</p>
           </div>
           <div
-            className="about__main-choice"
+            className={isActive3 ? "active" : "about__main-choice"}
             onClick={() => {
               setThird(!third);
               setFirst(false);
               setSecond(false);
+              setActive3(!isActive3);
+              setActive2(!isActive2);
+              setActive(isActive);
             }}
           >
             <p className="about__main-title">Наши производители</p>

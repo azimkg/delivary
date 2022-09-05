@@ -12,7 +12,7 @@ function NavigationMenu2() {
       path: "/",
     },
     {
-      icon: <i class="bx bx-purchase-tag-alt"></i>,
+      icon: <i className="bx bx-purchase-tag-alt"></i>,
       name: "Акции",
       path: "/sales",
     },
@@ -23,7 +23,7 @@ function NavigationMenu2() {
       path: "/cart",
     },
     {
-      icon: <i class="bx bx-group"></i>,
+      icon: <i className="bx bx-group"></i>,
       name: "О нас",
       path: "/about",
     },

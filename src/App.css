@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: "Rubik", sans-serif;
   font-style: normal;
+  text-decoration: none;
 }
 .container {
   max-width: 90%;

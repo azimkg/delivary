@@ -12,6 +12,7 @@ import Homepage from "./pages/HomePage/Homepage";
 import Cart from "./components/Cart/Cart";
 import NavigationMenu2 from "./components/NavigationMenu2/NavigationMenu2";
 import MyRoom from "./components/MyRoom/MyRoom";
+import ProductList from "./components/ProductsList/ProductList";
 
 const Routing = () => {
   return (
@@ -21,7 +22,7 @@ const Routing = () => {
       <div className="navigation_menu">
         <NavigationMenu2 />
       </div>
-      <Carousel />
+
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/enter" element={<Enter />} />
@@ -32,6 +33,7 @@ const Routing = () => {
         <Route path="/privateRoute" element={<AdminPage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/my" element={<MyRoom/>} />
+        <Route path="/product" element={<ProductList />} />
       </Routes>
 
       <Footer />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Navbar.css";
 import logo from "../../assets/logo.svg";
 import burgerb from "../../assets/burger.svg";
@@ -9,11 +9,16 @@ import close from "../../assets/close.svg";
 import union from "../../assets/Union.png";
 import trash from "../../assets/trash.png";
 import { Link } from "react-router-dom";
+import { cartContext } from "../../context/cartContext";
 
 const Navbar = () => {
   const [all, setAll] = useState(false);
   const [burger, setBurger] = useState(false);
   const [features, setFeatures] = useState(false);
+  const { cart, getCart } = useContext(cartContext);
+  useEffect(() => {
+    getCart();
+  }, []);
   return (
     <div className="container">
       <div className="navbar__top">
@@ -57,12 +62,17 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="navbar__bottom-price-mobile">
-            <span className="navbar__bottom-priceOfTrash">2800Сом</span>
+            <span className="navbar__bottom-priceOfTrash">
+              {cart.totalPrice} сом
+            </span>
           </div>
         </div>
         <div className="navbar__top-stock">
           <Link to="/nav">
             <p className="navbar__top-stock-link">Акции</p>
+          </Link>
+          <Link to="/about">
+            <p className="navbar__top-stock-link">О нас</p>
           </Link>
         </div>
       </div>
@@ -106,7 +116,9 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="navbar__bottom-price">
-            <span className="navbar__bottom-priceOfTrash">2800Сом</span>
+            <span className="navbar__bottom-priceOfTrash">
+              {cart.totalPrice} сом
+            </span>
           </div>
         </div>
       </div>

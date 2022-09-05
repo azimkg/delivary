@@ -15,25 +15,8 @@
 .swipe:hover {
   color: #ed6b06;
 }
-
-@media screen and (min-width: 640px) {
+@media screen and (max-width: 1111px) {
   .mySwiper {
-    padding-left: 10%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .mySwiper {
-    padding-left: 7%;
-  }
-}
-@media screen and (min-width: 480px) {
-  .mySwiper {
-    padding-left: 10%;
-  }
-}
-@media screen and (min-width: 375px) {
-  .mySwiper {
-    padding-left: 20%;
+    display: none;
   }
 }

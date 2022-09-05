@@ -22,8 +22,9 @@
   margin-bottom: 50px;
 }
 .popular_card {
-  width: 300px;
-  height: 430px;
+  max-width: 100%;
+  width: 250px;
+  min-height: 380px;
   position: relative;
   background: #ffffff;
   box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.06);
@@ -31,40 +32,37 @@
   margin-bottom: 30px;
 }
 .image_cards {
-  width: 300px;
-  height: 264px;
+  width: 250px;
+  height: 220px;
   border-radius: 5px 5px 0 0;
   cursor: pointer;
   object-fit: cover;
 }
 
 .popular_bottom-text {
-  padding: 0 38px 0 16px;
+  padding: 0 38px 0px 16px;
 }
 .cards_title-name {
   font-family: "Rubik";
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 18px;
   display: flex;
   align-items: center;
   color: #1b1b1b;
   mix-blend-mode: normal;
-  margin-top: 44px;
+  margin-top: 15px;
 }
+
 .cards_title-desc {
-  font-family: "Rubik";
-  font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 22px;
-  display: flex;
-  align-items: center;
   color: #b1b1b1;
-  mix-blend-mode: normal;
   margin-top: 4px;
 }
+
 .card_price-span {
   font-family: "Rubik";
   font-style: normal;
@@ -78,7 +76,10 @@
   flex: none;
   order: 0;
   flex-grow: 0;
-  margin-top: 30px;
+  /* margin-top: 20px; */
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
 }
 
 .card_position-card {
@@ -98,11 +99,9 @@
 @media (max-width: 679px) {
   .popular_card {
     width: 280px;
-    height: 420px;
   }
   .image_cards {
     width: 280px;
-    /* height: 156px; */
   }
   .cards_title-name {
     font-family: "Rubik";
@@ -139,7 +138,6 @@
 @media (max-width: 631px) {
   .popular_card {
     width: 250px;
-    height: 420px;
   }
   .image_cards {
     width: 250px;
@@ -179,7 +177,6 @@
 @media (max-width: 565px) {
   .popular_card {
     width: 215px;
-    height: 355px;
   }
   .image_cards {
     width: 215px;
@@ -220,7 +217,6 @@
 @media (max-width: 491px) {
   .popular_card {
     width: 195px;
-    height: 355px;
   }
   .image_cards {
     width: 195px;
@@ -261,7 +257,6 @@
 @media (max-width: 426px) {
   .popular_card {
     width: 164px;
-    height: 300px;
   }
   .image_cards {
     width: 164px;
@@ -278,8 +273,7 @@
     color: #1b1b1b;
     mix-blend-mode: normal;
   }
-  .cards_title-desc {
-  }
+
   .popular_bottom-text {
     padding: 0 38px 0 8px;
   }
@@ -312,7 +306,6 @@
 @media (max-width: 380px) {
   .popular_card {
     width: 150px;
-    height: 300px;
   }
   .image_cards {
     width: 150px;
@@ -328,8 +321,7 @@
     color: #1b1b1b;
     mix-blend-mode: normal;
   }
-  .cards_title-desc {
-  }
+
   .popular_bottom-text {
     padding: 0 8px 0 8px;
   }
@@ -362,7 +354,6 @@
 @media (max-width: 345px) {
   .popular_card {
     width: 138px;
-    height: 300px;
   }
   .image_cards {
     width: 138px;
@@ -378,8 +369,7 @@
     color: #1b1b1b;
     mix-blend-mode: normal;
   }
-  .cards_title-desc {
-  }
+
   .popular_bottom-text {
     padding: 0 1px 0 4px;
   }
@@ -389,6 +379,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
+    left: 4px;
   }
   .cards_title-name {
     margin-top: 20px;
