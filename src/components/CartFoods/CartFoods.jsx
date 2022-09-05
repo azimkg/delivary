@@ -1,6 +1,7 @@
 import { List } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import { cartContext } from "../../context/cartContext";
+import deleteCart from "../../assets/delete.png";
 
 const CartFoods = () => {
   const { getCart, cart, deleteFromCart, changeProductCount } =
@@ -36,32 +37,44 @@ const CartFoods = () => {
                 <div className="cart-product-card-title">
                   <div className="cart-product-card-titles">
                     <div className="nameAndPrice">
-                      <p className="cart-product-card-title-name">
-                        {item.item.product_name}
-                      </p>
-                      <p>{item.item.price}сом</p>
+                      <div className="priceprice">
+                        <p className="cart-product-card-title-name">
+                          {item.item.product_name}
+                        </p>
+                        <p className="cart-product-name-price">
+                          {item.item.price} сом
+                        </p>
+                      </div>
+                      <img
+                        className="deleteCart"
+                        onClick={() => deleteFromCart(item.item.id)}
+                        src={deleteCart}
+                        alt=""
+                      />
                     </div>
-                    <h3 className="cart-product-card-title-price">
-                      {item.subPrice}сом
-                    </h3>
-                    <div className="cart-product-card-count">
-                      <p className="cart-product-card-count-1">{item.count}</p>
-                      <div className="cart-product-card-count-btn">
-                        <button>
-                          <i
-                            className="bx bxs-up-arrow"
-                            onClick={() =>
-                              changeProductCount(item.count + 1, item.item.id)
-                            }
-                          ></i>
+                    <div className="cart-price-count-block">
+                      <h3 className="cart-product-card-title-price">
+                        {item.subPrice} сом
+                      </h3>
+                      <div className="cart-product-cardss">
+                        <button
+                          className="btn-cart-product"
+                          onClick={() =>
+                            changeProductCount(item.count - 1, item.item.id)
+                          }
+                        >
+                          -
                         </button>
-                        <button>
-                          <i
-                            className="bx bxs-down-arrow"
-                            onClick={() =>
-                              changeProductCount(item.count - 1, item.item.id)
-                            }
-                          ></i>
+                        <p className="cart-product-card-count-1">
+                          {item.count}
+                        </p>
+                        <button
+                          className="btn-cart-product"
+                          onClick={() =>
+                            changeProductCount(item.count + 1, item.item.id)
+                          }
+                        >
+                          +
                         </button>
                       </div>
                     </div>

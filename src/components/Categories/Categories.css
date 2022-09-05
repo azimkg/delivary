@@ -1,15 +1,12 @@
-.container {
-  max-width: 90%;
-  margin: 0 auto;
-}
-
 .categories_cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 95%;
+  max-width: 100%;
 }
-
+.containe {
+  width: 100%;
+}
 .categories_card {
   margin: 10px;
 }
@@ -19,11 +16,8 @@
 }
 
 .categories_card {
-  position: relative;
-  border-radius: 7px;
-  width: 300px;
-  /* background: linear-gradient(43deg, #41a3d0 0%, #5070c8 46%, #3795bb 100%); */
-  background-color: rgb(104, 184, 234);
+  display: flex;
+  justify-content: space-between;
 }
 .categories_card::before,
 .categories_card::after {
@@ -69,7 +63,7 @@
 }
 
 /* test */
-.cat-card {
+/* .cat-card {
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 20px;
@@ -82,7 +76,7 @@
   border-radius: 20px;
   z-index: 1;
   overflow: hidden;
-}
+} */
 .cat-card::before,
 .cat-card::after {
   content: "";
@@ -136,8 +130,8 @@
   border-radius: 7px;
 } */
 .cat__desktop {
-  width: 285px;
-  height: 200px;
+  width: 330px;
+  height: 90%;
   object-fit: cover;
   margin-top: 20px;
 }
@@ -149,47 +143,43 @@
   background: rgba(0, 0, 0, 0.3);
   padding: 0;
 }
-
-/* end test-2 */
-
-/* test-3 */
-.cat-button {
-  display: none;
-  margin-left: 15px;
-  margin-right: 15px;
-  height: 187px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #1fe8b6;
-  /* padding: 20px 50px; */
-  border: 3px solid #0ef1b8;
+.cat__block {
   position: relative;
-  border-radius: 9px;
+  height: 240px;
+  width: 330px;
 }
-.cat-button::before,
-.cat-button::after {
-  content: "";
+.cat__title {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  border: inherit;
-  transition: all 0.5s;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  text-shadow: 0 8px 8px rgb(0 0 0 / 50%);
+  z-index: 2;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
 }
-.cat-button::before {
-  top: -15px;
-  left: -15px;
-  border-width: 3px 0 0 3px;
+@media (max-width: 780px) {
+  .cat__img {
+    width: 100%;
+    height: 100%;
+  }
+  .cat__block {
+    width: 100%;
+    height: 170px;
+  }
+  .cat__img-small {
+    width: 100%;
+  }
+  .cat__desktop {
+    margin-top: 0;
+  }
+  .cat__title {
+    bottom: 30px;
+  }
+  .cat__block-mobile {
+    margin-top: 0px;
+
+    width: 49%;
+  }
 }
-.cat-button::after {
-  bottom: -15px;
-  right: -15px;
-  border-width: 0 3px 3px 0;
-}
-.cat-button:hover::before,
-.cat-button:hover::after {
-  width: calc(100% + 27px);
-  height: calc(100% + 27px);
-}
-/* end test-3 */
