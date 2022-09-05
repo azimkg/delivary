@@ -35,8 +35,8 @@ const Product = ({ item }) => {
           </span>
         </div>
         <span className="card_price-span">{item.price}сом</span>
-        <div className="card_position-card">
-          <img src={card} alt="card" onClick={clickCart} />
+        <div className="card_position-card" onClick={clickCart}>
+          <img src={card} alt="card" />
         </div>
       </div>
     </div>

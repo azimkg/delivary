@@ -258,3 +258,35 @@
   .all__burger {
   }
 }
+.search_modal-window {
+  position: absolute;
+  left: 0;
+  top: 130px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 100;
+}
+.search_modal-product {
+  display: flex;
+  column-gap: 30px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  z-index: 100;
+}
+.search_modal-close {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.result_not-find {
+  padding-top: 20px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #7b7b7b;
+}
+.close_x {
+  color: #7b7b7b;
+  padding-top: 20px;
+  cursor: pointer;
+}

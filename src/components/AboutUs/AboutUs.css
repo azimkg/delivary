@@ -11,7 +11,7 @@
   cursor: pointer;
   color: #1b1b1b;
 }
-.active {
+.actives {
   color: #209041;
   background: rgba(32, 144, 65, 0.1);
   border-radius: 8px;
