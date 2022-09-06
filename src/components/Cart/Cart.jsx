@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "boxicons";
 import "./Cart.css";
+import deleteCart from "../../assets/delete.png";
 import { cartContext } from "../../context/cartContext";
 import { List } from "antd";
 import { useDispatch } from "react-redux";
@@ -66,28 +67,7 @@ const Cart = () => {
         <div>
           <h2>Корзина</h2>
         </div>
-        <div className="cart-typeOfDelivery">
-          <div className="cart-typeOfDelivery-1">
-            <p>Доставка</p>
-            <input
-              type="radio"
-              value="доставка"
-              onChange={(e) => setDelivary(e.target.value)}
-              onClick={() => setDelivery(true)}
-              name="delivary"
-            />
-          </div>
-          <div className="cart-typeOfDelivery-2">
-            <p>На вынос</p>
-            <input
-              type="radio"
-              value="на вынос"
-              onChange={(e) => setDelivary(e.target.value)}
-              name="delivary"
-              onClick={() => setDelivery(false)}
-            />
-          </div>
-        </div>
+
         <List
           itemLayout="horizontal"
           dataSource={cart.products}
@@ -104,37 +84,46 @@ const Cart = () => {
                 <div className="cart-product-card-title">
                   <div className="cart-product-card-titles">
                     <div className="nameAndPrice">
-                      <p className="cart-product-card-title-name">
-                        {item.item.product_name}
-                      </p>
-                      <p>{item.item.price}сом</p>
+                      <div className="priceprice">
+                        <p className="cart-product-card-title-name">
+                          {item.item.product_name}
+                        </p>
+                        <p className="cart-product-name-price">
+                          {item.item.price} сом
+                        </p>
+                      </div>
+                      <img
+                        className="deleteCart"
+                        onClick={() => deleteFromCart(item.item.id)}
+                        src={deleteCart}
+                        alt=""
+                      />
                     </div>
-                    <h3 className="cart-product-card-title-price">
-                      {item.subPrice}сом
-                    </h3>
-                    <div className="cart-product-card-count">
-                      <p className="cart-product-card-count-1">{item.count}</p>
-                      <div className="cart-product-card-count-btn">
-                        <button>
-                          <i
-                            className="bx bxs-up-arrow"
-                            onClick={() =>
-                              changeProductCount(item.count + 1, item.item.id)
-                            }
-                          ></i>
+                    <div className="cart-price-count-block">
+                      <h3 className="cart-product-card-title-price">
+                        {item.subPrice} сом
+                      </h3>
+                      <div className="cart-product-cardss">
+                        <button
+                          className="btn-cart-product"
+                          onClick={() =>
+                            changeProductCount(item.count - 1, item.item.id)
+                          }
+                        >
+                          -
                         </button>
-                        <button>
-                          <i
-                            className="bx bxs-down-arrow"
-                            onClick={() =>
-                              changeProductCount(item.count - 1, item.item.id)
-                            }
-                          ></i>
+                        <p className="cart-product-card-count-1">
+                          {item.count}
+                        </p>
+                        <button
+                          className="btn-cart-product"
+                          onClick={() =>
+                            changeProductCount(item.count + 1, item.item.id)
+                          }
+                        >
+                          +
                         </button>
                       </div>
-                      <button onClick={() => deleteFromCart(item.item.id)}>
-                        Удалить
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -146,7 +135,29 @@ const Cart = () => {
       </div>
       <div className="cart-details">
         <div>
-          <h2>Оформление заказа</h2>
+          <h2 className="cart__title">Оформление заказа</h2>
+        </div>
+        <div className="cart-typeOfDelivery">
+          <div className="cart-typeOfDelivery-1">
+            <p className="cart-del">Доставка</p>
+            <input
+              type="radio"
+              value="доставка"
+              onChange={(e) => setDelivary(e.target.value)}
+              onClick={() => setDelivery(true)}
+              name="delivary"
+            />
+          </div>
+          <div className="cart-typeOfDelivery-2">
+            <p className="cart-del">На вынос</p>
+            <input
+              type="radio"
+              value="на вынос"
+              onChange={(e) => setDelivary(e.target.value)}
+              name="delivary"
+              onClick={() => setDelivery(false)}
+            />
+          </div>
         </div>
         <div className="cart-details-border">
           {delivary == "на вынос" ? null : (
