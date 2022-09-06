@@ -49,11 +49,15 @@ const Navbar = () => {
     <div className="container">
       <div className="navbar__top">
         <div className="navbar__top-logo">
-          <img src={logo} width="120" alt="image" />
+          <Link to="/">
+            <img src={logo} width="120" alt="image" />
+          </Link>
         </div>
         <div className="navbar__mobile">
           <div className="navbar__top-logo-mobile">
-            <img src={logo} width="120" alt="image" />
+            <Link to="/">
+              <img src={logo} width="120" alt="image" />
+            </Link>
           </div>
           <div
             onClick={() => {
@@ -152,7 +156,7 @@ const Navbar = () => {
         </div>
       </div>
       {search ? (
-        <div className="search_modal-window  ">
+        <div className="search_modal-window">
           <div className="search_modal-close container">
             <h2 className=" result_not-find ">Результаты поиска</h2>
             <i onClick={() => setSearch(false)} className="bx bx-x close_x"></i>
@@ -183,6 +187,7 @@ const Navbar = () => {
                     onClick={() => {
                       addProductToCart(item);
                       setCheckItem(checkItemInCart(item.id));
+                      getCart();
                     }}
                   >
                     <img src={card} alt="card" />

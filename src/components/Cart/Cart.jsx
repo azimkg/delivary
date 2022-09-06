@@ -5,6 +5,7 @@ import { cartContext } from "../../context/cartContext";
 import { List } from "antd";
 import { useDispatch } from "react-redux";
 import { getAllOrders, postAllOrders } from "../../FoodSlice/CartSlice";
+import NavigationMenu2 from "../NavigationMenu2/NavigationMenu2";
 
 const Cart = () => {
   const { getCart, cart, deleteFromCart, changeProductCount } =
@@ -17,8 +18,6 @@ const Cart = () => {
   const [apartment, setApartment] = useState("");
   const [delivery, setDelivery] = useState(false);
   const [order_amount, setOrder_amount] = useState("");
-
-  const [carts, setCarts] = useState(null);
 
   const [delivary, setDelivary] = useState("");
 
@@ -33,8 +32,16 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setOrder_amount(cart.totalPrice);
+    amountOrder();
   }, [cart.totalPrice]);
+
+  function amountOrder() {
+    if (cart.totalPrice < 600) {
+      return setOrder_amount(cart.totalPrice + 80);
+    } else {
+      return setOrder_amount(cart.totalPrice);
+    }
+  }
 
   function submitOrder() {
     let newOrder = {
@@ -44,7 +51,7 @@ const Cart = () => {
       floor: floor,
       apartment: apartment,
       delivery: delivery,
-      order_amount: +order_amount,
+      order_amount: order_amount,
       address: address,
     };
 
@@ -59,9 +66,11 @@ const Cart = () => {
     setFloor("");
     setOrder_amount("");
   }
-  console.log(cart);
   return (
     <div className="cart container">
+      <div className="navigation_menu">
+        <NavigationMenu2 />
+      </div>
       <div className="cart-cart">
         <div>
           <h2>Корзина</h2>
@@ -224,13 +233,35 @@ const Cart = () => {
               <p>цена:</p>
               <p>{cart.totalPrice} сом</p>
             </div>
-            {/* <div className="cart-details-price-1">
-              <p>скидка:</p>
-              <p>0 сом</p>
-            </div> */}
+            {delivary == "на вынос" ? (
+              <div className="cart-details-price-1">
+                <p>Доставка:</p>
+                <p>0 сом</p>
+              </div>
+            ) : cart.totalPrice >= 600 ? (
+              <div className="cart-details-price-1">
+                <p>Доставка:</p>
+                <p>0 сом</p>
+              </div>
+            ) : (
+              <div className="cart-details-price-1">
+                <p>доставка:</p>
+                <p> 80 сом</p>
+              </div>
+            )}
             <div className="cart-details-price-1">
               <h2>Итого к оплате:</h2>
-              <h2>{cart.totalPrice} сом</h2>
+              {delivary == "на вынос" ? (
+                <h2>{cart.totalPrice} сом</h2>
+              ) : (
+                <>
+                  {cart.totalPrice >= 600 ? (
+                    <h2>{cart.totalPrice} сом</h2>
+                  ) : (
+                    <h2>{cart.totalPrice + 80} сом</h2>
+                  )}
+                </>
+              )}
             </div>
             <button className="cart-details-btn" onClick={submitOrder}>
               Оформить заказ

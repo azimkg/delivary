@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../context/authContext";
+import NavigationMenu2 from "../NavigationMenu2/NavigationMenu2";
 import "./Enter.css";
 
 const Enter = () => {
@@ -14,6 +15,9 @@ const Enter = () => {
   }
   return (
     <div className="container">
+      <div className="navigation_menu">
+        <NavigationMenu2 />
+      </div>
       <div className="autorization">
         <div className="autorization__block">
           <h1 className="autorization__title">Вход</h1>

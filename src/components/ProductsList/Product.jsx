@@ -7,13 +7,15 @@ import { useNavigate } from "react-router-dom";
 
 const Product = ({ item }) => {
   const dispatch = useDispatch();
-  const { addProductToCart, checkItemInCart } = useContext(cartContext);
+  const { addProductToCart, checkItemInCart, getCart } =
+    useContext(cartContext);
   const [checkItem, setCheckItem] = useState(checkItemInCart(item.id));
   const navigate = useNavigate();
 
   function clickCart() {
     addProductToCart(item);
     setCheckItem(checkItemInCart(item.id));
+    getCart();
   }
   return (
     <div key={item.id} className="popular_card">

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./NavigationMenu2.css";
 
-function NavigationMenu2() {
+function NavigationMenu3() {
   const location = useLocation();
 
   const menus = [
@@ -41,7 +41,7 @@ function NavigationMenu2() {
           return (
             <li
               key={index}
-              className={location.pathname === val.link ? "active" : ""}
+              className={location.pathname !== val.link ? "" : "active"}
             >
               <Link to={val.link}>
                 <div className="icon">{val.icon}</div>
@@ -50,10 +50,10 @@ function NavigationMenu2() {
             </li>
           );
         })}
-        <div className="menu-bg" />
+        {/* <div className="menu-bg" /> */}
       </ul>
     </div>
   );
 }
 
-export default NavigationMenu2;
+export default NavigationMenu3;
