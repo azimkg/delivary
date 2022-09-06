@@ -3,7 +3,7 @@ import "./Categories.css";
 
 const Categories = () => {
   return (
-    <div className="container">
+    <div className="containerrr">
       <h2 className="popular_food-text">Категории</h2>
       <div className="categories_cards">
         {/* test-3 */}

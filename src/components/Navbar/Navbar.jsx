@@ -49,9 +49,9 @@ const Navbar = () => {
     <div className="container">
       <div className="navbar__top">
         <div className="navbar__top-logo">
-          <Link to="/">
+          <a href="/">
             <img src={logo} width="120" alt="image" />
-          </Link>
+          </a>
         </div>
         <div className="navbar__mobile">
           <div className="navbar__top-logo-mobile">

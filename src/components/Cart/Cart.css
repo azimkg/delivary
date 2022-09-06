@@ -5,6 +5,8 @@
   display: none;
 }
 .cart-cart {
+  width: 50%;
+  margin-top: 50px;
   width: 100%;
 }
 .cart__title {
@@ -16,6 +18,7 @@
 }
 .cart-details {
   width: 50%;
+  margin-top: 50px;
 }
 .strong-aggree {
   background-color: rgba(5, 238, 55, 0.699);
