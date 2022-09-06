@@ -22,13 +22,13 @@ const Enter = () => {
         <div className="autorization__block">
           <h1 className="autorization__title">Вход</h1>
           <div className="autorization__input">
-            <h2 className="autorization__text">Логин</h2>
+            <h2 className="autorization__text">Email</h2>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="autorization__inp"
-              placeholder="Введите ваш логин"
+              placeholder="Введите ваш email"
             />
           </div>
           <div className="autorization__input">

@@ -25,15 +25,15 @@ const Cart = () => {
     getCart();
   }, []);
 
-  useEffect(() => {
-    setProduct(cart.products.map((item) => item.item.id).join(","));
-  }, [cart]);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     amountOrder();
   }, [cart.totalPrice]);
+
+  useEffect(() => {
+    oneOrder();
+  }, [cart.products]);
 
   function amountOrder() {
     if (cart.totalPrice < 600) {
@@ -43,28 +43,43 @@ const Cart = () => {
     }
   }
 
+  function oneOrder() {
+    const order = [];
+    if (cart.products) {
+      cart.products.map((item) => {
+        order.push({
+          product: +item.item.id,
+          quantity: +item.count,
+          total: +item.subPrice,
+        });
+      });
+    }
+    return setProduct(order);
+  }
+  // console.log(product);
+
   function submitOrder() {
     let newOrder = {
-      product: +product,
       full_name: full_name,
       phone_number: phone_number,
       floor: floor,
       apartment: apartment,
       delivery: delivery,
-      order_amount: order_amount,
+      order_amount: +order_amount,
       address: address,
+      ordered_product: product,
     };
-
+    console.log(newOrder);
     dispatch(postAllOrders(newOrder));
 
-    setDelivery("");
+    // setDelivery("");
     setAddress("");
-    setProduct("");
+    // setProduct("");
     setApartment("");
     setFull_name("");
     setPhone_number("");
     setFloor("");
-    setOrder_amount("");
+    // setOrder_amount("");
   }
   return (
     <div className="cart container">
@@ -170,7 +185,7 @@ const Cart = () => {
                     onChange={(e) => setFloor(e.target.value)}
                   />
                 </div>
-                <List
+                {/* <List
                   className="cart-details-adresses"
                   itemLayout="horizontal"
                   dataSource={cart.products}
@@ -184,7 +199,7 @@ const Cart = () => {
                       />
                     </div>
                   )}
-                />
+                /> */}
 
                 <div className="cart-details-adress-2-2">
                   <p>Квартира</p>
