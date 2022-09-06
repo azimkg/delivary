@@ -83,6 +83,30 @@
     display: none;
 }
 
+.my_history{
+    display: flex;
+}
+
+.my_history-card{
+    border: 1px solid black;
+    border-radius: 7px;
+    max-width: 200px;
+    max-height: 400px;
+    margin: 20px;
+}
+
+.my_history-line{
+    width: 100%;
+    border: .5px solid grey;
+}
+
+.my_history-date{
+    display: flex;
+    justify-content: center;
+}
+
+
+
 @media (max-width: 425px){
     .my_column{
         display: flex;
@@ -114,3 +138,4 @@
         margin-left: 50px;
     }
 }
+

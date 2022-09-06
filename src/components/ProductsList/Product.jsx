@@ -4,8 +4,21 @@ import { editPosts } from "../../FoodSlice/FoodSlice";
 import card from "../../assets/card.svg";
 import { cartContext } from "../../context/cartContext";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Product = ({ item }) => {
+  const notify = () => {
+    toast.success('Товар добавлен в корзину', {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  };
   const dispatch = useDispatch();
   const { addProductToCart, checkItemInCart } = useContext(cartContext);
   const [checkItem, setCheckItem] = useState(checkItemInCart(item.id));
@@ -14,6 +27,7 @@ const Product = ({ item }) => {
   function clickCart() {
     addProductToCart(item);
     setCheckItem(checkItemInCart(item.id));
+    notify();
   }
   return (
     <div key={item.id} className="popular_card">
@@ -39,6 +53,7 @@ const Product = ({ item }) => {
           <img src={card} alt="card" />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
