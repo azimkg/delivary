@@ -95,7 +95,6 @@ const Cart = () => {
           <div>
             <h2>Корзина</h2>
           </div>
-
           <List
             itemLayout="horizontal"
             dataSource={cart.products}
@@ -271,13 +270,21 @@ const Cart = () => {
                 <p className="cart-det-title">цена:</p>
                 <h4 classname="cart-det-price">{cart.totalPrice} сом</h4>
               </div>
-              {/* <div className="cart-details-price-1">
-              <p>скидка:</p>
-              <p>0 сом</p>
-            </div> */}
+              {cart.totalPrice > 600 ? (
+                <div className="cart-details-price-1">
+                  <h2 className="cart-det-title">доставка:</h2>
+                  <h3 classname="cart-det-price ">0 сом</h3>
+                </div>
+              ) : (
+                <div className="cart-details-price-1">
+                  <h2 className="cart-det-title">доставка:</h2>
+                  <h3 classname="cart-det-price ">80 сом</h3>
+                </div>
+              )}
+
               <div className="cart-details-price-1">
                 <h2 className="cart-det-title">Итого к оплате:</h2>
-                <h3 className="cart-det-price prices">{cart.totalPrice} сом</h3>
+                <h3 className="cart-det-price prices">{order_amount} сом</h3>
               </div>
               <button className="cart-details-btn" onClick={submitOrder}>
                 Оформить заказ
@@ -424,14 +431,21 @@ const Cart = () => {
                       <p className="cart-det-title">цена:</p>
                       <h4 classname="cart-det-price">{cart.totalPrice} сом</h4>
                     </div>
-                    {/* <div className="cart-details-price-1">
-              <p>скидка:</p>
-              <p>0 сом</p>
-            </div> */}
+                    {cart.totalPrice > 600 ? (
+                      <div className="cart-details-price-1">
+                        <h2 className="cart-det-title">доставка:</h2>
+                        <h3 classname="cart-det-price prices">0 сом</h3>
+                      </div>
+                    ) : (
+                      <div className="cart-details-price-1">
+                        <h2 className="cart-det-title">доставка:</h2>
+                        <h3 classname="cart-det-price prices">80 сом</h3>
+                      </div>
+                    )}
                     <div className="cart-details-price-1">
                       <h2 className="cart-det-title">Итого к оплате:</h2>
                       <h3 classname="cart-det-price prices">
-                        {cart.totalPrice} сом
+                        {order_amount} сом
                       </h3>
                     </div>
                     <button className="cart-details-btn" onClick={submitOrder}>
