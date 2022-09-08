@@ -1,15 +1,15 @@
 .product_main-list {
   display: flex;
-  column-gap: 50px;
 }
 .product_list-main {
   display: flex;
   column-gap: 30px;
   width: 70%;
   flex-wrap: wrap;
+  border-right: 1px solid grey;
 }
 .product_list-cart {
-  width: 30%;
+  width: 40%;
 }
 
 .skeleton_block {

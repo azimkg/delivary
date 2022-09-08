@@ -43,7 +43,7 @@ const Product = ({ item }) => {
     notify();
     return getCart();
   }
-  console.log(elem);
+  // console.log(elem);
   return elem ? (
     <div key={elem.id} className="popular_card">
       <img

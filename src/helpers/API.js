@@ -1,1 +1,1 @@
-export const API = "http://kitchen4you.kg";
+export const API = "http://kitchen4you.kg/api";

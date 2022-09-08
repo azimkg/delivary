@@ -5,7 +5,7 @@ import { API } from "./helpers/API";
 const instance = axios.create({
   withCredentials: true,
   baseURL: API,
-  timeout: 10000,
+  //   timeout: 10000,
   //   headers: {
   //     "Content-Type": "application/json",
   //   },
