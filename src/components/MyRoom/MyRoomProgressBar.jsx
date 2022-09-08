@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const MyRoomProgressBar = (props) => {
-  const { bgcolor, completed } = props;
-
-  //   ! START Test //
-  const [completed1, setCompleted] = useState(0);
-
-  useEffect(() => {
-    setInterval(() => setCompleted(Math.floor(Math.random() * 100) + 1), 2000);
-  }, []);
-  //   ! END Test //
-
+const MyRoomProgressBar = () => {
   const containerStyles = {
     height: 20,
     width: "100%",
@@ -21,8 +11,8 @@ const MyRoomProgressBar = (props) => {
 
   const fillerStyles = {
     height: "100%",
-    width: `${completed}%`,
-    backgroundColor: bgcolor,
+    // width: `${}%`,
+    // backgroundColor: bgcolor,
     borderRadius: "inherit",
     textAlign: "right",
     transition: "width 1s ease-in-out",
@@ -37,7 +27,7 @@ const MyRoomProgressBar = (props) => {
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        <span style={labelStyles}>{`${completed}%`}</span>
+        {/* <span style={labelStyles}>{`${completed}%`}</span> */}
       </div>
     </div>
   );

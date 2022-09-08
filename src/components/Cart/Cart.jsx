@@ -71,6 +71,7 @@ const Cart = () => {
     };
     console.log(newOrder);
     dispatch(postAllOrders(newOrder));
+    dispatch(getAllOrders());
 
     // setDelivery("");
     setAddress("");

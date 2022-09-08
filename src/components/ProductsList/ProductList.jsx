@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getAllFoods } from "../../FoodSlice/FoodSlice";
 
 import Breadcrumps from "../Breadcrumps/Breadcrumps";
+import Carousel from "../Carousel/Carousel";
 import CartFoods from "../CartFoods/CartFoods";
 import NavigationMenu3 from "../NavigationMenu2/NavigationMenu3";
 import Product from "./Product";
@@ -18,22 +19,25 @@ const ProductList = () => {
   }, []);
 
   return (
-    <div className="container ">
-      <div className="navigation_menu">
-        <NavigationMenu3 />
-      </div>
-      <Breadcrumps />
-      <div className="product_main-list">
-        <div className="product_list-main">
-          {foods.map((item) => (
-            <Product item={item} />
-          ))}
+    <>
+      <Carousel />
+      <div className="container ">
+        <div className="navigation_menu">
+          <NavigationMenu3 />
         </div>
-        <div className="product_list-cart">
-          <CartFoods />
+        <Breadcrumps />
+        <div className="product_main-list">
+          <div className="product_list-main">
+            {foods.map((item) => (
+              <Product item={item} />
+            ))}
+          </div>
+          <div className="product_list-cart">
+            <CartFoods />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

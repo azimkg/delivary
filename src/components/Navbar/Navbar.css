@@ -36,6 +36,7 @@
 }
 .navbar__bottom-catalog {
   padding-left: 10px;
+  margin: auto 0;
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;

@@ -14,6 +14,7 @@
     "antd": "^4.22.8",
     "axios": "^0.27.2",
     "boxicons": "^2.1.2",
+    "js-cookie": "^3.0.1",
     "observer": "^0.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

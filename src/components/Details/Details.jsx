@@ -4,14 +4,18 @@ import vector from "../../assets/Vector.png";
 import Breadcrumps from "../Breadcrumps/Breadcrumps";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Skeleton, Space } from "antd";
 
 const Details = () => {
   const edit = useSelector((state) => state.food.edit);
+  const [active, setActive] = useState(false);
   const dispatch = useDispatch();
   const [edited, setEdited] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    setEdited(edit);
+    setTimeout(() => {
+      setEdited(edit);
+    }, 1500);
   }, [edit]);
 
   return edited ? (
@@ -36,7 +40,25 @@ const Details = () => {
         </div>
       </div>
     </div>
-  ) : null;
+  ) : (
+    <div className="container">
+      <div className="details">
+        <div className="details__block">
+          <Space>
+            <Skeleton.Button active={active} className="details__photoser" />
+          </Space>
+        </div>
+        <div className="skeleton_block">
+          <Space>
+            <Skeleton.Button active={active} className="text12" />
+          </Space>
+          <Space>
+            <Skeleton.Button active={active} className="text12" />
+          </Space>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Details;

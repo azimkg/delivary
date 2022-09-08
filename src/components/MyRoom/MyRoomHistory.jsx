@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllOrders } from "../../FoodSlice/CartSlice";
 import "./MyRoom.css";
 import MyRoomProgressBar from "./MyRoomProgressBar";
 
 const MyRoomHistory = () => {
-    //   ! START Test // 
-  const [completed, setCompleted] = useState(0);
-
+  const historyOfUser = useSelector((state) => state.order.orders);
+  const dispatch = useDispatch();
   useEffect(() => {
-    setInterval(() => setCompleted(Math.floor(Math.random() * 100) + 1), 20000);
+    dispatch(getAllOrders());
   }, []);
-//   ! END Test // 
+  console.log(historyOfUser);
+
   return (
     <>
       <div className="my_history-progressBar">
-        <MyRoomProgressBar bgcolor={"#6a1b9a"} completed={completed}/>
+        <MyRoomProgressBar bgcolor={"#6a1b9a"} completed="" />
       </div>
       <div className="my_history">
         <div className="my_history-card">
