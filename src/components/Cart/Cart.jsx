@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "boxicons";
 import "./Cart.css";
+import { Link } from "react-router-dom";
 import { Container, Button, Alert } from "react-bootstrap";
 import { CSSTransition } from "react-transition-group";
 import deleteCart from "../../assets/delete.png";
@@ -10,9 +11,9 @@ import { useDispatch } from "react-redux";
 import { getAllOrders, postAllOrders } from "../../FoodSlice/CartSlice";
 
 const Cart = () => {
-  const [show, setShow] = useState(false);
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
+  const [showMessageModal, setShowMessageModal] = useState(false);
   const { getCart, cart, deleteFromCart, changeProductCount } =
     useContext(cartContext);
   const [full_name, setFull_name] = useState("");
@@ -64,6 +65,15 @@ const Cart = () => {
     setPhone_number("");
     setFloor("");
     setOrder_amount("");
+  }
+  function showModal() {
+    setShowMessageModal(true);
+  }
+  function showModalClose() {
+    setShowMessageModal(false);
+  }
+  function showMessageClose() {
+    setShowMessage(false);
   }
   console.log(cart);
   return (
@@ -279,6 +289,7 @@ const Cart = () => {
           in={showMessage}
           classNames="alert"
           unmountOnExit
+          timeout={1000}
           onEnter={() => setShowButton(false)}
           onExited={() => setShowButton(true)}
         >
@@ -402,21 +413,52 @@ const Cart = () => {
                       <p className="cart-det-title">цена:</p>
                       <h4 classname="cart-det-price">{cart.totalPrice} сом</h4>
                     </div>
-                    {/* <div className="cart-details-price-1">
-              <p>скидка:</p>
-              <p>0 сом</p>
-            </div> */}
                     <div className="cart-details-price-1">
                       <h2 className="cart-det-title">Итого к оплате:</h2>
                       <h3 classname="cart-det-price prices">
                         {cart.totalPrice} сом
                       </h3>
                     </div>
-                    <button className="cart-details-btn" onClick={submitOrder}>
+                    <button
+                      className="cart-details-btn"
+                      onClick={(submitOrder, showModal)}
+                    >
                       Оформить заказ
                     </button>
                   </div>
                 </div>
+              </div>
+            </Alert.Heading>
+          </Alert>
+        </CSSTransition>
+      </Container>
+      <Container>
+        <CSSTransition
+          in={showMessageModal}
+          classNames="my-node"
+          unmountOnExit
+          timeout={5000}
+        >
+          <Alert
+            variant="primary"
+            dismissible
+            onClose={() => setShowMessageModal(false)}
+          >
+            <Alert.Heading>
+              <div className="cart-details-modal">
+                <div className="cart-del-det">
+                  <Link to="/">
+                    <img className="cart-del-img" src={deleteCart} />
+                  </Link>
+                </div>
+                <div className="show__specialist">
+                  <p>Ваш заказ принят, дождитесь ответа специалиста</p>
+                </div>
+                <Link to="/">
+                  <button className="cart-details-btn">
+                    Вернуться в главное меню
+                  </button>
+                </Link>
               </div>
             </Alert.Heading>
           </Alert>
