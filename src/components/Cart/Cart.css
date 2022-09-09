@@ -314,7 +314,7 @@
   color: white;
   background: #209041;
   border-radius: 5px;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -355,6 +355,15 @@
   opacity: 0;
   transform: scale(0.5);
   transition: opacity 1000ms, transform 1000ms;
+}
+.cart__bonus {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 146%;
+  text-align: center;
+  margin-bottom: 20px;
+  text-decoration-line: underline;
+  color: #ed6b06;
 }
 @media (max-width: 1024px) {
   .cart {

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Container, Button, Alert } from "react-bootstrap";
 import { CSSTransition } from "react-transition-group";
 import deleteCart from "../../assets/delete.png";
+import empty from "../../assets/empty.png";
 import { cartContext } from "../../context/cartContext";
 import { List } from "antd";
 import { useDispatch } from "react-redux";
@@ -270,6 +271,10 @@ const Cart = () => {
               <button className="cart-details-btn" onClick={submitOrder}>
                 Оформить заказ
               </button>
+              <p className="cart__bonus">
+                При заказе на сумму от 500 сом ,вы получите бонус в размере 100
+                баллов
+              </p>
             </div>
           </div>
         </div>

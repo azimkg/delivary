@@ -45,7 +45,7 @@
   margin: 0 10px;
 }
 .footer-component2 div img:hover {
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   cursor: pointer;
 }
 
