@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import { Container, Button, Alert } from "react-bootstrap";
 import { CSSTransition } from "react-transition-group";
 import deleteCart from "../../assets/delete.png";
-import empty from "../../assets/empty.png";
 import { cartContext } from "../../context/cartContext";
 import { List } from "antd";
 import { useDispatch } from "react-redux";
 import { getAllOrders, postAllOrders } from "../../FoodSlice/CartSlice";
+import NavigationMenu2 from "../NavigationMenu2/NavigationMenu2";
 
 const Cart = () => {
   const [showButton, setShowButton] = useState(true);
@@ -26,27 +26,47 @@ const Cart = () => {
   const [delivery, setDelivery] = useState(false);
   const [order_amount, setOrder_amount] = useState("");
 
-  const [carts, setCarts] = useState(null);
-
   const [delivary, setDelivary] = useState("");
 
   useEffect(() => {
     getCart();
   }, []);
 
-  useEffect(() => {
-    setProduct(cart.products.map((item) => item.item.id).join(","));
-  }, [cart]);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setOrder_amount(cart.totalPrice);
+    amountOrder();
   }, [cart.totalPrice]);
+
+  useEffect(() => {
+    oneOrder();
+  }, [cart.products]);
+
+  function amountOrder() {
+    if (cart.totalPrice < 600) {
+      return setOrder_amount(cart.totalPrice + 80);
+    } else {
+      return setOrder_amount(cart.totalPrice);
+    }
+  }
+
+  function oneOrder() {
+    const order = [];
+    if (cart.products) {
+      cart.products.map((item) => {
+        order.push({
+          product: +item.item.id,
+          quantity: +item.count,
+          total: +item.subPrice,
+        });
+      });
+    }
+    return setProduct(order);
+  }
+  // console.log(product);
 
   function submitOrder() {
     let newOrder = {
-      product: +product,
       full_name: full_name,
       phone_number: phone_number,
       floor: floor,
@@ -54,27 +74,23 @@ const Cart = () => {
       delivery: delivery,
       order_amount: +order_amount,
       address: address,
+      ordered_product: product,
     };
-
+    console.log(newOrder);
     dispatch(postAllOrders(newOrder));
+    dispatch(getAllOrders());
 
-    setDelivery("");
+    // setDelivery("");
     setAddress("");
-    setProduct("");
+    // setProduct("");
     setApartment("");
     setFull_name("");
     setPhone_number("");
     setFloor("");
-    setOrder_amount("");
+    // setOrder_amount("");
   }
   function showModal() {
     setShowMessageModal(true);
-  }
-  function showModalClose() {
-    setShowMessageModal(false);
-  }
-  function showMessageClose() {
-    setShowMessage(false);
   }
   console.log(cart);
   return (
@@ -84,7 +100,6 @@ const Cart = () => {
           <div>
             <h2>Корзина</h2>
           </div>
-
           <List
             itemLayout="horizontal"
             dataSource={cart.products}
@@ -260,13 +275,21 @@ const Cart = () => {
                 <p className="cart-det-title">цена:</p>
                 <h4 classname="cart-det-price">{cart.totalPrice} сом</h4>
               </div>
-              {/* <div className="cart-details-price-1">
-              <p>скидка:</p>
-              <p>0 сом</p>
-            </div> */}
+              {cart.totalPrice > 600 ? (
+                <div className="cart-details-price-1">
+                  <h2 className="cart-det-title">доставка:</h2>
+                  <h5 classname="cart-det-price del-price">0 сом</h5>
+                </div>
+              ) : (
+                <div className="cart-details-price-1">
+                  <h2 className="cart-det-title">доставка:</h2>
+                  <h5 classname="cart-det-price del-price">80 сом</h5>
+                </div>
+              )}
+
               <div className="cart-details-price-1">
                 <h2 className="cart-det-title">Итого к оплате:</h2>
-                <h3 classname="cart-det-price prices">{cart.totalPrice} сом</h3>
+                <h3 className="cart-det-price prices">{order_amount} сом</h3>
               </div>
               <button className="cart-details-btn" onClick={submitOrder}>
                 Оформить заказ
@@ -352,6 +375,7 @@ const Cart = () => {
                           />
                         </div>
                         <List
+                          y
                           className="cart-details-adresses"
                           itemLayout="horizontal"
                           dataSource={cart.products}
@@ -418,10 +442,23 @@ const Cart = () => {
                       <p className="cart-det-title">цена:</p>
                       <h4 classname="cart-det-price">{cart.totalPrice} сом</h4>
                     </div>
+                    {cart.totalPrice > 600 ? (
+                      <div className="cart-details-price-1">
+                        <h2 className="cart-det-title">доставка:</h2>
+                        <h5 classname="cart-det-price prices">0 сом</h5>
+                      </div>
+                    ) : (
+                      <div className="cart-details-price-1">
+                        <h2 className="cart-det-title">доставка:</h2>
+                        <h5 classname="cart-det-price del-price prices">
+                          80 сом
+                        </h5>
+                      </div>
+                    )}
                     <div className="cart-details-price-1">
                       <h2 className="cart-det-title">Итого к оплате:</h2>
                       <h3 classname="cart-det-price prices">
-                        {cart.totalPrice} сом
+                        {order_amount} сом
                       </h3>
                     </div>
                     <button

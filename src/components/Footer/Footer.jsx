@@ -55,7 +55,7 @@ const Footer = () => {
               <img src={icon4} alt="" />
             </div>
 
-            <p>Политика конфиденциальности</p>
+            <p className="confidential">Политика конфиденциальности</p>
           </div>
         </div>
       </div>

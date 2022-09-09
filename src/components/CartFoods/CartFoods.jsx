@@ -14,7 +14,7 @@ const CartFoods = () => {
 
   useEffect(() => {
     getCart();
-  }, [carts]);
+  }, []);
   return carts ? (
     <div>
       <div className="cart-cart">

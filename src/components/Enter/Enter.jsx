@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../context/authContext";
+import NavigationMenu2 from "../NavigationMenu2/NavigationMenu2";
 import "./Enter.css";
 
 const Enter = () => {
@@ -14,17 +15,20 @@ const Enter = () => {
   }
   return (
     <div className="container">
+      <div className="navigation_menu">
+        <NavigationMenu2 />
+      </div>
       <div className="autorization">
         <div className="autorization__block">
           <h1 className="autorization__title">Вход</h1>
           <div className="autorization__input">
-            <h2 className="autorization__text">Логин</h2>
+            <h2 className="autorization__text">Email</h2>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="autorization__inp"
-              placeholder="Введите ваш логин"
+              placeholder="Введите ваш email"
             />
           </div>
           <div className="autorization__input">

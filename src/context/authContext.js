@@ -44,6 +44,13 @@ const AuthContextProvider = ({ children }) => {
       });
       navigate("/");
       console.log(res);
+
+      let { access_token } = res.data;
+      document.cookie =
+        encodeURIComponent("delivery-auth") +
+        "=" +
+        encodeURIComponent(access_token);
+
       localStorage.setItem("token", JSON.stringify(res.data));
       localStorage.setItem("email", username);
       setUser(username);
@@ -52,7 +59,7 @@ const AuthContextProvider = ({ children }) => {
       console.log(error);
     }
   }
-
+  // console.log(document.cookie);
   //   async function activateLog(email, activation_code, navigate) {
   //     let formData = new FormData();
   //     formData.append("email", email);
@@ -69,7 +76,6 @@ const AuthContextProvider = ({ children }) => {
   //   async function forgetAccount(email, navigate) {
   //     let res = await axios.post(`${API}api/password_reset/`, { email });
   //     console.log("from reset", res);
-
   //     let formData = new FormData();
   //     formData.append("email", email);
 
@@ -108,11 +114,11 @@ const AuthContextProvider = ({ children }) => {
   //       setLoading(false);
   //     }
   //   }
-  //   function logout() {
-  //     localStorage.removeItem("token");
-  //     localStorage.removeItem("username");
-  //     setUser("");
-  //   }
+  function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    setUser("");
+  }
   //   async function resetPassword(email) {
   //     let res = await axios.post(`${API}api/password_reset/`, { email });
   //     console.log("from reset", res);

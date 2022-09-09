@@ -11,3 +11,14 @@
 .product_list-cart {
   width: 40%;
 }
+
+.skeleton_block {
+  width: 100%;
+  padding: 0 10px;
+}
+
+.skeleton_button {
+  width: 220px !important;
+  height: 20px !important;
+  margin: 30px auto 0px auto !important;
+}

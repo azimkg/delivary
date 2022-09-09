@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../context/authContext";
 import "../Enter/Enter.css";
+import NavigationMenu3 from "../NavigationMenu2/NavigationMenu3";
 
 const Autorization = () => {
   const navigate = useNavigate();
@@ -17,6 +18,9 @@ const Autorization = () => {
   }
   return (
     <div className="container">
+      <div className="navigation_menu">
+        <NavigationMenu3 />
+      </div>
       <div className="autorization">
         <div className="autorization__block">
           <h1 className="autorization__title">Регистрация</h1>
@@ -73,14 +77,16 @@ const Autorization = () => {
           <Link to="/enter" className="autorization__link">
             Войти
           </Link>
-          <button
-            className="autorization__button"
-            onClick={() =>
-              handleLogin(email, password1, password2, username, phone_number)
-            }
-          >
-            Зарегистрироваться
-          </button>
+          <Link to="/autodone">
+            <button
+              className="autorization__button"
+              onClick={() =>
+                handleLogin(email, password1, password2, username, phone_number)
+              }
+            >
+              Зарегистрироваться
+            </button>
+          </Link>
         </div>
       </div>
     </div>

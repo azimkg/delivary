@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Breadcrumps from "../Breadcrumps/Breadcrumps";
 import line from "../../assets/Line.png";
 import "../AboutUs/AboutUs.css";
+import NavigationMenu2 from "../NavigationMenu2/NavigationMenu2";
 
 const AboutUs = () => {
   const [first, setFirst] = useState(true);
@@ -13,6 +14,9 @@ const AboutUs = () => {
   return (
     <div>
       <Breadcrumps />
+      <div className="navigation_menu">
+        <NavigationMenu2 />
+      </div>
       <div className="about__main container">
         <div className="about__main-check">
           <div

@@ -11,6 +11,12 @@
   width: 680px;
   height: 402px;
 }
+
+.details__photoser {
+  width: 680px !important;
+  height: 402px !important;
+}
+
 .details__block-right {
   max-width: 450px;
 }
@@ -115,4 +121,9 @@
     font-size: 20px;
     line-height: 146%;
   }
+}
+
+.text12 {
+  width: 300px !important;
+  height: 20px !important;
 }

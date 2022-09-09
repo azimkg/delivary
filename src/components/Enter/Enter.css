@@ -57,3 +57,13 @@
   line-height: 18px;
   color: #429f3a;
 }
+.autodone__block {
+  padding: 20%;
+}
+.autodone__block-text p {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 146%;
+  text-align: center;
+  color: #1b1b1b;
+}

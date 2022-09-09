@@ -30,7 +30,7 @@ const AdminPage = () => {
         <a style={{ textDecoration: "none", cursor: "pointer" }}>
           <div onClick={open} className="adminPage-orders">
             <i class="bx bxs-user-detail"></i>
-            <p>Пользователи</p>
+            <p>Пользователи.</p>
           </div>
         </a>
       </div>

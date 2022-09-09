@@ -99,3 +99,9 @@
     text-align: center;
   }
 }
+
+@media (max-width: 425px){
+  .footer{
+    margin-bottom: 70px;
+  }
+}

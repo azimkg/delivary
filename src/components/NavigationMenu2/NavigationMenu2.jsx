@@ -9,28 +9,28 @@ function NavigationMenu2() {
     {
       icon: <i className="bx bx-home-alt-2"></i>,
       name: "Домой",
-      path: "/",
+      link: "/",
     },
     {
       icon: <i className="bx bx-purchase-tag-alt"></i>,
       name: "Акции",
-      path: "/sales",
+      link: "/sales",
     },
 
     {
       icon: <i className="bx bx-shopping-bag"></i>,
       name: "Заказы",
-      path: "/cart",
+      link: "/cart",
     },
     {
       icon: <i className="bx bx-group"></i>,
       name: "О нас",
-      path: "/about",
+      link: "/about",
     },
     {
       icon: <i className="bx bx-user"></i>,
       name: " Кабинет",
-      path: "/enter",
+      link: "/enter",
     },
   ];
 
@@ -41,9 +41,9 @@ function NavigationMenu2() {
           return (
             <li
               key={index}
-              className={location.pathname === val.path ? "active" : ""}
+              className={location.pathname === val.link ? "active" : ""}
             >
-              <Link to={val.path}>
+              <Link to={val.link}>
                 <div className="icon">{val.icon}</div>
                 <div className="name">{val.name}</div>
               </Link>
