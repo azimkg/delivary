@@ -12,6 +12,7 @@ import MyRoom from "./components/MyRoom/MyRoom";
 import ProductList from "./components/ProductsList/ProductList";
 import NavigationMenu2 from "./components/NavigationMenu2/NavigationMenu2";
 import SalesProductPages from "./pages/SalesProductPage/SalesProductPages";
+import AutoDone from "./components/AutoDone/AutoDone";
 
 const Routing = () => {
   return (
@@ -28,6 +29,7 @@ const Routing = () => {
         <Route path="/my" element={<MyRoom />} />
         <Route path="/product" element={<ProductList />} />
         <Route path="/sales" element={<SalesProductPages />} />
+        <Route path="/autodone" element={<AutoDone />} />
       </Routes>
 
       <Footer />

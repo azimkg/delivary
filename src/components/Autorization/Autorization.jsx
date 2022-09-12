@@ -77,14 +77,16 @@ const Autorization = () => {
           <Link to="/enter" className="autorization__link">
             Войти
           </Link>
-          <button
-            className="autorization__button"
-            onClick={() =>
-              handleLogin(email, password1, password2, username, phone_number)
-            }
-          >
-            Зарегистрироваться
-          </button>
+          <Link to="/autodone">
+            <button
+              className="autorization__button"
+              onClick={() =>
+                handleLogin(email, password1, password2, username, phone_number)
+              }
+            >
+              Зарегистрироваться
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "boxicons";
 import "./Cart.css";
+import { Link } from "react-router-dom";
 import { Container, Button, Alert } from "react-bootstrap";
 import { CSSTransition } from "react-transition-group";
 import deleteCart from "../../assets/delete.png";
@@ -11,9 +12,9 @@ import { getAllOrders, postAllOrders } from "../../FoodSlice/CartSlice";
 import NavigationMenu2 from "../NavigationMenu2/NavigationMenu2";
 
 const Cart = () => {
-  const [show, setShow] = useState(false);
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
+  const [showMessageModal, setShowMessageModal] = useState(false);
   const { getCart, cart, deleteFromCart, changeProductCount } =
     useContext(cartContext);
   const [full_name, setFull_name] = useState("");
@@ -88,6 +89,10 @@ const Cart = () => {
     setFloor("");
     // setOrder_amount("");
   }
+  function showModal() {
+    setShowMessageModal(true);
+  }
+  console.log(cart);
   return (
     <>
       <div className="cart container">
@@ -276,12 +281,12 @@ const Cart = () => {
               {cart.totalPrice > 600 ? (
                 <div className="cart-details-price-1">
                   <h2 className="cart-det-title">доставка:</h2>
-                  <h3 classname="cart-det-price ">0 сом</h3>
+                  <h5 classname="cart-det-price del-price">0 сом</h5>
                 </div>
               ) : (
                 <div className="cart-details-price-1">
                   <h2 className="cart-det-title">доставка:</h2>
-                  <h3 classname="cart-det-price ">80 сом</h3>
+                  <h5 classname="cart-det-price del-price">80 сом</h5>
                 </div>
               )}
 
@@ -292,6 +297,10 @@ const Cart = () => {
               <button className="cart-details-btn" onClick={submitOrder}>
                 Оформить заказ
               </button>
+              <p className="cart__bonus">
+                При заказе на сумму от 500 сом ,вы получите бонус в размере 100
+                баллов
+              </p>
             </div>
           </div>
         </div>
@@ -311,6 +320,7 @@ const Cart = () => {
           in={showMessage}
           classNames="alert"
           unmountOnExit
+          timeout={1000}
           onEnter={() => setShowButton(false)}
           onExited={() => setShowButton(true)}
         >
@@ -368,6 +378,7 @@ const Cart = () => {
                           />
                         </div>
                         <List
+                          y
                           className="cart-details-adresses"
                           itemLayout="horizontal"
                           dataSource={cart.products}
@@ -437,12 +448,14 @@ const Cart = () => {
                     {cart.totalPrice > 600 ? (
                       <div className="cart-details-price-1">
                         <h2 className="cart-det-title">доставка:</h2>
-                        <h3 classname="cart-det-price prices">0 сом</h3>
+                        <h5 classname="cart-det-price prices">0 сом</h5>
                       </div>
                     ) : (
                       <div className="cart-details-price-1">
                         <h2 className="cart-det-title">доставка:</h2>
-                        <h3 classname="cart-det-price prices">80 сом</h3>
+                        <h5 classname="cart-det-price del-price prices">
+                          80 сом
+                        </h5>
                       </div>
                     )}
                     <div className="cart-details-price-1">
@@ -451,11 +464,46 @@ const Cart = () => {
                         {order_amount} сом
                       </h3>
                     </div>
-                    <button className="cart-details-btn" onClick={submitOrder}>
+                    <button
+                      className="cart-details-btn"
+                      onClick={(submitOrder, showModal)}
+                    >
                       Оформить заказ
                     </button>
                   </div>
                 </div>
+              </div>
+            </Alert.Heading>
+          </Alert>
+        </CSSTransition>
+      </Container>
+      <Container>
+        <CSSTransition
+          in={showMessageModal}
+          classNames="my-node"
+          unmountOnExit
+          timeout={5000}
+        >
+          <Alert
+            variant="primary"
+            dismissible
+            onClose={() => setShowMessageModal(false)}
+          >
+            <Alert.Heading>
+              <div className="cart-details-modal">
+                <div className="cart-del-det">
+                  <Link to="/">
+                    <img className="cart-del-img" src={deleteCart} />
+                  </Link>
+                </div>
+                <div className="show__specialist">
+                  <p>Ваш заказ принят, дождитесь ответа специалиста</p>
+                </div>
+                <Link to="/">
+                  <button className="cart-details-btn">
+                    Вернуться в главное меню
+                  </button>
+                </Link>
               </div>
             </Alert.Heading>
           </Alert>
