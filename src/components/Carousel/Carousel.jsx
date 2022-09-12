@@ -1,42 +1,43 @@
-import React, { useRef, useState } from "react";
-// Import Swiper React components
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "./Carousel.css";
-
-// import required modules
 import { Pagination, Navigation } from "swiper";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { getAllCategories } from "../../FoodSlice/CategoriesSlice";
 
 export default function Carousel() {
+  const category = useSelector((state) => state.categories.category);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllCategories());
+  }, []);
+
   return (
     <div className="container" style={{ marginTop: "20px" }}>
       <Swiper
-        slidesPerView={8}
+        slidesPerView={6}
         spaceBetween={30}
-        slidesPerGroup={8}
+        slidesPerGroup={6}
         loop={true}
         loopFillGroupWithBlank={true}
         navigation={true}
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide className="swipe">Молоко</SwiperSlide>
-        <SwiperSlide className="swipe">Хлеб</SwiperSlide>
-        <SwiperSlide className="swipe">Мясо</SwiperSlide>
-        <SwiperSlide className="swipe">Сыр</SwiperSlide>
-        <SwiperSlide className="swipe">Овощи</SwiperSlide>
-        <SwiperSlide className="swipe">Масло</SwiperSlide>
-        <SwiperSlide className="swipe">Картофель</SwiperSlide>
-        <SwiperSlide className="swipe">Яйца</SwiperSlide>
-        <SwiperSlide className="swipe">Сладости</SwiperSlide>
-        <SwiperSlide className="swipe">Творог</SwiperSlide>
-        <SwiperSlide className="swipe">Кефир</SwiperSlide>
-        <SwiperSlide className="swipe">Вода</SwiperSlide>
+        {category.map((item) => (
+          <Link to={`/category/${item.id}/product`}>
+            <SwiperSlide key={item.id} className="swipe">
+              {item.category_name}
+            </SwiperSlide>
+          </Link>
+        ))}
       </Swiper>
     </div>
   );

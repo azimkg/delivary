@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getAllCategories } from "../../FoodSlice/CategoriesSlice";
 import { getAllFoods } from "../../FoodSlice/FoodSlice";
 
@@ -14,12 +14,14 @@ import "./ProductList.css";
 const ProductList = () => {
   const foods = useSelector((state) => state.food.foods);
   const category = useSelector((state) => state.categories.category);
-
+  const location = useLocation();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllFoods());
     dispatch(getAllCategories());
   }, []);
+  const loc = location.pathname.slice(10, location.pathname.length);
+  const locations = parseInt(loc);
 
   return (
     <>
@@ -28,7 +30,10 @@ const ProductList = () => {
         <div className="navigation_menu">
           <NavigationMenu3 />
         </div>
-        <Breadcrumps />
+        {category.map((item) =>
+          item.id == locations ? <Breadcrumps loc={item.category_name} /> : null
+        )}
+
         <div className="product_main-list">
           <div className="product_list-main">
             {foods.map((item) => (

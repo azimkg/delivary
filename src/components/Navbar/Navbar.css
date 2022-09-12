@@ -108,6 +108,7 @@
   font-size: 16px;
   line-height: 147%;
   color: #1b1b1b;
+  margin-bottom: 0;
 }
 .navbar__bottom-price .navbar__bottom-trash .navbar__bottom-user {
   cursor: pointer;

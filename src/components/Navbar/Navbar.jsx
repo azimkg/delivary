@@ -187,7 +187,7 @@ const Navbar = () => {
                   className="image_cards"
                   onClick={() => {
                     dispatch(editPosts(item));
-                    navigate(`/details/${item.id}`);
+                    navigate(`/product/${item.category}/details/${item.id}`);
                     setSearch(false);
                   }}
                 />

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const Breadcrumps = ({ item }) => {
+const Breadcrumps = ({ item, loc }) => {
   return (
     <div className="container">
       <div className="breadcrumps__block">
@@ -9,7 +9,7 @@ const Breadcrumps = ({ item }) => {
           <p className="breadcrumps">Главная</p>
         </Link>
         <span className="breadcrumps__slash">/</span>
-        <p className="breadcrumps">Каталог</p>
+        <p className="breadcrumps">{loc}</p>
         <span className="breadcrumps__slash">/</span>
         {item ? <p className="breadcrumps">{item}</p> : null}
       </div>

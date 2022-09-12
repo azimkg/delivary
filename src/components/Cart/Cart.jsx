@@ -106,6 +106,37 @@ const Cart = () => {
     setFloor("");
     // setOrder_amount("");
   }
+
+  function submitOrdered() {
+    if (full_name == "" || phone_number == "" || address == "") {
+      return notify();
+    }
+
+    let newOrder = {
+      full_name: full_name,
+      phone_number: phone_number,
+      floor: floor,
+      apartment: apartment,
+      delivery: delivery,
+      order_amount: +order_amount,
+      address: address,
+      ordered_product: product,
+    };
+    console.log(newOrder);
+    dispatch(postAllOrders(newOrder));
+    dispatch(getAllOrders());
+    showModal();
+
+    // setDelivery("");
+    setAddress("");
+    // setProduct("");
+    setApartment("");
+    setFull_name("");
+    setPhone_number("");
+    setFloor("");
+    // setOrder_amount("");
+  }
+
   function showModal() {
     setShowMessageModal(true);
   }
@@ -483,10 +514,14 @@ const Cart = () => {
                     </div>
                     <button
                       className="cart-details-btn"
-                      onClick={(submitOrder, showModal)}
+                      onClick={submitOrdered}
                     >
                       Оформить заказ
                     </button>
+                    <p className="cart__bonus">
+                      При заказе на сумму от 500 сом ,вы получите бонус в
+                      размере 100 баллов
+                    </p>
                   </div>
                 </div>
               </div>

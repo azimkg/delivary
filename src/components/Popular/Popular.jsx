@@ -49,7 +49,7 @@ const Popular = () => {
               className="image_cards"
               onClick={() => {
                 dispatch(editPosts(elem));
-                navigate(`/details/${elem.id}`);
+                navigate(`/product/${elem.category}/details/${elem.id}`);
                 console.log(elem.id);
               }}
             />

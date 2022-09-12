@@ -258,6 +258,7 @@
 @media (max-width: 426px) {
   .popular_card {
     width: 164px;
+    height: 326px;
   }
   .image_cards {
     width: 164px;
