@@ -13,6 +13,7 @@ import { cartContext } from "../../context/cartContext";
 import { useSelector, useDispatch } from "react-redux";
 import { editPosts, getAllFoods } from "../../FoodSlice/FoodSlice";
 import card from "../../assets/card.svg";
+import { authContext } from "../../context/authContext";
 
 const Navbar = () => {
   const [all, setAll] = useState(false);
@@ -29,6 +30,7 @@ const Navbar = () => {
   const [searchValue, setSearchValue] = useState(
     searchParams.get("search") ? searchParams.get("search") : ""
   );
+  const { user } = useContext(authContext);
 
   useEffect(() => {
     getCart();
@@ -131,13 +133,23 @@ const Navbar = () => {
         />
         <div className="navbar__bottom-right">
           <div className="navbar__bottom-user">
-            <Link to="/enter">
-              <img
-                src={union}
-                alt="image"
-                className="navbar__bottom-user-link"
-              />
-            </Link>
+            {user ? (
+              <Link to="/my">
+                <img
+                  src={union}
+                  alt="image"
+                  className="navbar__bottom-user-link"
+                />
+              </Link>
+            ) : (
+              <Link to="/enter">
+                <img
+                  src={union}
+                  alt="image"
+                  className="navbar__bottom-user-link"
+                />
+              </Link>
+            )}
           </div>
           <div className="navbar__bottom-trash">
             <Link to="/cart">
@@ -172,6 +184,7 @@ const Navbar = () => {
                   onClick={() => {
                     dispatch(editPosts(item));
                     navigate(`/details/${item.id}`);
+                    setSearch(false);
                   }}
                 />
                 <div className="popular_bottom-text">

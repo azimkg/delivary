@@ -91,6 +91,9 @@ const Cart = () => {
   return (
     <>
       <div className="cart container">
+        <div className="navigation_menu">
+          <NavigationMenu2 />
+        </div>
         <div className="cart-cart cart-del">
           <div>
             <h2>Корзина</h2>

@@ -272,7 +272,7 @@
 }
 .search_modal-product {
   display: flex;
-  column-gap: 30px;
+  column-gap: 28px;
   flex-wrap: wrap;
   padding-top: 20px;
   z-index: 100;
