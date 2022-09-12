@@ -10,6 +10,7 @@ import { List } from "antd";
 import { useDispatch } from "react-redux";
 import { getAllOrders, postAllOrders } from "../../FoodSlice/CartSlice";
 import NavigationMenu2 from "../NavigationMenu2/NavigationMenu2";
+import { ToastContainer, toast } from "react-toastify";
 
 const Cart = () => {
   const [showButton, setShowButton] = useState(true);
@@ -31,6 +32,18 @@ const Cart = () => {
   useEffect(() => {
     getCart();
   }, []);
+
+  const notify = () => {
+    toast.warning("Заполните поля!", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   const dispatch = useDispatch();
 
@@ -66,6 +79,10 @@ const Cart = () => {
   // console.log(product);
 
   function submitOrder() {
+    if (full_name == "" || phone_number == "" || address == "") {
+      return notify();
+    }
+
     let newOrder = {
       full_name: full_name,
       phone_number: phone_number,
@@ -99,6 +116,7 @@ const Cart = () => {
         <div className="navigation_menu">
           <NavigationMenu2 />
         </div>
+        <ToastContainer />
         <div className="cart-cart cart-del">
           <div>
             <h2>Корзина</h2>
@@ -378,7 +396,6 @@ const Cart = () => {
                           />
                         </div>
                         <List
-                          y
                           className="cart-details-adresses"
                           itemLayout="horizontal"
                           dataSource={cart.products}

@@ -1,18 +1,19 @@
 import React, { useContext, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { editPosts } from "../../FoodSlice/FoodSlice";
 import card from "../../assets/card.svg";
 import { cartContext } from "../../context/cartContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Skeleton, Space } from "antd";
-import { DotChartOutlined } from "@ant-design/icons";
 import { useEffect } from "react";
+import { getAllCategories } from "../../FoodSlice/CategoriesSlice";
 
 const Product = ({ item }) => {
   const [elem, setElem] = useState(null);
   const [active, setActive] = useState(false);
+  const location = useLocation();
   const notify = () => {
     toast.success("Товар добавлен в корзину", {
       position: "top-right",
@@ -25,10 +26,14 @@ const Product = ({ item }) => {
     });
   };
 
+  const loc = location.pathname.slice(10, location.pathname.length);
+  const locations = parseInt(loc);
+
   useEffect(() => {
     setTimeout(() => {
       setElem(item);
     }, 1000);
+    window.scrollTo(0, 0);
   }, []);
 
   const dispatch = useDispatch();
@@ -43,33 +48,35 @@ const Product = ({ item }) => {
     notify();
     return getCart();
   }
-  // console.log(elem);
+  console.log(locations);
   return elem ? (
-    <div key={elem.id} className="popular_card">
-      <img
-        src={elem.cover_pic}
-        alt="card image"
-        className="image_cards"
-        onClick={() => {
-          dispatch(editPosts(elem));
-          navigate(`/details/${elem.id}`);
-          console.log(elem.id);
-        }}
-      />
-      <div className="popular_bottom-text">
-        <h2 className="cards_title-name">{elem.product_name}</h2>
-        <div className="card_blocked">
-          <span className="cards_title-desc">
-            {elem.description.split(" ").slice(0, 3).join(" ")}...
-          </span>
+    locations == elem.category ? (
+      <div key={elem.id} className="popular_card">
+        <img
+          src={elem.cover_pic}
+          alt="card image"
+          className="image_cards"
+          onClick={() => {
+            dispatch(editPosts(elem));
+            navigate(`/details/${elem.id}`);
+            console.log(elem.id);
+          }}
+        />
+        <div className="popular_bottom-text">
+          <h2 className="cards_title-name">{elem.product_name}</h2>
+          <div className="card_blocked">
+            <span className="cards_title-desc">
+              {elem.description.split(" ").slice(0, 3).join(" ")}...
+            </span>
+          </div>
+          <span className="card_price-span">{elem.price}сом</span>
+          <div className="card_position-card" onClick={clickCart}>
+            <img src={card} alt="card" />
+          </div>
         </div>
-        <span className="card_price-span">{elem.price}сом</span>
-        <div className="card_position-card" onClick={clickCart}>
-          <img src={card} alt="card" />
-        </div>
+        <ToastContainer />
       </div>
-      <ToastContainer />
-    </div>
+    ) : null
   ) : (
     <div className="popular_card">
       <Space>

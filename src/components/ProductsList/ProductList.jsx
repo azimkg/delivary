@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getAllCategories } from "../../FoodSlice/CategoriesSlice";
 import { getAllFoods } from "../../FoodSlice/FoodSlice";
 
 import Breadcrumps from "../Breadcrumps/Breadcrumps";
@@ -12,10 +13,12 @@ import "./ProductList.css";
 
 const ProductList = () => {
   const foods = useSelector((state) => state.food.foods);
+  const category = useSelector((state) => state.categories.category);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllFoods());
+    dispatch(getAllCategories());
   }, []);
 
   return (

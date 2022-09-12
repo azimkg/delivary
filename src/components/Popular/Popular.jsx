@@ -1,5 +1,4 @@
 import React from "react";
-import eda from "../../assets/eda.png";
 import card from "../../assets/card.svg";
 import "./Popular.css";
 import { useDispatch, useSelector } from "react-redux";

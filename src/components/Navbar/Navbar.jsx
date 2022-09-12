@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { editPosts, getAllFoods } from "../../FoodSlice/FoodSlice";
 import card from "../../assets/card.svg";
 import { authContext } from "../../context/authContext";
+import { getAllCategories } from "../../FoodSlice/CategoriesSlice";
 
 const Navbar = () => {
   const [all, setAll] = useState(false);
@@ -32,9 +33,12 @@ const Navbar = () => {
   );
   const { user } = useContext(authContext);
 
+  const category = useSelector((state) => state.categories.category);
+
   useEffect(() => {
     getCart();
     dispatch(getAllFoods());
+    dispatch(getAllCategories());
   }, []);
 
   useEffect(() => {
@@ -240,54 +244,19 @@ const Navbar = () => {
       ) : null}
       {all ? (
         <div className="all__categories grow">
-          <div
-            className="all__categories-link"
-            onClick={() => {
-              setAll(false);
-            }}
-          >
-            <p>Ароматная выпечка</p>
-          </div>
-          <div
-            className="all__categories-link"
-            onClick={() => {
-              setAll(false);
-            }}
-          >
-            <p>Свежевыжатые соки</p>
-          </div>
-          <div
-            className="all__categories-link"
-            onClick={() => {
-              setAll(false);
-            }}
-          >
-            <p>Овощи, зелень</p>
-          </div>
-
-          <div
-            className="all__categories-link"
-            onClick={() => {
-              setAll(false);
-            }}
-          >
-            <p>Фрукты, ягоды</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Для наших детей</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Молоко, творог, яйца</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Сыры</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Йогурты и десерты</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Хлеб, выпечка</p>
-          </div>
+          {category.map((item) => (
+            <Link to={`/category/${item.id}/product`}>
+              <div
+                key={item.id}
+                className="all__categories-link"
+                onClick={() => {
+                  setAll(false);
+                }}
+              >
+                <p>{item.category_name}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       ) : null}
     </div>

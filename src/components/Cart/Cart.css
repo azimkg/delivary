@@ -481,7 +481,7 @@
   .alert {
     position: absolute;
     width: 100%;
-    height: 120%;
+    min-height: 100%;
     padding: 0 50px;
     top: 150px;
     left: 0;
@@ -532,4 +532,7 @@
     border-right: none !important;
     width: 100% !important;
   }
+}
+.btn-close {
+  display: none !important;
 }

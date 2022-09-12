@@ -27,7 +27,7 @@ const Routing = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/my" element={<MyRoom />} />
-        <Route path="/product" element={<ProductList />} />
+        <Route path="/category/:id/product" element={<ProductList />} />
         <Route path="/sales" element={<SalesProductPages />} />
         <Route path="/autodone" element={<AutoDone />} />
       </Routes>
