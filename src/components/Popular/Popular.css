@@ -408,5 +408,5 @@
 .popular__product {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 29px;
+  column-gap: 22px;
 }

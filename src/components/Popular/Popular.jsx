@@ -13,10 +13,12 @@ import { ToastContainer, toast } from "react-toastify";
 const Popular = () => {
   const foods = useSelector((state) => state.food.foods);
 
+  const navigates = useNavigate();
+
   const notify = () => {
     toast.success("Товар добавлен в корзину", {
       position: "top-right",
-      autoClose: 1500,
+      autoClose: 3000,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
