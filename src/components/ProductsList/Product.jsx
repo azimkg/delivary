@@ -10,7 +10,7 @@ import { Skeleton, Space } from "antd";
 import { useEffect } from "react";
 import { getAllCategories } from "../../FoodSlice/CategoriesSlice";
 
-const Product = ({ item }) => {
+const Product = ({ item, count }) => {
   const [elem, setElem] = useState(null);
   const [active, setActive] = useState(false);
   const location = useLocation();
@@ -48,7 +48,6 @@ const Product = ({ item }) => {
     notify();
     return getCart();
   }
-  console.log(locations);
   return elem ? (
     locations == elem.category ? (
       <div key={elem.id} className="popular_card">

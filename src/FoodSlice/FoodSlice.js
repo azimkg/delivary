@@ -5,6 +5,7 @@ const API = "http://kitchen4you.kg/api";
 const initialState = {
   foods: [],
   edit: null,
+  count: 0,
 };
 
 export const getAllFoods = createAsyncThunk(
@@ -12,6 +13,7 @@ export const getAllFoods = createAsyncThunk(
   async (_, { rejectWithValue, dispatch }) => {
     let res = await axios.get(`${API}/products/` + window.location.search);
     dispatch(getPosts(res.data));
+    console.log(res);
   }
 );
 export const getOneFoods = createAsyncThunk(
@@ -27,6 +29,7 @@ export const foodSlice = createSlice({
   reducers: {
     getPosts: (state, action) => {
       state.foods = action.payload;
+      state.count = action.payload;
     },
     editPosts: (state, action) => {
       state.edit = action.payload;

@@ -11,7 +11,11 @@ const Breadcrumps = ({ item, loc }) => {
         <span className="breadcrumps__slash">/</span>
         <p className="breadcrumps">{loc}</p>
         <span className="breadcrumps__slash">/</span>
-        {item ? <p className="breadcrumps">{item}</p> : null}
+        {item ? (
+          <p key={item.id} className="breadcrumps">
+            {item}
+          </p>
+        ) : null}
       </div>
     </div>
   );

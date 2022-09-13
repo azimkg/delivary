@@ -22,6 +22,7 @@ const Details = () => {
   const location = useLocation();
   useEffect(() => {
     dispatch(getAllCategories());
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
