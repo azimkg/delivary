@@ -436,7 +436,8 @@
     padding: 0px 10px !important;
   }
   .cart-product-card-img {
-    width: 100px;
+    width: 120px;
+    height: 90px;
   }
 }
 @media (max-width: 480px) {
@@ -476,7 +477,7 @@
     flex-direction: column-reverse;
   }
   .cart-product-cardss {
-    width: 80%;
+    width: 100%;
   }
   .alert {
     position: absolute;
@@ -531,6 +532,10 @@
   .product_list-main {
     border-right: none !important;
     width: 100% !important;
+  }
+  .cart__bonus {
+    font-size: 16px;
+    padding-bottom: 50px;
   }
 }
 .btn-close {

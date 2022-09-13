@@ -302,15 +302,17 @@
     align-items: center;
     color: #1b1b1b;
     mix-blend-mode: normal;
+    margin-top: 20px;
   }
 }
 
 @media (max-width: 380px) {
   .popular_card {
-    width: 150px;
+    width: 250px;
+    margin-left: 20px;
   }
   .image_cards {
-    width: 150px;
+    width: 250px;
   }
   .cards_title-name {
     font-family: "Rubik";
@@ -350,6 +352,7 @@
     align-items: center;
     color: #1b1b1b;
     mix-blend-mode: normal;
+    margin-top: 20px;
   }
 }
 
