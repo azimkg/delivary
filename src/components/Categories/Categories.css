@@ -184,3 +184,8 @@
     width: 49%;
   }
 }
+@media (max-width: 425px) {
+  .cat__title {
+    font-size: 18px;
+  }
+}

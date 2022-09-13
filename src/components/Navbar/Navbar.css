@@ -294,3 +294,11 @@
   padding-top: 20px;
   cursor: pointer;
 }
+@media (max-width: 425px) {
+  .navbar__bottom-user-mobile {
+    display: none;
+  }
+  .navbar__bottom-trash-mobile {
+    display: none;
+  }
+}
