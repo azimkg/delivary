@@ -3,7 +3,8 @@
 }
 .product_list-main {
   display: flex;
-  column-gap: 30px;
+  /* column-gap: 30px; */
+  /* marginpx; */
   width: 70%;
   flex-wrap: wrap;
   margin-bottom: 30px;
@@ -26,6 +27,14 @@
   .product_list-main {
     border: none;
     width: 100%;
-    column-gap: 53px;
+    /* justify-content: space-between; */
+  }
+}
+
+@media (max-width: 380px) {
+  .product_list-main {
+    border: none;
+    width: 100%;
+    justify-content: center;
   }
 }

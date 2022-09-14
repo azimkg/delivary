@@ -1,7 +1,7 @@
 import React from "react";
 import "../Footer/Footer.css";
-import googlepay from "../Footer/Footer_img/googlepay.svg";
-import applepay from "../Footer/Footer_img/ApplePay.svg";
+import elsom from "../../assets/image 1.svg";
+import mbank from "../../assets/image 3.svg";
 import visa from "../Footer/Footer_img/Visa.svg";
 import combo from "../Footer/footer-icons/Combined-Shape.svg";
 import icon2 from "../Footer/footer-icons/Group 554.png";
@@ -11,8 +11,6 @@ const Footer = () => {
   return (
     <div className="footer ">
       <div className="container">
-        {/* component1 */}
-
         <div className="footer-component1">
           <div>
             <p className="footer_bold">Помощь покупателю</p>
@@ -37,22 +35,21 @@ const Footer = () => {
             <p>Ежедневно с 06:00 – 00:00</p>
           </div>
         </div>
-        {/* component2 */}
         <div className="footer-component2">
           <div>
             <p>© 2021-2022 — for you</p>
           </div>
           <div className="footer_oplata">
-            <img src={visa} alt="" />
-            <img src={googlepay} alt="" />
-            <img src={applepay} alt="" />
+            <img src={visa} alt="image" />
+            <img src={elsom} width="40" alt="image" />
+            <img src={mbank} width="65" alt="image" />
           </div>
           <div id="footer_icons">
             <div>
-              <img src={combo} alt="" />
-              <img src={icon2} alt="" />
-              <img src={icon3} alt="" />
-              <img src={icon4} alt="" />
+              <img src={combo} alt="image" />
+              <img src={icon2} alt="image" />
+              <img src={icon3} alt="image" />
+              <img src={icon4} alt="image" />
             </div>
 
             <p className="confidential">Политика конфиденциальности</p>

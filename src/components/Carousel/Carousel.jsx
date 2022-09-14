@@ -8,12 +8,13 @@ import "swiper/css/navigation";
 import "./Carousel.css";
 import { Pagination, Navigation } from "swiper";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAllCategories } from "../../FoodSlice/CategoriesSlice";
 
 export default function Carousel() {
   const category = useSelector((state) => state.categories.category);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllCategories());
@@ -32,11 +33,13 @@ export default function Carousel() {
         className="mySwiper"
       >
         {category.map((item) => (
-          <Link to={`/category/${item.id}/product`}>
-            <SwiperSlide key={item.id} className="swipe">
-              {item.category_name}
-            </SwiperSlide>
-          </Link>
+          <SwiperSlide
+            key={item.id}
+            className="swipe"
+            onClick={() => navigate(`/category/${item.id}/product`)}
+          >
+            {item.category_name}
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>

@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Popular = () => {
   const foods = useSelector((state) => state.food.foods);
+  const [eda, setEda] = useState("");
 
   const notify = () => {
     toast.success("Товар добавлен в корзину", {
@@ -41,7 +42,7 @@ const Popular = () => {
         <h2 className="popular_food-text">Популярные товары</h2>
       </div>
       <div className="popular__product">
-        {foods.map((elem) => (
+        {foods.slice(0, 5).map((elem) => (
           <div key={elem.id} className="popular_card">
             <img
               src={elem.cover_pic}

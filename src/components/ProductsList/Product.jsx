@@ -17,7 +17,7 @@ const Product = ({ item, count }) => {
   const notify = () => {
     toast.success("Товар добавлен в корзину", {
       position: "top-right",
-      autoClose: 1500,
+      autoClose: 1000,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
@@ -48,6 +48,7 @@ const Product = ({ item, count }) => {
     notify();
     return getCart();
   }
+
   return elem ? (
     locations == elem.category ? (
       <div key={elem.id} className="popular_card">

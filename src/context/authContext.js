@@ -8,7 +8,6 @@ const API = "http://kitchen4you.kg/api";
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const signUp = async (user, navigate) => {
     console.log(user);

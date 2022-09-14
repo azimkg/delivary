@@ -3,6 +3,19 @@
   width: 100%;
   margin-top: 50px;
 }
+
+.popular__product {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+  /* column-gap: 29px; */
+}
+@media (max-width: 1024px) {
+  .popular__product {
+    flex-wrap: wrap;
+  }
+}
+
 .popular_food-text {
   font-family: "Rubik";
   font-style: normal;
@@ -25,6 +38,7 @@
   max-width: 100%;
   width: 250px;
   /* min-height: 380px; */
+  margin: 10px;
   height: 400px;
   position: relative;
   background: #ffffff;
@@ -255,11 +269,18 @@
   }
 }
 
+@media (max-width: 425px) {
+  .popular__product {
+    /* column-gap: 53px; */
+  }
+}
 @media (max-width: 426px) {
   .popular_card {
     width: 164px;
     height: 326px;
+    margin: 0 13px;
   }
+
   .image_cards {
     width: 164px;
     height: 156px;
@@ -309,7 +330,7 @@
 @media (max-width: 380px) {
   .popular_card {
     width: 250px;
-    margin-left: 20px;
+    margin: 5px;
   }
   .image_cards {
     width: 250px;
@@ -403,10 +424,4 @@
     color: #1b1b1b;
     mix-blend-mode: normal;
   }
-}
-
-.popular__product {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 29px;
 }

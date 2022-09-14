@@ -15,6 +15,7 @@ import { editPosts, getAllFoods } from "../../FoodSlice/FoodSlice";
 import card from "../../assets/card.svg";
 import { authContext } from "../../context/authContext";
 import { getAllCategories } from "../../FoodSlice/CategoriesSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
   const [all, setAll] = useState(false);
@@ -51,9 +52,21 @@ const Navbar = () => {
     dispatch(getAllFoods());
   }, [searchParams]);
 
+  const notify = () => {
+    toast.success("Товар добавлен в корзину", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   return (
     <div className="container">
-      <div className="navbar__top">
+      <div className="navbar__top" onClick={() => setSearch(false)}>
         <div className="navbar__top-logo">
           <a href="/">
             <img src={logo} width="120" alt="image" />
@@ -104,7 +117,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar__top-stock">
-          <Link to="/nav">
+          <Link to="/sales">
             <p className="navbar__top-stock-link">Акции</p>
           </Link>
           <Link to="/about">
@@ -174,7 +187,9 @@ const Navbar = () => {
       {search ? (
         <div className="search_modal-window">
           <div className="search_modal-close container">
-            <h2 className=" result_not-find ">Результаты поиска</h2>
+            <h2 className=" result_not-find ">
+              Результаты поиска <span>{searchValue}</span>
+            </h2>
             <i onClick={() => setSearch(false)} className="bx bx-x close_x"></i>
           </div>
 
@@ -205,6 +220,7 @@ const Navbar = () => {
                       addProductToCart(item);
                       setCheckItem(checkItemInCart(item.id));
                       getCart();
+                      notify();
                     }}
                   >
                     <img src={card} alt="card" />
@@ -251,6 +267,7 @@ const Navbar = () => {
                 className="all__categories-link"
                 onClick={() => {
                   setAll(false);
+                  setSearch(false);
                 }}
               >
                 <p>{item.category_name}</p>
@@ -259,6 +276,7 @@ const Navbar = () => {
           ))}
         </div>
       ) : null}
+      <ToastContainer />
     </div>
   );
 };

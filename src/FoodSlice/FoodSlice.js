@@ -28,8 +28,8 @@ export const foodSlice = createSlice({
   initialState,
   reducers: {
     getPosts: (state, action) => {
-      state.foods = action.payload;
-      state.count = action.payload;
+      state.foods = action.payload.results;
+      state.count = action.payload.total;
     },
     editPosts: (state, action) => {
       state.edit = action.payload;
