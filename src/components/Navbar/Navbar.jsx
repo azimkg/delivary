@@ -13,6 +13,9 @@ import { cartContext } from "../../context/cartContext";
 import { useSelector, useDispatch } from "react-redux";
 import { editPosts, getAllFoods } from "../../FoodSlice/FoodSlice";
 import card from "../../assets/card.svg";
+import { authContext } from "../../context/authContext";
+import { getAllCategories } from "../../FoodSlice/CategoriesSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
   const [all, setAll] = useState(false);
@@ -29,10 +32,14 @@ const Navbar = () => {
   const [searchValue, setSearchValue] = useState(
     searchParams.get("search") ? searchParams.get("search") : ""
   );
+  const { user } = useContext(authContext);
+
+  const category = useSelector((state) => state.categories.category);
 
   useEffect(() => {
     getCart();
     dispatch(getAllFoods());
+    dispatch(getAllCategories());
   }, []);
 
   useEffect(() => {
@@ -45,9 +52,21 @@ const Navbar = () => {
     dispatch(getAllFoods());
   }, [searchParams]);
 
+  const notify = () => {
+    toast.success("Товар добавлен в корзину", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   return (
     <div className="container">
-      <div className="navbar__top">
+      <div className="navbar__top" onClick={() => setSearch(false)}>
         <div className="navbar__top-logo">
           <a href="/">
             <img src={logo} width="120" alt="image" />
@@ -98,7 +117,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar__top-stock">
-          <Link to="/nav">
+          <Link to="/sales">
             <p className="navbar__top-stock-link">Акции</p>
           </Link>
           <Link to="/about">
@@ -131,13 +150,23 @@ const Navbar = () => {
         />
         <div className="navbar__bottom-right">
           <div className="navbar__bottom-user">
-            <Link to="/enter">
-              <img
-                src={union}
-                alt="image"
-                className="navbar__bottom-user-link"
-              />
-            </Link>
+            {user ? (
+              <Link to="/my">
+                <img
+                  src={union}
+                  alt="image"
+                  className="navbar__bottom-user-link"
+                />
+              </Link>
+            ) : (
+              <Link to="/enter">
+                <img
+                  src={union}
+                  alt="image"
+                  className="navbar__bottom-user-link"
+                />
+              </Link>
+            )}
           </div>
           <div className="navbar__bottom-trash">
             <Link to="/cart">
@@ -158,7 +187,9 @@ const Navbar = () => {
       {search ? (
         <div className="search_modal-window">
           <div className="search_modal-close container">
-            <h2 className=" result_not-find ">Результаты поиска</h2>
+            <h2 className=" result_not-find ">
+              Результаты поиска <span>{searchValue}</span>
+            </h2>
             <i onClick={() => setSearch(false)} className="bx bx-x close_x"></i>
           </div>
 
@@ -171,7 +202,8 @@ const Navbar = () => {
                   className="image_cards"
                   onClick={() => {
                     dispatch(editPosts(item));
-                    navigate(`/details/${item.id}`);
+                    navigate(`/product/${item.category}/details/${item.id}`);
+                    setSearch(false);
                   }}
                 />
                 <div className="popular_bottom-text">
@@ -188,6 +220,7 @@ const Navbar = () => {
                       addProductToCart(item);
                       setCheckItem(checkItemInCart(item.id));
                       getCart();
+                      notify();
                     }}
                   >
                     <img src={card} alt="card" />
@@ -227,56 +260,23 @@ const Navbar = () => {
       ) : null}
       {all ? (
         <div className="all__categories grow">
-          <div
-            className="all__categories-link"
-            onClick={() => {
-              setAll(false);
-            }}
-          >
-            <p>Ароматная выпечка</p>
-          </div>
-          <div
-            className="all__categories-link"
-            onClick={() => {
-              setAll(false);
-            }}
-          >
-            <p>Свежевыжатые соки</p>
-          </div>
-          <div
-            className="all__categories-link"
-            onClick={() => {
-              setAll(false);
-            }}
-          >
-            <p>Овощи, зелень</p>
-          </div>
-
-          <div
-            className="all__categories-link"
-            onClick={() => {
-              setAll(false);
-            }}
-          >
-            <p>Фрукты, ягоды</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Для наших детей</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Молоко, творог, яйца</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Сыры</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Йогурты и десерты</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Хлеб, выпечка</p>
-          </div>
+          {category.map((item) => (
+            <Link to={`/category/${item.id}/product`}>
+              <div
+                key={item.id}
+                className="all__categories-link"
+                onClick={() => {
+                  setAll(false);
+                  setSearch(false);
+                }}
+              >
+                <p>{item.category_name}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       ) : null}
+      <ToastContainer />
     </div>
   );
 };

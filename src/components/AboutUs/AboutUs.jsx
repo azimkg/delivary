@@ -3,6 +3,7 @@ import Breadcrumps from "../Breadcrumps/Breadcrumps";
 import line from "../../assets/Line.png";
 import "../AboutUs/AboutUs.css";
 import NavigationMenu2 from "../NavigationMenu2/NavigationMenu2";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   const [first, setFirst] = useState(true);
@@ -13,7 +14,15 @@ const AboutUs = () => {
   const [isActive3, setActive3] = useState(false);
   return (
     <div>
-      <Breadcrumps />
+      <div className="container">
+        <div className="breadcrumps__block">
+          <Link to="/">
+            <p className="breadcrumps">Главная</p>
+          </Link>
+          <span className="breadcrumps__slash">/</span>
+          <p className="breadcrumps">О нас</p>
+        </div>
+      </div>
       <div className="navigation_menu">
         <NavigationMenu2 />
       </div>

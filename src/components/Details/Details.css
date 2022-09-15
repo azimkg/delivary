@@ -102,7 +102,7 @@
     align-items: center;
   }
   .details__photos {
-    max-width: 480px;
+    max-width: 375px;
     max-height: 202px;
   }
   .details__right-title {
@@ -124,6 +124,13 @@
 }
 
 .text12 {
+  margin-bottom: 30px;
   width: 300px !important;
   height: 20px !important;
+}
+
+@media (max-width: 1300px) {
+  .space_none {
+    display: none;
+  }
 }

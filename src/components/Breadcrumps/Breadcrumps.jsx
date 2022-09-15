@@ -1,14 +1,21 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
-const Breadcrumps = () => {
+const Breadcrumps = ({ item, loc }) => {
   return (
     <div className="container">
       <div className="breadcrumps__block">
-        <p className="breadcrumps">Главная</p>
+        <Link to="/">
+          <p className="breadcrumps">Главная</p>
+        </Link>
         <span className="breadcrumps__slash">/</span>
-        <p className="breadcrumps">Каталог</p>
+        <p className="breadcrumps">{loc}</p>
         <span className="breadcrumps__slash">/</span>
-        <p className="breadcrumps">Томаты на ветке</p>
+        {item ? (
+          <p key={item.id} className="breadcrumps">
+            {item}
+          </p>
+        ) : null}
       </div>
     </div>
   );

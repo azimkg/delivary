@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../axios";
-import { useState } from "react";
 const API = "http://kitchen4you.kg/api";
 
 const initialState = {

@@ -3,6 +3,19 @@
   width: 100%;
   margin-top: 50px;
 }
+
+.popular__product {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+  /* column-gap: 29px; */
+}
+@media (max-width: 1024px) {
+  .popular__product {
+    flex-wrap: wrap;
+  }
+}
+
 .popular_food-text {
   font-family: "Rubik";
   font-style: normal;
@@ -24,7 +37,9 @@
 .popular_card {
   max-width: 100%;
   width: 250px;
-  min-height: 380px;
+  /* min-height: 380px; */
+  margin: 10px;
+  height: 400px;
   position: relative;
   background: #ffffff;
   box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.06);
@@ -89,7 +104,7 @@
   width: 56px;
   height: 36px;
   border-radius: 50px 0 0 50px;
-  background: #7AC9BB;
+  background: #7ac9bb;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -254,10 +269,18 @@
   }
 }
 
+@media (max-width: 425px) {
+  .popular__product {
+    /* column-gap: 53px; */
+  }
+}
 @media (max-width: 426px) {
   .popular_card {
     width: 164px;
+    height: 326px;
+    margin: 0 13px;
   }
+
   .image_cards {
     width: 164px;
     height: 156px;
@@ -300,15 +323,17 @@
     align-items: center;
     color: #1b1b1b;
     mix-blend-mode: normal;
+    margin-top: 20px;
   }
 }
 
 @media (max-width: 380px) {
   .popular_card {
-    width: 150px;
+    width: 250px;
+    margin: 5px;
   }
   .image_cards {
-    width: 150px;
+    width: 250px;
   }
   .cards_title-name {
     font-family: "Rubik";
@@ -348,6 +373,7 @@
     align-items: center;
     color: #1b1b1b;
     mix-blend-mode: normal;
+    margin-top: 20px;
   }
 }
 

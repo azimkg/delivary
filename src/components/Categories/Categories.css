@@ -169,10 +169,11 @@
     height: 170px;
   }
   .cat__img-small {
-    width: 100%;
+    width: 50%;
   }
   .cat__desktop {
     margin-top: 0;
+    width: 100%;
   }
   .cat__title {
     bottom: 30px;
@@ -181,5 +182,10 @@
     margin-top: 0px;
 
     width: 49%;
+  }
+}
+@media (max-width: 425px) {
+  .cat__title {
+    font-size: 18px;
   }
 }

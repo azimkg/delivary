@@ -3,24 +3,64 @@ import "./Details.css";
 import vector from "../../assets/Vector.png";
 import Breadcrumps from "../Breadcrumps/Breadcrumps";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Skeleton, Space } from "antd";
+import { cartContext } from "../../context/cartContext";
+import { useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { getAllCategories } from "../../FoodSlice/CategoriesSlice";
+import NavigationMenu3 from "../NavigationMenu2/NavigationMenu3";
 
 const Details = () => {
   const edit = useSelector((state) => state.food.edit);
+  const category = useSelector((state) => state.categories.category);
+
   const [active, setActive] = useState(false);
   const dispatch = useDispatch();
   const [edited, setEdited] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    dispatch(getAllCategories());
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     setTimeout(() => {
       setEdited(edit);
-    }, 1500);
+    }, 1000);
   }, [edit]);
+  const notify = () => {
+    toast.success("Товар добавлен в корзину", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
+  const loc = location.pathname.slice(9, location.pathname.length);
+  const locations = parseInt(loc);
+  console.log(loc);
+
+  const { addProductToCart, checkItemInCart, getCart } =
+    useContext(cartContext);
+  const [checkItem, setCheckItem] = useState(checkItemInCart(edited));
+
+  console.log(edited);
   return edited ? (
     <div className="container">
-      <Breadcrumps />
+      <div className="navigation_menu">
+        <NavigationMenu3 />
+      </div>
+      {category.map((item) =>
+        item.id == locations ? (
+          <Breadcrumps loc={item.category_name} item={edited.product_name} />
+        ) : null
+      )}
       <div className="details">
         <div className="details__block">
           <img src={edited.cover_pic} alt="image" className="details__photos" />
@@ -34,14 +74,29 @@ const Details = () => {
             </div>
             <div className="details__cart-block">
               <img src={vector} alt="image" />
-              <button className="details__cart">В корзину</button>
+              <button
+                className="details__cart"
+                onClick={() => {
+                  addProductToCart(edited);
+                  checkItemInCart(edited.id);
+                  getCart();
+                  notify();
+                }}
+              >
+                В корзину
+              </button>
             </div>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   ) : (
-    <div className="container">
+    <div className="container space_none">
+      <Breadcrumps />
+      <div className="navigation_menu">
+        <NavigationMenu3 />
+      </div>
       <div className="details">
         <div className="details__block">
           <Space>

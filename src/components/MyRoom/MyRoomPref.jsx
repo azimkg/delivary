@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { authContext } from "../../context/authContext";
 import "./MyRoom.css";
 
 const MyRoomPref = () => {
@@ -7,14 +8,14 @@ const MyRoomPref = () => {
       <div className="pref">
         <h3>Привет, User</h3>
         <div>
-        <div className="my_profile">
-        <img
-          className="my_photo"
-          src="https://images.unsplash.com/photo-1485893086445-ed75865251e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlb3BsZXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60"
-          alt=""
-        />
-        <h3>Name Name</h3>
-      </div>
+          <div className="my_profile">
+            <img
+              className="my_photo"
+              src="https://images.unsplash.com/photo-1485893086445-ed75865251e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlb3BsZXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60"
+              alt=""
+            />
+            <h3>Name Name</h3>
+          </div>
           <div className="pref_line"></div>
           <div className="pref-1">
             <div className="nameAndEmail">
@@ -41,11 +42,9 @@ const MyRoomPref = () => {
         </div>
         <div className="pref_line"></div>
         <div>
-        <button className="pref-btn">Редактировать</button>
+          <button className="pref-btn">Редактировать</button>
+        </div>
       </div>
-      </div>
-      
-      
     </div>
   );
 };
