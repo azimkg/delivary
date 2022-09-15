@@ -3,17 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllOrders } from "../../FoodSlice/CartSlice";
 
 const MyRoomProgressBar = () => {
-  const historyOfUser = useSelector((state) => state.order.orders);
-  const dispatch = useDispatch();
+  // const historyOfUser = useSelector((state) => state.order.orders);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllOrders());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getAllOrders());
+  // }, []);
 
-  let arr = historyOfUser.reduce(
-    (prev, cur) => prev.order_amount + cur.order_amount
-  );
-  console.log(arr);
+  // let arr = historyOfUser.reduce(
+  //   (prev, cur) => prev.order_amount + cur.order_amount
+  // );
+  // console.log(arr);
 
   const containerStyles = {
     height: 20,
@@ -41,8 +41,8 @@ const MyRoomProgressBar = () => {
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        {/* <span style={labelStyles}>{`${arr}%`}</span> */}
-        <p>{arr}</p>
+        <span style={labelStyles}>итого:900</span>
+        {/* <p>{arr}</p> */}
       </div>
     </div>
   );

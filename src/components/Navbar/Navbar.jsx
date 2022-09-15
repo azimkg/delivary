@@ -84,8 +84,8 @@ const Navbar = () => {
             }}
             className="navbar__mobile-burger"
           >
-            {all ? (
-              <img className="navbar__burger" src={closemobile} alt="image" />
+            {burger ? (
+              <img src={closemobile} alt="image" />
             ) : (
               <img src={burgermobile} alt="image" />
             )}
