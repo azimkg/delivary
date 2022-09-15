@@ -21,7 +21,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px 10px 0 0;
   box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.75);
 }
 
@@ -109,4 +108,92 @@
 
 .bx {
   font-size: 26px;
+}
+
+@media (max-width: 400px) {
+  .navigation {
+    justify-content: left;
+    align-items: flex-start;
+    padding: 0 15px;
+  }
+}
+@media (max-width: 380px) {
+  .navigation {
+    justify-content: left;
+    align-items: flex-start;
+    padding: 0 8px;
+  }
+}
+@media (max-width: 360px) {
+  .navigation {
+    justify-content: left;
+    width: 360px;
+    align-items: flex-start;
+    padding: 0 10px;
+  }
+  .navigation ul li {
+    width: 65px;
+  }
+  .navigation ul li:nth-child(1).active ~ .menu-bg {
+    transform: translateX(calc(70px * 0)) !important;
+  }
+
+  .navigation ul li:nth-child(2).active ~ .menu-bg {
+    transform: translateX(calc(62px * 1)) !important;
+  }
+
+  .navigation ul li:nth-child(3).active ~ .menu-bg {
+    transform: translateX(calc(64px * 2)) !important;
+  }
+
+  .navigation ul li:nth-child(4).active ~ .menu-bg {
+    transform: translateX(calc(64px * 3)) !important;
+  }
+  .navigation ul li:nth-child(5).active ~ .menu-bg {
+    transform: translateX(calc(64px * 4)) !important;
+  }
+}
+@media (max-width: 350px) {
+  .navigation {
+    justify-content: left;
+    align-items: flex-start;
+    padding: 0 20px 0 10px;
+  }
+  .navigation ul li {
+    width: 60px;
+  }
+  .menu-bg {
+    position: absolute;
+    top: -35px;
+    background: var(--clrbg);
+    width: 60px;
+    height: 60px;
+    border: 7px solid white;
+    border-radius: 100%;
+    transition: 0.5s;
+  }
+  .navigation ul li:nth-child(1).active ~ .menu-bg {
+    transform: translateX(calc(70px * 0)) !important;
+  }
+
+  .navigation ul li:nth-child(2).active ~ .menu-bg {
+    transform: translateX(calc(59px * 1)) !important;
+  }
+
+  .navigation ul li:nth-child(3).active ~ .menu-bg {
+    transform: translateX(calc(60px * 2)) !important;
+  }
+
+  .navigation ul li:nth-child(4).active ~ .menu-bg {
+    transform: translateX(calc(60px * 3)) !important;
+  }
+  .navigation ul li:nth-child(5).active ~ .menu-bg {
+    transform: translateX(calc(60px * 4)) !important;
+  }
+  .navigation ul li.active .name {
+    font-size: 14px;
+  }
+  .bx {
+    font-size: 24px;
+  }
 }
