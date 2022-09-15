@@ -269,27 +269,22 @@
   }
 }
 
-@media (max-width: 425px) {
-  .popular__product {
-    /* column-gap: 53px; */
-  }
-}
 @media (max-width: 426px) {
   .popular_card {
-    width: 164px;
-    height: 326px;
+    width: 100%;
+    height: 340px;
     margin: 0 13px;
   }
 
   .image_cards {
-    width: 164px;
-    height: 156px;
+    width: 100%;
+    height: 196px;
   }
   .cards_title-name {
     font-family: "Rubik";
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 18px;
     display: flex;
     align-items: center;
@@ -304,7 +299,7 @@
     margin-top: 24px;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 22px;
   }
   .cards_title-name {
@@ -327,7 +322,7 @@
   }
 }
 
-@media (max-width: 380px) {
+/* @media (max-width: 380px) {
   .popular_card {
     width: 250px;
     margin: 5px;
@@ -424,4 +419,4 @@
     color: #1b1b1b;
     mix-blend-mode: normal;
   }
-}
+} */
