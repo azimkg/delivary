@@ -1,8 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../context/authContext";
 import "../Enter/Enter.css";
 import NavigationMenu3 from "../NavigationMenu2/NavigationMenu3";
+import { ToastContainer, toast } from "react-toastify";
 
 const Autorization = () => {
   const navigate = useNavigate();
@@ -13,9 +14,70 @@ const Autorization = () => {
   const [phone_number, setPhone_number] = useState("");
   const { error, signUp } = useContext(authContext);
 
+  const notify = () => {
+    toast.warning("Заполните все поля", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const allowed = () => {
+    toast.warning("Имя не должно совпадать с паролем", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const regex = () => {
+    toast.warning("Введите правильный email", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   function handleLogin(email, password1, password2, username, phone_number) {
+    const EMAIL_REGEXP =
+      /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+    if (
+      email.trim() == "" ||
+      password1.trim() == "" ||
+      password2.trim() == "" ||
+      username.trim() == "" ||
+      phone_number.trim() == ""
+    ) {
+      return notify();
+    }
+    if (
+      username.split("").slice(0, 1).join("") ==
+      password1.split("").slice(0, 1).join("")
+    ) {
+      return allowed();
+    }
+    if (!EMAIL_REGEXP.test(email)) {
+      return regex();
+    }
     signUp({ email, password1, password2, username, phone_number }, navigate);
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="container">
       <div className="navigation_menu">
@@ -77,17 +139,16 @@ const Autorization = () => {
           <Link to="/enter" className="autorization__link">
             Войти
           </Link>
-          <Link to="/autodone">
-            <button
-              className="autorization__button"
-              onClick={() =>
-                handleLogin(email, password1, password2, username, phone_number)
-              }
-            >
-              Зарегистрироваться
-            </button>
-          </Link>
+          <button
+            className="autorization__button"
+            onClick={() =>
+              handleLogin(email, password1, password2, username, phone_number)
+            }
+          >
+            Зарегистрироваться
+          </button>
         </div>
+        <ToastContainer />
       </div>
     </div>
   );

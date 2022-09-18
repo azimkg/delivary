@@ -2,6 +2,9 @@
   display: flex;
   padding-bottom: 50px;
 }
+.svg_spinner {
+  display: none;
+}
 .details__block {
   margin-right: 50px;
   margin-left: 50px;
@@ -132,5 +135,67 @@
 @media (max-width: 1300px) {
   .space_none {
     display: none;
+  }
+}
+
+/*  */
+
+.spinner {
+  animation: rotator 1.4s linear infinite;
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@keyframes colors {
+  0% {
+    stroke: #1b9a59;
+  }
+  25% {
+    stroke: #1b9a59;
+  }
+  50% {
+    stroke: #1b9a59;
+  }
+  75% {
+    stroke: #1b9a59;
+  }
+  100% {
+    stroke: #1b9a59;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.7;
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    transform: rotate(450deg);
+  }
+}
+@media (max-width: 425px) {
+  .svg_spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vw;
   }
 }

@@ -20,7 +20,7 @@
 }
 .navbar__bottom {
   margin-top: 17px;
-  background: #043e44;
+  background: rgba(108, 186, 170);
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -154,6 +154,9 @@
   .navbar__bottom-search {
     width: 250px;
   }
+  .all__categories {
+    top: 11%;
+  }
 }
 @media (max-width: 580px) {
   .navbar__bottom-catalog {
@@ -253,7 +256,7 @@
     line-height: 22px;
     text-align: center;
     color: #ffffff;
-    background: #209041;
+    background: rgb(62, 140, 124);
     border-radius: 5px;
     padding: 8px 55px;
     border: none;

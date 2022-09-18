@@ -14,8 +14,6 @@ const Popular = () => {
   const foods = useSelector((state) => state.food.foods);
   const [eda, setEda] = useState("");
 
-  const navigates = useNavigate();
-
   const notify = () => {
     toast.success("Товар добавлен в корзину", {
       position: "top-right",
@@ -44,7 +42,7 @@ const Popular = () => {
         <h2 className="popular_food-text">Популярные товары</h2>
       </div>
       <div className="popular__product">
-        {foods.slice(0, 5).map((elem) => (
+        {foods.slice(0, 5)?.map((elem) => (
           <div key={elem.id} className="popular_card">
             <img
               src={elem.cover_pic}
@@ -70,7 +68,7 @@ const Popular = () => {
                   addProductToCart(elem);
                   setCheckItem(checkItemInCart(elem.id));
                   notify();
-                  return getCart();
+                  getCart();
                 }}
               >
                 <img src={card} alt="card" />

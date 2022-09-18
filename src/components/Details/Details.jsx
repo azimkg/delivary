@@ -56,7 +56,7 @@ const Details = () => {
       <div className="navigation_menu">
         <NavigationMenu3 />
       </div>
-      {category.map((item) =>
+      {category?.map((item) =>
         item.id == locations ? (
           <Breadcrumps loc={item.category_name} item={edited.product_name} />
         ) : null
@@ -92,27 +92,48 @@ const Details = () => {
       <ToastContainer />
     </div>
   ) : (
-    <div className="container space_none">
-      <Breadcrumps />
-      <div className="navigation_menu">
-        <NavigationMenu3 />
-      </div>
-      <div className="details">
-        <div className="details__block">
-          <Space>
-            <Skeleton.Button active={active} className="details__photoser" />
-          </Space>
+    <>
+      <div className="container space_none">
+        <Breadcrumps />
+        <div className="navigation_menu">
+          <NavigationMenu3 />
         </div>
-        <div className="skeleton_block">
-          <Space>
-            <Skeleton.Button active={active} className="text12" />
-          </Space>
-          <Space>
-            <Skeleton.Button active={active} className="text12" />
-          </Space>
+        <div className="details">
+          <div className="details__block">
+            <Space>
+              <Skeleton.Button active={active} className="details__photoser" />
+            </Space>
+          </div>
+          <div className="skeleton_block">
+            <Space>
+              <Skeleton.Button active={active} className="text12" />
+            </Space>
+            <Space>
+              <Skeleton.Button active={active} className="text12" />
+            </Space>
+          </div>
         </div>
       </div>
-    </div>
+      <div className="container svg_spinner">
+        <svg
+          className="spinner"
+          width="25px"
+          height="25px"
+          viewBox="0 0 66 66"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            class="path"
+            fill="none"
+            stroke-width="6"
+            stroke-linecap="round"
+            cx="33"
+            cy="33"
+            r="30"
+          ></circle>
+        </svg>
+      </div>
+    </>
   );
 };
 

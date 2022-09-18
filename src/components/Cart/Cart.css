@@ -323,7 +323,7 @@
   height: 40px;
   border: none;
   color: white;
-  background: #209041;
+  background: rgb(62, 140, 124);
   border-radius: 5px;
   margin-bottom: 25px;
   font-style: normal;
@@ -488,6 +488,7 @@
     left: 0;
     background: white;
     display: block;
+    z-index: 120;
   }
   .my-node {
     position: absolute;

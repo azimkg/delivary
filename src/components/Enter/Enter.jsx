@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../context/authContext";
 import NavigationMenu2 from "../NavigationMenu2/NavigationMenu2";
+import { ToastContainer, toast } from "react-toastify";
 import "./Enter.css";
 
 const Enter = () => {
@@ -10,9 +11,33 @@ const Enter = () => {
   const [password, setPassword] = useState("");
   const { signUp, error, signIn } = useContext(authContext);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const regex = () => {
+    toast.warning("Введите правильный email", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   function handleRegister(username, password) {
+    const EMAIL_REGEXP =
+      /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
+    if (!EMAIL_REGEXP.test(username)) {
+      return regex();
+    }
+
     signIn(username, password, navigate);
   }
+
   return (
     <div className="container">
       <div className="navigation_menu">
@@ -52,6 +77,7 @@ const Enter = () => {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

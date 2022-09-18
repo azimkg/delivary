@@ -10,7 +10,7 @@ const MyRoomProgressBar = () => {
   //   dispatch(getAllOrders());
   // }, []);
 
-  // let arr = historyOfUser.reduce(
+  // let arr = historyOfUser?.reduce(
   //   (prev, cur) => prev.order_amount + cur.order_amount
   // );
   // console.log(arr);

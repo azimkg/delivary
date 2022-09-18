@@ -15,8 +15,6 @@ const Footer = () => {
           <div>
             <p className="footer_bold">Помощь покупателю</p>
             <p>Доставка и оплата</p>
-            <p>Возврат продукции</p>
-            <p>Рецепты</p>
           </div>
           <div>
             <p className="footer_bold">О компании</p>
@@ -25,13 +23,9 @@ const Footer = () => {
             <p>Контакты</p>
           </div>
           <div>
-            <p className="footer_bold">Партнеры</p>
-            <p>Наши производители</p>
-            <p>Анкета поставщика</p>
-          </div>
-          <div>
             <p className="footer_bold">+996 707 777 777</p>
             <p className="footer_bold">+996 707 777 777</p>
+            <p>Azeldenbaev@gmail.com</p>
             <p>Ежедневно с 06:00 – 00:00</p>
           </div>
         </div>

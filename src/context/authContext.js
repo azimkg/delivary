@@ -20,11 +20,11 @@ const AuthContextProvider = ({ children }) => {
     try {
       const res = await axios.post(`${API}/auth/register/`, formData);
       console.log(res);
-      navigate("/enter");
+      navigate("/autodone");
       setUser(user.email);
     } catch (e) {
       console.log(e);
-      setError("Error!");
+      setError(e);
     }
   };
 
@@ -57,7 +57,6 @@ const AuthContextProvider = ({ children }) => {
       setUser(username);
     } catch (e) {
       setError(e);
-      console.log(error);
     }
   }
 
@@ -73,6 +72,7 @@ const AuthContextProvider = ({ children }) => {
         signUp,
         signIn,
         user,
+        error,
       }}
     >
       {children}

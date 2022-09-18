@@ -7,7 +7,7 @@ import closemobile from "../../assets/closemobile.svg";
 import unionmobile from "../../assets/unionmobile.png";
 import close from "../../assets/close.svg";
 import union from "../../assets/Union.png";
-import trash from "../../assets/trash.png";
+import trash from "../../assets/card.svg";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { cartContext } from "../../context/cartContext";
 import { useSelector, useDispatch } from "react-redux";
@@ -104,7 +104,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar__top-stock">
-          <Link to="/nav">
+          <Link to="/sales">
             <p className="navbar__top-stock-link">Акции</p>
           </Link>
           <Link to="/about">
@@ -174,12 +174,14 @@ const Navbar = () => {
       {search ? (
         <div className="search_modal-window">
           <div className="search_modal-close container">
-            <h2 className=" result_not-find ">Результаты поиска</h2>
+            <h2 className=" result_not-find ">
+              Результаты поиска <span>{searchValue}</span>
+            </h2>
             <i onClick={() => setSearch(false)} className="bx bx-x close_x"></i>
           </div>
 
           <div className="search_modal-product container">
-            {foods.map((item) => (
+            {foods?.map((item) => (
               <div key={item.id} className="popular_card">
                 <img
                   src={item.cover_pic}
@@ -244,7 +246,7 @@ const Navbar = () => {
       ) : null}
       {all ? (
         <div className="all__categories grow">
-          {category.map((item) => (
+          {category?.map((item) => (
             <Link to={`/category/${item.id}/product`}>
               <div
                 key={item.id}

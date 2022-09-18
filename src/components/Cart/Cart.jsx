@@ -346,10 +346,13 @@ const Cart = () => {
               <button className="cart-details-btn" onClick={submitOrder}>
                 Оформить заказ
               </button>
-              <p className="cart__bonus">
-                При заказе на сумму от 500 сом ,вы получите бонус в размере 100
-                баллов
-              </p>
+              {delivary == "доставка" ? (
+                <p className="cart__bonus">
+                  При заказе на сумму выше 600 сомов, доставка будет бесплатной!
+                </p>
+              ) : (
+                <p className="cart__bonus">Наш адрес: Ахунбаева 119а</p>
+              )}
             </div>
           </div>
         </div>
@@ -518,10 +521,14 @@ const Cart = () => {
                     >
                       Оформить заказ
                     </button>
-                    <p className="cart__bonus">
-                      При заказе на сумму от 500 сом ,вы получите бонус в
-                      размере 100 баллов
-                    </p>
+                    {delivary == "доставка" ? (
+                      <p className="cart__bonus">
+                        При заказе на сумму выше 600 сомов, доставка будет
+                        бесплатной!
+                      </p>
+                    ) : (
+                      <p className="cart__bonus">Наш адрес: Ахунбаева 119а</p>
+                    )}
                   </div>
                 </div>
               </div>

@@ -56,7 +56,7 @@ const ProductList = () => {
 
         <div className="product_main-list">
           <div className="product_list-main">
-            {foods.map((item) => (
+            {foods?.map((item) => (
               <Product item={item} />
             ))}
             {/* <Pagination
