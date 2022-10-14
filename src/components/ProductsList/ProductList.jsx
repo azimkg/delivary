@@ -14,31 +14,14 @@ import "./ProductList.css";
 
 const ProductList = () => {
   const foods = useSelector((state) => state.food.foods);
-  const count = useSelector((state) => state.food.count);
+  const pages = useSelector((state) => state.food.pages);
   const category = useSelector((state) => state.categories.category);
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const [page, setPage] = useState(
-  //   searchParams.get("_page") ? searchParams.get("_page") : 1
-  // );
 
-  // const [limit, setLimit] = useState(6);
   const location = useLocation();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllFoods());
-    dispatch(getAllCategories());
     window.scrollTo(0, 0);
   }, []);
-  // useEffect(() => {
-  //   setSearchParams({
-  //     _page: page,
-  //     per_page: limit,
-  //   });
-  // }, [page, limit]);
-
-  // useEffect(() => {
-  //   dispatch(getAllFoods());
-  // }, [searchParams]);
 
   const loc = location.pathname.slice(10, location.pathname.length);
   const locations = parseInt(loc);
@@ -59,17 +42,6 @@ const ProductList = () => {
             {foods?.map((item) => (
               <Product item={item} />
             ))}
-            {/* <Pagination
-              style={{ margin: "50px 0px", textAlign: "center" }}
-              total={+count}
-              current={+page}
-              pageSize={+limit}
-              defaultCurrent={1}
-              onChange={(page, limit) => {
-                setPage(page);
-                setLimit(limit);
-              }}
-            /> */}
           </div>
           <div className="product_list-cart">
             <CartFoods />

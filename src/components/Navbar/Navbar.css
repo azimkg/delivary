@@ -67,6 +67,10 @@
   height: 20px;
   cursor: pointer;
 }
+.exit {
+  width: 25px !important;
+  height: 25px;
+}
 .navbar__bottom-trash {
   margin: 0 15px;
 }
@@ -157,6 +161,12 @@
   .all__categories {
     top: 11%;
   }
+  .span_value {
+    display: none;
+  }
+}
+.span_value {
+  margin-left: 5px;
 }
 @media (max-width: 580px) {
   .navbar__bottom-catalog {

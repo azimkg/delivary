@@ -37,6 +37,7 @@
   line-height: 147%;
   color: #7b7b7b;
   margin-bottom: 44px;
+  padding-bottom: 50px;
 }
 .details__right-footer {
   display: flex;
@@ -58,7 +59,7 @@
 }
 .details__cart {
   cursor: pointer;
-  background: #209041;
+  background: rgb(62, 140, 124);
   border-radius: 5px;
   font-weight: 500;
   font-size: 16px;
@@ -118,6 +119,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
+    padding-bottom: 50px;
   }
   .details__right-cost {
     font-weight: 400;

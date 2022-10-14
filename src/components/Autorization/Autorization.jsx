@@ -14,6 +14,10 @@ const Autorization = () => {
   const [phone_number, setPhone_number] = useState("");
   const { error, signUp } = useContext(authContext);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const notify = () => {
     toast.warning("Заполните все поля", {
       position: "top-right",
@@ -26,6 +30,17 @@ const Autorization = () => {
     });
   };
 
+  const confirm = () => {
+    toast.warning("Пароли должны совпадать", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
   const allowed = () => {
     toast.warning("Имя не должно совпадать с паролем", {
       position: "top-right",
@@ -71,12 +86,13 @@ const Autorization = () => {
     if (!EMAIL_REGEXP.test(email)) {
       return regex();
     }
+
+    if (password1 != password2) {
+      return confirm();
+    }
+
     signUp({ email, password1, password2, username, phone_number }, navigate);
   }
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <div className="container">

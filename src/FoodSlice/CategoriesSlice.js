@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "../axios";
+import axios from "axios";
 const API = "http://kitchen4you.kg/api";
 
 const initialState = {
@@ -10,7 +10,7 @@ export const getAllCategories = createAsyncThunk(
   "category/getAllOrders",
   async (_, { rejectWithValue, dispatch }) => {
     try {
-      let res = await axios.get("/categories/");
+      let res = await axios.get(`${API}/categories/`);
       dispatch(getCategory(res.data));
     } catch (e) {
       console.log(e);

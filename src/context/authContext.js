@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const authContext = React.createContext();
 
@@ -19,7 +20,6 @@ const AuthContextProvider = ({ children }) => {
     formData.append("phone_number", user.phone_number);
     try {
       const res = await axios.post(`${API}/auth/register/`, formData);
-      console.log(res);
       navigate("/autodone");
       setUser(user.email);
     } catch (e) {
@@ -42,7 +42,6 @@ const AuthContextProvider = ({ children }) => {
         },
       });
       navigate("/");
-      console.log(res);
 
       let { access_token } = res.data;
       document.cookie =
@@ -62,8 +61,11 @@ const AuthContextProvider = ({ children }) => {
 
   function logout() {
     localStorage.removeItem("token");
-    localStorage.removeItem("username");
+    localStorage.removeItem("user");
+    localStorage.removeItem("email");
+    Cookies.remove("delivery-auth");
     setUser("");
+    return false;
   }
   console.log(user);
   return (
@@ -73,6 +75,7 @@ const AuthContextProvider = ({ children }) => {
         signIn,
         user,
         error,
+        logout,
       }}
     >
       {children}

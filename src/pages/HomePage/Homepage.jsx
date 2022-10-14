@@ -9,6 +9,7 @@ import "./HomePage.css";
 const Homepage = () => {
   const [view, setView] = useState(false);
   useEffect(() => {
+    window.scrollTo(0, 0);
     setTimeout(() => {
       setView(true);
     }, 2000);

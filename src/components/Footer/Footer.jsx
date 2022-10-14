@@ -1,12 +1,13 @@
 import React from "react";
 import "../Footer/Footer.css";
-import elsom from "../../assets/image 1.svg";
+import elsom from "../../components/Footer/Footer_img/elsom.svg";
 import mbank from "../../assets/image 3.svg";
 import visa from "../Footer/Footer_img/Visa.svg";
 import combo from "../Footer/footer-icons/Combined-Shape.svg";
-import icon2 from "../Footer/footer-icons/Group 554.png";
 import icon3 from "../Footer/footer-icons/Vector.png";
-import icon4 from "../Footer/footer-icons/VK_white.png";
+import tiktok from "../Footer/Footer_img/tiktok.svg";
+import footerlogo from "./Footer_img/foryoulogofooter.svg";
+
 const Footer = () => {
   return (
     <div className="footer ">
@@ -19,7 +20,7 @@ const Footer = () => {
           <div>
             <p className="footer_bold">О компании</p>
             <p>О нас</p>
-            <p>Качество</p>
+
             <p>Контакты</p>
           </div>
           <div>
@@ -31,7 +32,10 @@ const Footer = () => {
         </div>
         <div className="footer-component2">
           <div>
-            <p>© 2021-2022 — for you</p>
+            <p className="p2021-2022">
+              © 2021-2022 —{" "}
+              <img className="footerlogo" src={footerlogo} alt="footerlogo" />
+            </p>
           </div>
           <div className="footer_oplata">
             <img src={visa} alt="image" />
@@ -40,14 +44,20 @@ const Footer = () => {
           </div>
           <div id="footer_icons">
             <div>
-              <img src={combo} alt="image" />
-              <img src={icon2} alt="image" />
-              <img src={icon3} alt="image" />
-              <img src={icon4} alt="image" />
+              <a href="https://instagram.com/kitchen4you.kg?igshid=ZDU1ZDhlY2E=">
+                <img src={icon3} alt="image" />
+              </a>
+              <a href="https://www.tiktok.com/@kitchen4you.kg?_t=8VrXwqfEbeT&_r=1">
+                <img className="tiktok" src={tiktok} alt="image" />
+              </a>
             </div>
-
-            <p className="confidential">Политика конфиденциальности</p>
           </div>
+        </div>
+        <div className="footer-component3">
+          <p>Политика конфедециальности</p>{" "}
+          <p>
+            made by: <a href="devs.kg">Devs.kg</a>
+          </p>{" "}
         </div>
       </div>
     </div>

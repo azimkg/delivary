@@ -3,7 +3,7 @@
   height: 400px;
   margin-top: 30px;
   background-image: url("../../assets/ааааа.png");
-  border-radius: 8px;
+  border-radius: 4px;
   /* background-size: cover; */
 }
 @media (max-width: 768px) {

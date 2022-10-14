@@ -11,9 +11,10 @@ const initialState = {
 export const getAllFoods = createAsyncThunk(
   "foods/getAllFoods",
   async (_, { rejectWithValue, dispatch }) => {
-    let res = await axios.get(`${API}/products/` + window.location.search);
+    let res = await axios.get(
+      `${API}/products/` + window.location.search + "&page=1&page_size=10000"
+    );
     dispatch(getPosts(res.data));
-    console.log(res);
   }
 );
 export const getOneFoods = createAsyncThunk(
@@ -29,7 +30,6 @@ export const foodSlice = createSlice({
   reducers: {
     getPosts: (state, action) => {
       state.foods = action.payload.results;
-      state.count = action.payload.total;
     },
     editPosts: (state, action) => {
       state.edit = action.payload;

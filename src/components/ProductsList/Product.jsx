@@ -1,19 +1,27 @@
 import React, { useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editPosts } from "../../FoodSlice/FoodSlice";
+import { editPosts, getAllFoods } from "../../FoodSlice/FoodSlice";
 import card from "../../assets/card.svg";
 import { cartContext } from "../../context/cartContext";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Skeleton, Space } from "antd";
 import { useEffect } from "react";
-import { getAllCategories } from "../../FoodSlice/CategoriesSlice";
+import deleteCard from "../../assets/close.svg";
 
-const Product = ({ item, count }) => {
+const Product = ({ item, pages }) => {
+  const [deletes, setDeletes] = useState(false);
   const [elem, setElem] = useState(null);
   const [active, setActive] = useState(false);
   const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // const [page, setPage] = useState(
+  //   searchParams.get("page") ? searchParams.get("page") : 1
+  // );
+
+  // const [limit, setLimit] = useState(1000);
   const notify = () => {
     toast.success("Товар добавлен в корзину", {
       position: "top-right",
@@ -25,6 +33,29 @@ const Product = ({ item, count }) => {
       progress: undefined,
     });
   };
+
+  const remove = () => {
+    toast.warning("Товар удален из корзины", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  // useEffect(() => {
+  //   setSearchParams({
+  //     page: page,
+  //     page_size: 1000,
+  //   });
+  // }, [page, limit]);
+
+  // useEffect(() => {
+  //   dispatch(getAllFoods());
+  // }, [searchParams]);
 
   const loc = location.pathname.slice(10, location.pathname.length);
   const locations = parseInt(loc);
@@ -46,6 +77,15 @@ const Product = ({ item, count }) => {
     addProductToCart(item);
     setCheckItem(checkItemInCart(item.id));
     notify();
+    setDeletes(true);
+    return getCart();
+  }
+
+  function deleteCart() {
+    addProductToCart(item);
+    setCheckItem(checkItemInCart(item.id));
+    remove();
+    setDeletes(false);
     return getCart();
   }
 
@@ -70,9 +110,15 @@ const Product = ({ item, count }) => {
             </span>
           </div>
           <span className="card_price-span">{elem.price}сом</span>
-          <div className="card_position-card" onClick={clickCart}>
-            <img src={card} alt="card" />
-          </div>
+          {deletes ? (
+            <div className="card_position-card" onClick={deleteCart}>
+              <img src={deleteCard} alt="card" />
+            </div>
+          ) : (
+            <div className="card_position-card" onClick={clickCart}>
+              <img src={card} alt="card" />
+            </div>
+          )}
         </div>
         <ToastContainer />
       </div>

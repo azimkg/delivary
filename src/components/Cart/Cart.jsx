@@ -45,6 +45,21 @@ const Cart = () => {
     });
   };
 
+  const a = () => {
+    toast.success(
+      "Заказ успешно оформлен, вам позвонят для уточнения заказа!",
+      {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+  };
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -76,7 +91,6 @@ const Cart = () => {
     }
     return setProduct(order);
   }
-  // console.log(product);
 
   function submitOrder() {
     if (full_name == "" || phone_number == "" || address == "") {
@@ -95,16 +109,15 @@ const Cart = () => {
     };
     console.log(newOrder);
     dispatch(postAllOrders(newOrder));
-    dispatch(getAllOrders());
+    a();
 
-    // setDelivery("");
     setAddress("");
-    // setProduct("");
     setApartment("");
     setFull_name("");
     setPhone_number("");
     setFloor("");
-    // setOrder_amount("");
+    localStorage.removeItem("cart");
+    getCart();
   }
 
   function submitOrdered() {
@@ -125,22 +138,22 @@ const Cart = () => {
     console.log(newOrder);
     dispatch(postAllOrders(newOrder));
     dispatch(getAllOrders());
-    showModal();
 
-    // setDelivery("");
+    showModal();
+    a();
+
     setAddress("");
-    // setProduct("");
     setApartment("");
     setFull_name("");
     setPhone_number("");
     setFloor("");
-    // setOrder_amount("");
+    localStorage.removeItem("cart");
+    getCart();
   }
 
   function showModal() {
     setShowMessageModal(true);
   }
-  console.log(cart);
   return (
     <>
       <div className="cart container">
@@ -242,7 +255,10 @@ const Cart = () => {
                 value="на вынос"
                 onChange={(e) => setDelivary(e.target.value)}
                 name="delivary"
-                onClick={() => setDelivery(false)}
+                onClick={() => {
+                  setDelivery(false);
+                  setAddress("Ахунбаева 119");
+                }}
               />
             </div>
           </div>
@@ -290,16 +306,31 @@ const Cart = () => {
                 </div>
               </>
             )}
-            <div>
-              <p className="cart__del-title">Адрес доставки</p>
-              <input
-                className="cart-details-adress inp__del"
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                name="address"
-              />
-            </div>
+            {delivary == "на вынос" ? (
+              <div>
+                <p className="cart__del-title">Адрес доставки</p>
+                <input
+                  className="cart-details-adress inp__del"
+                  type="text"
+                  value={address}
+                  name="address"
+                  placeholder="Укажите адрес"
+                />
+              </div>
+            ) : (
+              <div>
+                <p className="cart__del-title">Адрес доставки</p>
+                <input
+                  className="cart-details-adress inp__del"
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  name="address"
+                  placeholder="Укажите адрес"
+                />
+              </div>
+            )}
+
             <div className="cart-details-adress-2">
               <div className="cart-details-adress-2-1">
                 <p className="cart__del-title">Номер телефона</p>
@@ -308,6 +339,7 @@ const Cart = () => {
                   type="number"
                   value={phone_number}
                   name="phone_number"
+                  placeholder="0777555777"
                   onChange={(e) => setPhone_number(e.target.value)}
                 />
               </div>
@@ -411,7 +443,10 @@ const Cart = () => {
                       value="на вынос"
                       onChange={(e) => setDelivary(e.target.value)}
                       name="delivary"
-                      onClick={() => setDelivery(false)}
+                      onClick={() => {
+                        setDelivery(false);
+                        setAddress("Ахунбаева 119");
+                      }}
                     />
                   </div>
                 </div>
@@ -459,16 +494,32 @@ const Cart = () => {
                       </div>
                     </>
                   )}
-                  <div>
-                    <p className="cart__del-title">Адрес доставки</p>
-                    <input
-                      className="cart-details-adress inp__del"
-                      type="text"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      name="address"
-                    />
-                  </div>
+
+                  {delivary == "на вынос" ? (
+                    <div>
+                      <p className="cart__del-title">Адрес доставки</p>
+                      <input
+                        className="cart-details-adress inp__del"
+                        type="text"
+                        value={address}
+                        name="address"
+                        placeholder="Укажите адрес"
+                      />
+                    </div>
+                  ) : (
+                    <div>
+                      <p className="cart__del-title">Адрес доставки</p>
+                      <input
+                        className="cart-details-adress inp__del"
+                        type="text"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        name="address"
+                        placeholder="Укажите адрес"
+                      />
+                    </div>
+                  )}
+
                   <div className="cart-details-adress-2">
                     <div className="cart-details-adress-2-1">
                       <p className="cart__del-title">Номер телефона</p>

@@ -4,6 +4,13 @@
   padding: 0;
 }
 
+.footerlogo {
+  width: 80px;
+}
+#confidential {
+  font-size: 12px;
+  color: white;
+}
 .footer {
   width: 100%;
   height: 100%;
@@ -14,12 +21,21 @@
 .footer-component1 {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
 }
-
+.tiktok {
+  width: 26px;
+}
+.p2021-2022 {
+  color: #fff;
+}
 .footer-component1 div {
-  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 250px;
   margin: 15px 0;
 }
 
@@ -31,13 +47,14 @@
   margin-bottom: 0;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .footer-component2 div {
   display: flex;
   align-items: center;
-  width: 220px;
+  justify-content: center;
+  width: 250px;
   height: 50px;
   margin: 10px;
 }
@@ -49,7 +66,7 @@
   cursor: pointer;
 }
 
-.footer p {
+.footer .footer-component1 p {
   color: white;
   font-size: 16px;
   line-height: 25px;
@@ -82,12 +99,29 @@
   font-family: "Rubik", "sans-serif";
   margin-bottom: 10px;
 }
+
+.footer-component3 {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-bottom: 60px;
+}
+.footer-component3 p {
+  color: white;
+}
+.footer-component3 a {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
 @media (max-width: 1040px) {
   .footer-component2 {
     justify-content: center;
   }
   .footer-component1 {
-    justify-content: center;
+    justify-content: space-around;
   }
 }
 @media (max-width: 650px) {

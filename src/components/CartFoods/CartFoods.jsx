@@ -17,7 +17,7 @@ const CartFoods = () => {
   }, []);
   return carts ? (
     <div>
-      <div className="cart-cart">
+      <div className="cart-cart ">
         <div>
           <h2 className="cart__title">Корзина</h2>
         </div>

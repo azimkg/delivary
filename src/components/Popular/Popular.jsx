@@ -27,9 +27,6 @@ const Popular = () => {
   };
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllFoods());
-  }, []);
 
   const { addProductToCart, checkItemInCart, getCart } =
     useContext(cartContext);

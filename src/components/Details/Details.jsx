@@ -21,7 +21,6 @@ const Details = () => {
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
-    dispatch(getAllCategories());
     window.scrollTo(0, 0);
   }, []);
 
