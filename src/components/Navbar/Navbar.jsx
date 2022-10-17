@@ -5,14 +5,18 @@ import burgerb from "../../assets/burger.svg";
 import burgermobile from "../../assets/burger-mobile.svg";
 import closemobile from "../../assets/closemobile.svg";
 import unionmobile from "../../assets/unionmobile.png";
+import exit from "../../assets/exit.png";
 import close from "../../assets/close.svg";
 import union from "../../assets/Union.png";
-import trash from "../../assets/trash.png";
+import trash from "../../assets/card.svg";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { cartContext } from "../../context/cartContext";
 import { useSelector, useDispatch } from "react-redux";
 import { editPosts, getAllFoods } from "../../FoodSlice/FoodSlice";
 import card from "../../assets/card.svg";
+import { authContext } from "../../context/authContext";
+import { getAllCategories } from "../../FoodSlice/CategoriesSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
   const [all, setAll] = useState(false);
@@ -29,10 +33,37 @@ const Navbar = () => {
   const [searchValue, setSearchValue] = useState(
     searchParams.get("search") ? searchParams.get("search") : ""
   );
+  const { user, logout } = useContext(authContext);
+
+  const category = useSelector((state) => state.categories.category);
+
+  const notify = () => {
+    toast.success("Товар добавлен в корзину", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+  const notifyExit = () => {
+    toast.info(`Вы вышли со своего аккаунта`, {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   useEffect(() => {
     getCart();
     dispatch(getAllFoods());
+    dispatch(getAllCategories());
   }, []);
 
   useEffect(() => {
@@ -47,7 +78,8 @@ const Navbar = () => {
 
   return (
     <div className="container">
-      <div className="navbar__top">
+      <ToastContainer />
+      <div className="navbar__top" onClick={() => setSearch(false)}>
         <div className="navbar__top-logo">
           <a href="/">
             <img src={logo} width="120" alt="image" />
@@ -65,8 +97,8 @@ const Navbar = () => {
             }}
             className="navbar__mobile-burger"
           >
-            {all ? (
-              <img className="navbar__burger" src={closemobile} alt="image" />
+            {burger ? (
+              <img src={closemobile} alt="image" />
             ) : (
               <img src={burgermobile} alt="image" />
             )}
@@ -98,11 +130,14 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar__top-stock">
-          <Link to="/nav">
+          <Link to="/sales">
             <p className="navbar__top-stock-link">Акции</p>
           </Link>
           <Link to="/about">
             <p className="navbar__top-stock-link">О нас</p>
+          </Link>
+          <Link to="/my">
+            <p className="navbar__top-stock-link">Личный кабинет</p>
           </Link>
         </div>
       </div>
@@ -131,13 +166,26 @@ const Navbar = () => {
         />
         <div className="navbar__bottom-right">
           <div className="navbar__bottom-user">
-            <Link to="/enter">
+            {JSON.parse(localStorage.getItem("token"))?.access_token ? (
               <img
-                src={union}
+                src={exit}
                 alt="image"
-                className="navbar__bottom-user-link"
+                className="navbar__bottom-user-link exit"
+                onClick={() => {
+                  logout();
+                  notifyExit();
+                  navigate("/");
+                }}
               />
-            </Link>
+            ) : (
+              <Link to="/enter">
+                <img
+                  src={union}
+                  alt="image"
+                  className="navbar__bottom-user-link"
+                />
+              </Link>
+            )}
           </div>
           <div className="navbar__bottom-trash">
             <Link to="/cart">
@@ -158,12 +206,15 @@ const Navbar = () => {
       {search ? (
         <div className="search_modal-window">
           <div className="search_modal-close container">
-            <h2 className=" result_not-find ">Результаты поиска</h2>
+            <h2 className=" result_not-find ">
+              Результаты поиска
+              <span className="span_value">{searchValue}</span>
+            </h2>
             <i onClick={() => setSearch(false)} className="bx bx-x close_x"></i>
           </div>
 
           <div className="search_modal-product container">
-            {foods.map((item) => (
+            {foods?.map((item) => (
               <div key={item.id} className="popular_card">
                 <img
                   src={item.cover_pic}
@@ -171,7 +222,8 @@ const Navbar = () => {
                   className="image_cards"
                   onClick={() => {
                     dispatch(editPosts(item));
-                    navigate(`/details/${item.id}`);
+                    navigate(`/product/${item.category}/details/${item.id}`);
+                    setSearch(false);
                   }}
                 />
                 <div className="popular_bottom-text">
@@ -188,6 +240,7 @@ const Navbar = () => {
                       addProductToCart(item);
                       setCheckItem(checkItemInCart(item.id));
                       getCart();
+                      notify();
                     }}
                   >
                     <img src={card} alt="card" />
@@ -207,74 +260,65 @@ const Navbar = () => {
         >
           <div className="burger__block-content">
             <div className="burger__block">
-              <p className="burger__block-link">Акции</p>
+              <p
+                className="burger__block-link"
+                onClick={() => navigate("/sales")}
+              >
+                Акции
+              </p>
             </div>
             <div className="burger__block">
               <p className="burger__block-link">График доставки</p>
             </div>
             <div className="burger__block">
-              <p className="burger__block-link">О компании</p>
+              <p
+                className="burger__block-link"
+                onClick={() => navigate("/about")}
+              >
+                О компании
+              </p>
             </div>
             <div className="burger__number-block">
               <p className="burger__number">+996778825885</p>
               <p className="burger__number">+996778825885</p>
             </div>
-            <div className="burger__number-button">
-              <button>Войти в личный кабинет</button>
-            </div>
+            {JSON.parse(localStorage.getItem("token"))?.access_token ? (
+              <div
+                className="burger__number-button"
+                onClick={() => {
+                  logout();
+                  notifyExit();
+                  navigate("/");
+                }}
+              >
+                <button>Выйти из личного кабинета</button>
+              </div>
+            ) : (
+              <div
+                className="burger__number-button"
+                onClick={() => navigate("/enter")}
+              >
+                <button>Войти в личный кабинет</button>
+              </div>
+            )}
           </div>
         </div>
       ) : null}
       {all ? (
         <div className="all__categories grow">
-          <div
-            className="all__categories-link"
-            onClick={() => {
-              setAll(false);
-            }}
-          >
-            <p>Ароматная выпечка</p>
-          </div>
-          <div
-            className="all__categories-link"
-            onClick={() => {
-              setAll(false);
-            }}
-          >
-            <p>Свежевыжатые соки</p>
-          </div>
-          <div
-            className="all__categories-link"
-            onClick={() => {
-              setAll(false);
-            }}
-          >
-            <p>Овощи, зелень</p>
-          </div>
-
-          <div
-            className="all__categories-link"
-            onClick={() => {
-              setAll(false);
-            }}
-          >
-            <p>Фрукты, ягоды</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Для наших детей</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Молоко, творог, яйца</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Сыры</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Йогурты и десерты</p>
-          </div>
-          <div className="all__categories-link">
-            <p>Хлеб, выпечка</p>
-          </div>
+          {category?.map((item) => (
+            <Link to={`/category/${item.id}/product`}>
+              <div
+                key={item.id}
+                className="all__categories-link"
+                onClick={() => {
+                  setAll(false);
+                }}
+              >
+                <p>{item.category_name}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       ) : null}
     </div>

@@ -1,0 +1,14 @@
+.sales__product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+.sales_product-text {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #7b7b7b;
+  mix-blend-mode: normal;
+}

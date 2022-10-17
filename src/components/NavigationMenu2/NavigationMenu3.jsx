@@ -30,7 +30,7 @@ function NavigationMenu3() {
     {
       icon: <i className="bx bx-user"></i>,
       name: " Кабинет",
-      link: "/enter",
+      link: "/my",
     },
   ];
 

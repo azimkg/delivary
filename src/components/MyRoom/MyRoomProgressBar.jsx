@@ -10,7 +10,7 @@ const MyRoomProgressBar = () => {
     dispatch(getAllOrders());
   }, []);
 
-  let arr = historyOfUser.reduce(
+  let arr = historyOfUser?.reduce(
     (prev, cur) => prev.order_amount + cur.order_amount
   );
   console.log(arr);
@@ -41,8 +41,8 @@ const MyRoomProgressBar = () => {
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        {/* <span style={labelStyles}>{`${arr}%`}</span> */}
-        <p>{arr}</p>
+        <span style={labelStyles}>итого:900</span>
+        {/* <p>{arr}</p> */}
       </div>
     </div>
   );

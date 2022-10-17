@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const authContext = React.createContext();
 
@@ -8,7 +9,6 @@ const API = "http://kitchen4you.kg/api";
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const signUp = async (user, navigate) => {
     console.log(user);
@@ -20,12 +20,11 @@ const AuthContextProvider = ({ children }) => {
     formData.append("phone_number", user.phone_number);
     try {
       const res = await axios.post(`${API}/auth/register/`, formData);
-      console.log(res);
-      navigate("/enter");
+      navigate("/autodone");
       setUser(user.email);
     } catch (e) {
       console.log(e);
-      setError("Error!");
+      setError(e);
     }
   };
 
@@ -43,7 +42,6 @@ const AuthContextProvider = ({ children }) => {
         },
       });
       navigate("/");
-      console.log(res);
 
       let { access_token } = res.data;
       document.cookie =
@@ -53,97 +51,31 @@ const AuthContextProvider = ({ children }) => {
 
       localStorage.setItem("token", JSON.stringify(res.data));
       localStorage.setItem("email", username);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+
       setUser(username);
     } catch (e) {
       setError(e);
-      console.log(error);
     }
   }
-  // console.log(document.cookie);
-  //   async function activateLog(email, activation_code, navigate) {
-  //     let formData = new FormData();
-  //     formData.append("email", email);
-  //     formData.append("activation_code", activation_code);
-  //     try {
-  //       let res = await axios.post(`${API}account/activate/`, formData);
-  //       console.log(res);
-  //       navigate("/signin");
-  //     } catch {
-  //       setError("Error!");
-  //     }
-  //   }
 
-  //   async function forgetAccount(email, navigate) {
-  //     let res = await axios.post(`${API}api/password_reset/`, { email });
-  //     console.log("from reset", res);
-  //     let formData = new FormData();
-  //     formData.append("email", email);
-
-  //     try {
-  //       let res = await axios.post(
-  //         `http://3.72.15.140/v1/api/password_reset/`,
-  //         formData
-  //       );
-  //       console.log(res);
-  //       navigate("/signin");
-  //     } catch (e) {
-  //       setError("Error!");
-  //     }
-  //   }
-
-  //   async function checkAuth() {
-  //     setLoading(true);
-  //     let token = JSON.parse(localStorage.getItem("token"));
-  //     try {
-  //       const Authorization = `Bearer ${token.access}`;
-  //       let res = await axios.post(
-  //         `${API}account/token/refresh/`,
-  //         { refresh: token.refresh },
-  //         { headers: { Authorization } }
-  //       );
-  //       localStorage.setItem(
-  //         "token",
-  //         JSON.stringify({ refresh: token.refresh, access: res.data.access })
-  //       );
-  //       let username = localStorage.getItem("username");
-  //       setUser(username);
-  //       console.log(res);
-  //     } catch (e) {
-  //       logout();
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
   function logout() {
     localStorage.removeItem("token");
-    localStorage.removeItem("username");
+    localStorage.removeItem("user");
+    localStorage.removeItem("email");
+    Cookies.remove("delivery-auth");
     setUser("");
+    return false;
   }
-  //   async function resetPassword(email) {
-  //     let res = await axios.post(`${API}api/password_reset/`, { email });
-  //     console.log("from reset", res);
-  //   }
-  //   async function confirmResetPassword(password, token) {
-  //     let res = await axios.post(`${API}api/password_reset/confirm/`, {
-  //       password,
-  //       token,
-  //     });
-  //     console.log("from confirm reset", res);
-  //   }
+  console.log(user);
   return (
     <authContext.Provider
       value={{
         signUp,
         signIn,
         user,
-        // error,
-        // checkAuth,
-        // logout,
-        // loading,
-        // activateLog,
-        // forgetAccount,
-        // confirmResetPassword,
-        // resetPassword,
+        error,
+        logout,
       }}
     >
       {children}

@@ -1,4 +1,5 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,300;1,400;1,500;1,600;1,700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -7,9 +8,13 @@
   font-style: normal;
   text-decoration: none;
 }
+p {
+  margin-bottom: 0em !important;
+}
 .container {
   max-width: 90%;
   margin: 0 auto;
+  scroll-behavior: smooth;
 }
 .breadcrumps__block {
   display: flex;

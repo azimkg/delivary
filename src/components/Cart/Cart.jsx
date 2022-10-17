@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "boxicons";
 import "./Cart.css";
+import { Link } from "react-router-dom";
 import { Container, Button, Alert } from "react-bootstrap";
 import { CSSTransition } from "react-transition-group";
 import deleteCart from "../../assets/delete.png";
@@ -9,11 +10,12 @@ import { List } from "antd";
 import { useDispatch } from "react-redux";
 import { getAllOrders, postAllOrders } from "../../FoodSlice/CartSlice";
 import NavigationMenu2 from "../NavigationMenu2/NavigationMenu2";
+import { ToastContainer, toast } from "react-toastify";
 
 const Cart = () => {
-  const [show, setShow] = useState(false);
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
+  const [showMessageModal, setShowMessageModal] = useState(false);
   const { getCart, cart, deleteFromCart, changeProductCount } =
     useContext(cartContext);
   const [full_name, setFull_name] = useState("");
@@ -30,6 +32,33 @@ const Cart = () => {
   useEffect(() => {
     getCart();
   }, []);
+
+  const notify = () => {
+    toast.warning("Заполните поля!", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const a = () => {
+    toast.success(
+      "Заказ успешно оформлен, вам позвонят для уточнения заказа!",
+      {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+  };
 
   const dispatch = useDispatch();
 
@@ -62,9 +91,40 @@ const Cart = () => {
     }
     return setProduct(order);
   }
-  // console.log(product);
 
   function submitOrder() {
+    if (full_name == "" || phone_number == "" || address == "") {
+      return notify();
+    }
+
+    let newOrder = {
+      full_name: full_name,
+      phone_number: phone_number,
+      floor: floor,
+      apartment: apartment,
+      delivery: delivery,
+      order_amount: +order_amount,
+      address: address,
+      ordered_product: product,
+    };
+    console.log(newOrder);
+    dispatch(postAllOrders(newOrder));
+    a();
+
+    setAddress("");
+    setApartment("");
+    setFull_name("");
+    setPhone_number("");
+    setFloor("");
+    localStorage.removeItem("cart");
+    getCart();
+  }
+
+  function submitOrdered() {
+    if (full_name == "" || phone_number == "" || address == "") {
+      return notify();
+    }
+
     let newOrder = {
       full_name: full_name,
       phone_number: phone_number,
@@ -79,23 +139,32 @@ const Cart = () => {
     dispatch(postAllOrders(newOrder));
     dispatch(getAllOrders());
 
-    // setDelivery("");
+    showModal();
+    a();
+
     setAddress("");
-    // setProduct("");
     setApartment("");
     setFull_name("");
     setPhone_number("");
     setFloor("");
-    // setOrder_amount("");
+    localStorage.removeItem("cart");
+    getCart();
+  }
+
+  function showModal() {
+    setShowMessageModal(true);
   }
   return (
     <>
       <div className="cart container">
+        <div className="navigation_menu">
+          <NavigationMenu2 />
+        </div>
+        <ToastContainer />
         <div className="cart-cart cart-del">
           <div>
             <h2>Корзина</h2>
           </div>
-
           <List
             itemLayout="horizontal"
             dataSource={cart.products}
@@ -186,7 +255,10 @@ const Cart = () => {
                 value="на вынос"
                 onChange={(e) => setDelivary(e.target.value)}
                 name="delivary"
-                onClick={() => setDelivery(false)}
+                onClick={() => {
+                  setDelivery(false);
+                  setAddress("Ахунбаева 119");
+                }}
               />
             </div>
           </div>
@@ -234,16 +306,31 @@ const Cart = () => {
                 </div>
               </>
             )}
-            <div>
-              <p className="cart__del-title">Адрес доставки</p>
-              <input
-                className="cart-details-adress inp__del"
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                name="address"
-              />
-            </div>
+            {delivary == "на вынос" ? (
+              <div>
+                <p className="cart__del-title">Адрес доставки</p>
+                <input
+                  className="cart-details-adress inp__del"
+                  type="text"
+                  value={address}
+                  name="address"
+                  placeholder="Укажите адрес"
+                />
+              </div>
+            ) : (
+              <div>
+                <p className="cart__del-title">Адрес доставки</p>
+                <input
+                  className="cart-details-adress inp__del"
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  name="address"
+                  placeholder="Укажите адрес"
+                />
+              </div>
+            )}
+
             <div className="cart-details-adress-2">
               <div className="cart-details-adress-2-1">
                 <p className="cart__del-title">Номер телефона</p>
@@ -252,6 +339,7 @@ const Cart = () => {
                   type="number"
                   value={phone_number}
                   name="phone_number"
+                  placeholder="0777555777"
                   onChange={(e) => setPhone_number(e.target.value)}
                 />
               </div>
@@ -271,17 +359,32 @@ const Cart = () => {
                 <p className="cart-det-title">цена:</p>
                 <h4 classname="cart-det-price">{cart.totalPrice} сом</h4>
               </div>
-              {/* <div className="cart-details-price-1">
-              <p>скидка:</p>
-              <p>0 сом</p>
-            </div> */}
+              {cart.totalPrice > 600 ? (
+                <div className="cart-details-price-1">
+                  <h2 className="cart-det-title">доставка:</h2>
+                  <h5 classname="cart-det-price del-price">0 сом</h5>
+                </div>
+              ) : (
+                <div className="cart-details-price-1">
+                  <h2 className="cart-det-title">доставка:</h2>
+                  <h5 classname="cart-det-price del-price">80 сом</h5>
+                </div>
+              )}
+
               <div className="cart-details-price-1">
                 <h2 className="cart-det-title">Итого к оплате:</h2>
-                <h3 className="cart-det-price prices">{cart.totalPrice} сом</h3>
+                <h3 className="cart-det-price prices">{order_amount} сом</h3>
               </div>
               <button className="cart-details-btn" onClick={submitOrder}>
                 Оформить заказ
               </button>
+              {delivary == "доставка" ? (
+                <p className="cart__bonus">
+                  При заказе на сумму выше 600 сомов, доставка будет бесплатной!
+                </p>
+              ) : (
+                <p className="cart__bonus">Наш адрес: Ахунбаева 119а</p>
+              )}
             </div>
           </div>
         </div>
@@ -301,6 +404,7 @@ const Cart = () => {
           in={showMessage}
           classNames="alert"
           unmountOnExit
+          timeout={1000}
           onEnter={() => setShowButton(false)}
           onExited={() => setShowButton(true)}
         >
@@ -339,7 +443,10 @@ const Cart = () => {
                       value="на вынос"
                       onChange={(e) => setDelivary(e.target.value)}
                       name="delivary"
-                      onClick={() => setDelivery(false)}
+                      onClick={() => {
+                        setDelivery(false);
+                        setAddress("Ахунбаева 119");
+                      }}
                     />
                   </div>
                 </div>
@@ -387,16 +494,32 @@ const Cart = () => {
                       </div>
                     </>
                   )}
-                  <div>
-                    <p className="cart__del-title">Адрес доставки</p>
-                    <input
-                      className="cart-details-adress inp__del"
-                      type="text"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      name="address"
-                    />
-                  </div>
+
+                  {delivary == "на вынос" ? (
+                    <div>
+                      <p className="cart__del-title">Адрес доставки</p>
+                      <input
+                        className="cart-details-adress inp__del"
+                        type="text"
+                        value={address}
+                        name="address"
+                        placeholder="Укажите адрес"
+                      />
+                    </div>
+                  ) : (
+                    <div>
+                      <p className="cart__del-title">Адрес доставки</p>
+                      <input
+                        className="cart-details-adress inp__del"
+                        type="text"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        name="address"
+                        placeholder="Укажите адрес"
+                      />
+                    </div>
+                  )}
+
                   <div className="cart-details-adress-2">
                     <div className="cart-details-adress-2-1">
                       <p className="cart__del-title">Номер телефона</p>
@@ -424,21 +547,73 @@ const Cart = () => {
                       <p className="cart-det-title">цена:</p>
                       <h4 classname="cart-det-price">{cart.totalPrice} сом</h4>
                     </div>
-                    {/* <div className="cart-details-price-1">
-              <p>скидка:</p>
-              <p>0 сом</p>
-            </div> */}
+                    {cart.totalPrice > 600 ? (
+                      <div className="cart-details-price-1">
+                        <h2 className="cart-det-title">доставка:</h2>
+                        <h5 classname="cart-det-price prices">0 сом</h5>
+                      </div>
+                    ) : (
+                      <div className="cart-details-price-1">
+                        <h2 className="cart-det-title">доставка:</h2>
+                        <h5 classname="cart-det-price del-price prices">
+                          80 сом
+                        </h5>
+                      </div>
+                    )}
                     <div className="cart-details-price-1">
                       <h2 className="cart-det-title">Итого к оплате:</h2>
                       <h3 classname="cart-det-price prices">
-                        {cart.totalPrice} сом
+                        {order_amount} сом
                       </h3>
                     </div>
-                    <button className="cart-details-btn" onClick={submitOrder}>
+                    <button
+                      className="cart-details-btn"
+                      onClick={submitOrdered}
+                    >
                       Оформить заказ
                     </button>
+                    {delivary == "доставка" ? (
+                      <p className="cart__bonus">
+                        При заказе на сумму выше 600 сомов, доставка будет
+                        бесплатной!
+                      </p>
+                    ) : (
+                      <p className="cart__bonus">Наш адрес: Ахунбаева 119а</p>
+                    )}
                   </div>
                 </div>
+              </div>
+            </Alert.Heading>
+          </Alert>
+        </CSSTransition>
+      </Container>
+      <Container>
+        <CSSTransition
+          in={showMessageModal}
+          classNames="my-node"
+          unmountOnExit
+          timeout={5000}
+        >
+          <Alert
+            variant="primary"
+            dismissible
+            onClose={() => setShowMessageModal(false)}
+          >
+            <Alert.Heading>
+              <div className="cart-details-modal">
+                <div className="cart-del-det">
+                  <Link to="/">
+                    <img className="cart-del-img" src={deleteCart} />
+                  </Link>
+                </div>
+                <div className="show__specialist">
+                  <p>Ваш заказ принят, дождитесь ответа специалиста</p>
+                </div>
+                <Link to="/">
+                  <button className="cart-details-btn">
+                    Вернуться в главное меню
+                  </button>
+                </Link>
               </div>
             </Alert.Heading>
           </Alert>
