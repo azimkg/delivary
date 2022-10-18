@@ -1,3 +1,4 @@
+![cart](https://user-images.githubusercontent.com/100334196/196348868-b4984783-f493-4afa-b89d-b32848d2bc5a.png)
 ![главная](https://user-images.githubusercontent.com/100334196/196347153-e92e23b9-b1eb-4965-a1ab-a7d4e2eba1b8.png)
 
 
