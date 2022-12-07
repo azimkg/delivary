@@ -23,6 +23,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  position: relative;
 }
 .tiktok {
   width: 26px;
@@ -43,7 +44,7 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  margin-top: 10%;
+  margin-top: 4%;
   margin-bottom: 0;
   align-items: center;
   flex-wrap: wrap;
@@ -79,6 +80,7 @@
   flex-direction: column;
   /* text-align: start; */
   justify-content: flex-start;
+  margin-bottom: 60px;
 }
 .footer_icons div {
   display: flex;
@@ -115,6 +117,9 @@
   font-size: 15px;
   font-weight: bold;
 }
+.p2021-2022 {
+  padding-bottom: 60px;
+}
 
 @media (max-width: 1040px) {
   .footer-component2 {
@@ -134,7 +139,14 @@
   }
 }
 
-@media (max-width: 425px) {
+.footer_position-elem {
+  position: absolute;
+  left: -70px;
+}
+@media (max-width: 426px) {
+  .footer_component1-block1 {
+    padding-top: 50px;
+  }
   .footer {
     margin-bottom: 70px;
   }

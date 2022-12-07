@@ -13,30 +13,19 @@ const Footer = () => {
     <div className="footer ">
       <div className="container">
         <div className="footer-component1">
-          <div>
-            <p className="footer_bold">Помощь покупателю</p>
-            <p>Доставка и оплата</p>
+          <div className="footer_position-elem">
+            <img className="footerlogo" src={footerlogo} alt="footerlogo" />
           </div>
-          <div>
-            <p className="footer_bold">О компании</p>
+          <div className="footer_component1-block1">
             <p>О нас</p>
-
-            <p>Контакты</p>
           </div>
           <div>
-            <p className="footer_bold">+996 707 777 777</p>
-            <p className="footer_bold">+996 707 777 777</p>
-            <p>Azeldenbaev@gmail.com</p>
-            <p>Ежедневно с 06:00 – 00:00</p>
+            <p>Ежедневно с 9:00 до 23:00</p>
+            <p className="footer_bold">+996 222 56 03 60</p>
+            <p>kitchen4y@gmail.com</p>
           </div>
         </div>
         <div className="footer-component2">
-          <div>
-            <p className="p2021-2022">
-              © 2021-2022 —{" "}
-              <img className="footerlogo" src={footerlogo} alt="footerlogo" />
-            </p>
-          </div>
           <div className="footer_oplata">
             <img src={visa} alt="image" />
             <img src={elsom} width="40" alt="image" />
@@ -52,12 +41,9 @@ const Footer = () => {
               </a>
             </div>
           </div>
-        </div>
-        <div className="footer-component3">
-          <p>Политика конфедециальности</p>{" "}
-          <p>
-            made by: <a href="devs.kg">Devs.kg</a>
-          </p>{" "}
+          <div>
+            <p className="p2021-2022">© 2021-2022 </p>
+          </div>
         </div>
       </div>
     </div>

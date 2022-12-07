@@ -2,12 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
-      name="description"
-      content="Web site created using create-react-app"
+      name="Kithen 4You — это онлайн‑магазин с доставкой по графику
+    натуральных продуктов"
+      content="Доставляем людям натуральные здоровые продукты, честное отношение,
+    а также дарим положительные эмоции. Мы получаем удовольствие от
+    работы, а также помогаем нашим партнерам развиваться вместе с
+    нами."
+    />
+    <link
+      rel="shortcut icon"
+      href="data:image/png;base64,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"
+      type="image/x-icon"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,15 +23,9 @@
       href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-    <link href="/dist/output.css" rel="stylesheet" />
-    <title>React App</title>
+    <title>Kitchen 4You - кухня для тебя</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
     <script

@@ -71,9 +71,9 @@ const AboutUs = () => {
 
         {first ? (
           <div className="about__main-content">
-            <h1 className="about__content-title">4You Kitchen</h1>
+            <h1 className="about__content-title">Kitchen 4You</h1>
             <p className="about__content-text">
-              4YOU Kithen — это онлайн‑магазин с доставкой по графику
+              Kithen 4You — это онлайн‑магазин с доставкой по графику
               натуральных продуктов произведенных в день доставки, а товары для
               дома и всё нужное для комфортного быта доставляем за 15 минут,
               благодаря размещеных в каждом районе дарксторов. У нас доставка
@@ -96,7 +96,7 @@ const AboutUs = () => {
         )}
         {second ? (
           <div className="about__main-content">
-            <h1 className="about__content-title">4You Kitchen</h1>
+            <h1 className="about__content-title">Kitchen 4You</h1>
             <p className="about__content-text">
               Доставляем людям натуральные здоровые продукты, честное отношение,
               а также дарим положительные эмоции. Мы получаем удовольствие от
