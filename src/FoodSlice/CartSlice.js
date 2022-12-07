@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "../axios";
 
 const API = "http://kitchen4you.kg/api";
 
@@ -23,16 +23,8 @@ export const getAllOrders = createAsyncThunk(
 export const postAllOrders = createAsyncThunk(
   "orders/postAllOrders",
   async (newOrder, { rejectWithValue, dispatch }) => {
-    const Authorization = JSON.parse(
-      localStorage.getItem("token")
-    ).access_token;
     try {
-      let res = await axios.post(API + "/orders/create/", newOrder, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "Content-type": "application/json",
-        },
-      });
+      let res = await axios.post(`${API}/orders/create/`, newOrder);
       dispatch(getCarts(res.data));
       console.log(res);
     } catch (e) {

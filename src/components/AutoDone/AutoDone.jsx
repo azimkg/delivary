@@ -7,7 +7,7 @@ const AutoDone = () => {
       <div className="autodone__block">
         <div className="cart-del-det"></div>
         <div className="autodone__block-text">
-          <p>Вы зарегестрировались. Перейдите на свою почту и подтвердите.</p>
+          <p>Вы зарегистрировались. Перейдите на свою почту и подтвердите.</p>
         </div>
         <Link to="/">
           <button className="cart-details-btn">Главное меню</button>

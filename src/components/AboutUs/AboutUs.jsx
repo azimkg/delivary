@@ -71,13 +71,11 @@ const AboutUs = () => {
 
         {first ? (
           <div className="about__main-content">
-            <h1 className="about__content-title">Kitchen 4You</h1>
+            <h1 className="about__content-title">KITCHEN 4YOU</h1>
             <p className="about__content-text">
-              Kithen 4You — это онлайн‑магазин с доставкой по графику
-              натуральных продуктов произведенных в день доставки, а товары для
-              дома и всё нужное для комфортного быта доставляем за 15 минут,
-              благодаря размещеных в каждом районе дарксторов. У нас доставка
-              всегда бесплатная.
+              KITCHEN 4YOU - это команда из нескольких человек, которые хотят
+              создать онлайн ресторан с лучшим сервисом, топовой кухней,
+              доступными ценами и сделать это все со вкусом.
             </p>
             <p className="about__content-text">
               Мы развиваем стремление к осознанному потреблению продуктов
@@ -96,7 +94,7 @@ const AboutUs = () => {
         )}
         {second ? (
           <div className="about__main-content">
-            <h1 className="about__content-title">Kitchen 4You</h1>
+            <h1 className="about__content-title">KITCHEN 4YOU</h1>
             <p className="about__content-text">
               Доставляем людям натуральные здоровые продукты, честное отношение,
               а также дарим положительные эмоции. Мы получаем удовольствие от

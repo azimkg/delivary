@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../axios";
 import Cookies from "js-cookie";
 
 export const authContext = React.createContext();
@@ -19,7 +19,12 @@ const AuthContextProvider = ({ children }) => {
     formData.append("username", user.username);
     formData.append("phone_number", user.phone_number);
     try {
-      const res = await axios.post(`${API}/auth/register/`, formData);
+      const res = await axios.post(`${API}/auth/register/`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "Content-type": "application/json",
+        },
+      });
       navigate("/autodone");
       setUser(user.email);
     } catch (e) {
@@ -38,7 +43,6 @@ const AuthContextProvider = ({ children }) => {
         headers: {
           "Content-Type": "multipart/form-data",
           "Content-type": "application/json",
-          "Content-Type": "application/x-www-form-urlencoded",
         },
       });
       navigate("/");
@@ -55,6 +59,7 @@ const AuthContextProvider = ({ children }) => {
 
       setUser(username);
     } catch (e) {
+      console.log(e);
       setError(e);
     }
   }

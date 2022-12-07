@@ -279,8 +279,7 @@ const Navbar = () => {
               </p>
             </div>
             <div className="burger__number-block">
-              <p className="burger__number">+996778825885</p>
-              <p className="burger__number">+996778825885</p>
+              <p className="burger__number">+996 222 56 03 60</p>
             </div>
             {JSON.parse(localStorage.getItem("token"))?.access_token ? (
               <div

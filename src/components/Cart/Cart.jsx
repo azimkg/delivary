@@ -71,8 +71,8 @@ const Cart = () => {
   }, [cart.products]);
 
   function amountOrder() {
-    if (cart.totalPrice < 600) {
-      return setOrder_amount(cart.totalPrice + 80);
+    if (cart.totalPrice < 800) {
+      return setOrder_amount(cart.totalPrice + 100);
     } else {
       return setOrder_amount(cart.totalPrice);
     }
@@ -257,7 +257,7 @@ const Cart = () => {
                 name="delivary"
                 onClick={() => {
                   setDelivery(false);
-                  setAddress("Ахунбаева 119");
+                  setAddress("Панфилова 116");
                 }}
               />
             </div>
@@ -359,7 +359,7 @@ const Cart = () => {
                 <p className="cart-det-title">цена:</p>
                 <h4 classname="cart-det-price">{cart.totalPrice} сом</h4>
               </div>
-              {cart.totalPrice > 600 ? (
+              {cart.totalPrice > 800 ? (
                 <div className="cart-details-price-1">
                   <h2 className="cart-det-title">доставка:</h2>
                   <h5 classname="cart-det-price del-price">0 сом</h5>
@@ -367,7 +367,7 @@ const Cart = () => {
               ) : (
                 <div className="cart-details-price-1">
                   <h2 className="cart-det-title">доставка:</h2>
-                  <h5 classname="cart-det-price del-price">80 сом</h5>
+                  <h5 classname="cart-det-price del-price">100 сом</h5>
                 </div>
               )}
 
@@ -380,10 +380,10 @@ const Cart = () => {
               </button>
               {delivary == "доставка" ? (
                 <p className="cart__bonus">
-                  При заказе на сумму выше 600 сомов, доставка будет бесплатной!
+                  При заказе на сумму выше 800 сомов, доставка будет бесплатной!
                 </p>
               ) : (
-                <p className="cart__bonus">Наш адрес: Ахунбаева 119а</p>
+                <p className="cart__bonus">Наш адрес: Панфилова 116</p>
               )}
             </div>
           </div>
@@ -445,7 +445,7 @@ const Cart = () => {
                       name="delivary"
                       onClick={() => {
                         setDelivery(false);
-                        setAddress("Ахунбаева 119");
+                        setAddress("Панфилова 116");
                       }}
                     />
                   </div>
@@ -547,7 +547,7 @@ const Cart = () => {
                       <p className="cart-det-title">цена:</p>
                       <h4 classname="cart-det-price">{cart.totalPrice} сом</h4>
                     </div>
-                    {cart.totalPrice > 600 ? (
+                    {cart.totalPrice > 800 ? (
                       <div className="cart-details-price-1">
                         <h2 className="cart-det-title">доставка:</h2>
                         <h5 classname="cart-det-price prices">0 сом</h5>
@@ -556,7 +556,7 @@ const Cart = () => {
                       <div className="cart-details-price-1">
                         <h2 className="cart-det-title">доставка:</h2>
                         <h5 classname="cart-det-price del-price prices">
-                          80 сом
+                          100 сом
                         </h5>
                       </div>
                     )}
@@ -574,11 +574,11 @@ const Cart = () => {
                     </button>
                     {delivary == "доставка" ? (
                       <p className="cart__bonus">
-                        При заказе на сумму выше 600 сомов, доставка будет
+                        При заказе на сумму выше 800 сомов, доставка будет
                         бесплатной!
                       </p>
                     ) : (
-                      <p className="cart__bonus">Наш адрес: Ахунбаева 119а</p>
+                      <p className="cart__bonus">Наш адрес: Панфилова 116</p>
                     )}
                   </div>
                 </div>
