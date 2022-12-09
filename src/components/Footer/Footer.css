@@ -143,7 +143,7 @@
   position: absolute;
   left: -70px;
 }
-@media (max-width: 426px) {
+@media (max-width: 430px) {
   .footer_component1-block1 {
     padding-top: 50px;
   }
