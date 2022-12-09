@@ -39,7 +39,7 @@ p {
 .navigation_menu {
   display: none;
 }
-@media (max-width: 426px) {
+@media (max-width: 430px) {
   .navigation_menu {
     display: block;
     position: fixed;
